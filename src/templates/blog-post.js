@@ -13,6 +13,7 @@ class BlogPostTemplate extends React.Component {
     const post = this.props.data.markdownRemark
     const siteTitle = this.props.data.site.siteMetadata.title
     const siteUrl = this.props.data.site.siteMetadata.siteUrl
+    const pathname = this.props.location.pathname;
     const { previous, next } = this.props.pageContext
 
     return (
@@ -64,11 +65,10 @@ class BlogPostTemplate extends React.Component {
             )}
           </li>
         </ul>
-
         <Disqus 
           identifier={post.id}
           title={post.title}
-          url={`${siteUrl}${this.props.location.pathname}`}
+          url={`${siteUrl}${pathname}`}
         />
       </Layout>
     )
