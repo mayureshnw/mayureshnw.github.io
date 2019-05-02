@@ -3,9 +3,9 @@ module.exports = {
     title: `Tech Bites`,
     author: `Mayuresh Waykole`,
     description: `A peronal blog`,
-    siteUrl: `https://mwaykole.github.io/`,
+    siteUrl: `https://mayureshnw.github.io/`,
     social: {
-      twitter: `mnw2212`,
+      twitter: `mayureshnw`,
     },
   },
   plugins: [
