@@ -5,11 +5,14 @@ import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm, scale } from "../utils/typography"
+import Disqus from 'gatsby-plugin-disqus'
+
 
 class BlogPostTemplate extends React.Component {
   render() {
     const post = this.props.data.markdownRemark
     const siteTitle = this.props.data.site.siteMetadata.title
+    const siteUrl = this.props.data.site.siteMetadata.siteUrl
     const { previous, next } = this.props.pageContext
 
     return (
@@ -61,6 +64,12 @@ class BlogPostTemplate extends React.Component {
             )}
           </li>
         </ul>
+
+        <Disqus 
+          identifier={post.id}
+          title={post.title}
+          url={`${siteUrl}${this.props.location.pathname}`}
+        />
       </Layout>
     )
   }
