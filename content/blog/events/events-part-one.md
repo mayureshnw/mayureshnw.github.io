@@ -22,7 +22,6 @@ A program `Emits` an Event when it would like to notify that some change has occ
 
 
 Lets start with a bare bones structure with nothing but the method definition
-
 ```python
 # Events.py
 
@@ -34,7 +33,7 @@ def listen(event):
 ```
 
 
-This is what our test code looks like. We will build this as well going ahead.
+Below is the test code. This will be used to run the Events that we write and test it.
 ```python
 # events.test.py
 
@@ -52,7 +51,7 @@ E.emit('FIRST_EVENT')
 Now that we have the general structure of the code, lets define the behaviour.
 
 Events are supposed to facilitate real time communication.
-> The execution flow is defined by the events and  `NOT by the order in which code is written`
+> `The execution flow is defined by the events`
 
 What this means is that any listener listening on `FIRST_EVENT` will be triggered when that event is emitted. To do this, our listeners have to first let us know what they are listening on. Usually, the listener wants to run some code when an event occurs. This code can be put in a function, referred to as a `callback`
 
@@ -90,7 +89,7 @@ The key will be the event and value will be a list of callback functions.
 It should look something like this
 ```python
 {
-    'EVENT1_NAME': [<listener1 callback>, <listener1 callback>]
+    'EVENT1_NAME': [<listener1 callback>, <listener2 callback>]
 }
 ```
 
