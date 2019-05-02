@@ -5,7 +5,7 @@ ghpages.publish(
   'public',
   {
     branch: 'master',
-    repo: 'https://github.com/mwaykole/mwaykole.github.io.git',
+    repo: 'https://github.com/mayureshnw/mayureshnw.github.io.git',
   },
   () => {
     console.log('Deploy Complete!')
