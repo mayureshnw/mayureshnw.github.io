@@ -1,15 +1,15 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Tech Bites]]></title><description><![CDATA[A peronal blog]]></description><link>https://mayureshnw.github.io/</link><generator>RSS for Node</generator><lastBuildDate>Tue, 07 May 2019 20:15:02 GMT</lastBuildDate><item><title><![CDATA[Event Driven Programming]]></title><description><![CDATA[In this post, we will explore what events are, how they are used and the advantages. Throughout the post we will build our way up to a…]]></description><link>https://mayureshnw.github.io//events/events-part-one/</link><guid isPermaLink="false">https://mayureshnw.github.io//events/events-part-one/</guid><pubDate>Wed, 01 May 2019 22:12:03 GMT</pubDate><content:encoded>&lt;p&gt;In this post, we will explore what events are, how they are used and the advantages. Throughout the post we will build our way up to a complete event driven program.
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Tech Bites]]></title><description><![CDATA[A peronal blog]]></description><link>https://mayureshnw.github.io/</link><generator>RSS for Node</generator><lastBuildDate>Tue, 07 May 2019 20:17:47 GMT</lastBuildDate><item><title><![CDATA[Event Driven Programming]]></title><description><![CDATA[In this post, we will explore what events are, how they are used and the advantages. Throughout the post we will build our way up to a…]]></description><link>https://mayureshnw.github.io//events/events-part-one/</link><guid isPermaLink="false">https://mayureshnw.github.io//events/events-part-one/</guid><pubDate>Wed, 01 May 2019 22:12:03 GMT</pubDate><content:encoded>&lt;p&gt;In this post, we will explore what events are, how they are used and the advantages. Throughout the post we will build our way up to a complete event driven program.
 We will use python do this, since python has no inherent way to handle events we need to build everything from scratch.&lt;/p&gt;
 &lt;h3&gt;Events&lt;/h3&gt;
-&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;Events&lt;/code&gt; in the simplest terms are notifications.
-Software written such that it largely relies on events for communication is said to be &lt;code class=&quot;language-text&quot;&gt;Event Driven&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Events&lt;/code&gt; in the simplest terms are notifications.
+Software written such that it largely relies on events for communication is said to be &lt;code&gt;Event Driven&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;The most common operations to do with an event are&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Listen&lt;/li&gt;
 &lt;li&gt;Emit&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;A program that would like to take some action when an event has occured, &lt;code class=&quot;language-text&quot;&gt;listens&lt;/code&gt; for that event.&lt;/p&gt;
-&lt;p&gt;A program &lt;code class=&quot;language-text&quot;&gt;Emits&lt;/code&gt; an Event when it would like to notify that some change has occured.&lt;/p&gt;
+&lt;p&gt;A program that would like to take some action when an event has occured, &lt;code&gt;listens&lt;/code&gt; for that event.&lt;/p&gt;
+&lt;p&gt;A program &lt;code&gt;Emits&lt;/code&gt; an Event when it would like to notify that some change has occured.&lt;/p&gt;
 &lt;p&gt;Lets start with a bare bones structure with nothing but the method definition&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python&quot;&gt;&lt;pre class=&quot;language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# Events.py&lt;/span&gt;
 
@@ -33,9 +33,9 @@ E&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;emit&lt;span clas
 &lt;p&gt;Now that we have the general structure of the code, lets define the behaviour.&lt;/p&gt;
 &lt;p&gt;Events are supposed to facilitate real time communication.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;The execution flow is defined by the events&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;The execution flow is defined by the events&lt;/code&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;What this means is that any listener listening on &lt;code class=&quot;language-text&quot;&gt;FIRST_EVENT&lt;/code&gt; will be triggered when that event is emitted. To do this, our listeners have to first let us know what they are listening on. Usually, the listener wants to run some code when an event occurs. This code can be put in a function, referred to as a &lt;code class=&quot;language-text&quot;&gt;callback&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;What this means is that any listener listening on &lt;code&gt;FIRST_EVENT&lt;/code&gt; will be triggered when that event is emitted. To do this, our listeners have to first let us know what they are listening on. Usually, the listener wants to run some code when an event occurs. This code can be put in a function, referred to as a &lt;code&gt;callback&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;Updating our test to reflect the callback&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python&quot;&gt;&lt;pre class=&quot;language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# events.test.py&lt;/span&gt;
 
@@ -56,9 +56,9 @@ E&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;emit&lt;span clas
 E&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;emit&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;SECOND_EVENT&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;token comment&quot;&gt;# &gt; &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;The test code when run with the events library should print &quot;an event occured&quot; when the FIRST&lt;em&gt;EVENT is sent. However when the SECOND&lt;/em&gt;EVENT is sent, nothing should happen since there is no one listening to the second event.&lt;/p&gt;
-&lt;p&gt;Lets look at the &lt;code class=&quot;language-text&quot;&gt;events.py&lt;/code&gt; implementation to see if we can make it behave as expected in the test.&lt;/p&gt;
+&lt;p&gt;Lets look at the &lt;code&gt;events.py&lt;/code&gt; implementation to see if we can make it behave as expected in the test.&lt;/p&gt;
 &lt;p&gt;The first thing we need is to map events to listeners.
-&lt;code class=&quot;language-text&quot;&gt;An event can have multiple listeners.&lt;/code&gt;&lt;/p&gt;
+&lt;code&gt;An event can have multiple listeners.&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;So a good data structure to use will be a HashMap/Dictionary in python.
 The key will be the event and value will be a list of callback functions.
 It should look something like this&lt;/p&gt;
