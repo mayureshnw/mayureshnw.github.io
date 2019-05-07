@@ -15,7 +15,11 @@ class BlogIndex extends React.Component {
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO
+<<<<<<< HEAD
           title="All posts"
+=======
+          title="Tech Blog"
+>>>>>>> d7fedaf9d3596fcf5510333635a0f6e512e9ca21
           keywords={[`blog`, `mayuresh`, `waykole`, `programming`]}
         />
         <Bio />
@@ -24,21 +28,13 @@ class BlogIndex extends React.Component {
           const title = node.frontmatter.title || node.fields.slug
           return (
             <div key={node.fields.slug}>
-              <h3
-                style={{
-                  marginBottom: rhythm(1 / 4),
-                }}
-              >
-                <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
+              <Link style={{ boxShadow: `none`, color: `black` }} to={node.fields.slug}>
+                <h3 style={{ marginBottom: rhythm(1 / 4) }}>
                   {title}
-                </Link>
-              </h3>
-              <small>{node.frontmatter.date}</small>
-              <p
-                dangerouslySetInnerHTML={{
-                  __html: node.excerpt,
-                }}
-              />
+                </h3>
+                <small>{node.frontmatter.date}</small>
+                <p dangerouslySetInnerHTML={{ __html: node.excerpt, }} />
+              </Link>
             </div>
           )
         })}
