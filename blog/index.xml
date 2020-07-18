@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blogs on codex</title>
+    <link>https://example.org/blog/</link>
+    <description>Recent content in Blogs on codex</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© {year}</copyright>
+    <lastBuildDate>Wed, 01 May 2019 22:12:03 +0000</lastBuildDate>
+    
+	<atom:link href="https://example.org/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Event Driven Programming</title>
+      <link>https://example.org/blog/events-part-one/</link>
+      <pubDate>Wed, 01 May 2019 22:12:03 +0000</pubDate>
+      
+      <guid>https://example.org/blog/events-part-one/</guid>
+      <description>In this post, we will explore what events are, how they are used and the advantages. Throughout the post we will build our way up to a complete event driven program. We will use python do this, since python has no inherent way to handle events we need to build everything from scratch.
+Events Events in the simplest terms are notifications. Software written such that it largely relies on events for communication is said to be Event Driven</description>
+    </item>
+    
+  </channel>
+</rss>

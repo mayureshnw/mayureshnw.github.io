@@ -1,1 +1,0 @@
-{"errors":[{"message":"Cannot query field \"description\" on type \"MarkdownRemarkFrontmatter\".","locations":[{"line":17,"column":11}]}],"pageContext":{"isCreatedByStatefulCreatePages":true}}
