@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>events on Mayuresh</title>
-    <link>https://mayureshnw.github.io/tags/events/</link>
+    <link>http://waykole.com/tags/events/</link>
     <description>Recent content in events on Mayuresh</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© {2020}</copyright>
     <lastBuildDate>Wed, 01 May 2019 22:12:03 +0000</lastBuildDate>
     
-	<atom:link href="https://mayureshnw.github.io/tags/events/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://waykole.com/tags/events/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Event Driven Programming</title>
-      <link>https://mayureshnw.github.io/blog/events/</link>
+      <link>http://waykole.com/blog/events/</link>
       <pubDate>Wed, 01 May 2019 22:12:03 +0000</pubDate>
       
-      <guid>https://mayureshnw.github.io/blog/events/</guid>
+      <guid>http://waykole.com/blog/events/</guid>
       <description>In this post, we will explore what events are, how they are used and the advantages. Throughout the post we will build our way up to a complete event driven program. We will use python do this, since python has no inherent way to handle events we need to build everything from scratch.
 Events Events in the simplest terms are notifications. Software written such that it largely relies on events for communication is said to be Event Driven</description>
     </item>
