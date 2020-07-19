@@ -4,14 +4,14 @@ theme = "hugo-theme-codex"
 # Override these settings with your own
 title = "Mayuresh"
 languageCode = "en-us"
-baseURL = "https://mayureshnw.github.io/"
+baseURL = "http://waykole.com/"
 copyright = "© {2020}"
 
 # Add your Disqus shortname here.
 # disqusShortname = ""
 
 # Add your Google Analytics identifier: UA-XXXXXXXX-X
-# googleAnalytics = "" 
+googleAnalytics = "UA-50148567-3" 
 
 # Optional params
 [params]
