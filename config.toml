@@ -2,7 +2,7 @@
 theme = "hugo-theme-codex" 
 
 # Override these settings with your own
-title = "Mayuresh"
+title = "Mayuresh Waykole"
 languageCode = "en-us"
 baseURL = "http://waykole.com/"
 copyright = "© {2020}"
