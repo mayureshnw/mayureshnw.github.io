@@ -19,6 +19,11 @@ googleAnalytics = "UA-50148567-3"
   # https://gohugo.io/functions/format/#gos-layout-string
   dateFormat = "Jan 2 2006"
 
+  description = """This is the personal website and portfolio of Mayuresh Waykole.
+  He is a software engineer at Microsoft and has peviously worked with McKinsey and Cisco. 
+  In hi free time he loves to read and he's an avid reader of ycombinator.com/news"""
+
+
   # Links to your social accounts, comment/uncomment as needed. Icons will be displayed for those specified.
   twitter = "https://twitter.com/mayureshnw"
   github = "https://github.com/mayureshnw"
