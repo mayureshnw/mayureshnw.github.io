@@ -7,7 +7,6 @@ tags: [events, python]
 In this post, we will explore what events are, how they are used and the advantages. Throughout the post we will build our way up to a complete event driven program.
 We will use python do this, since python has no inherent way to handle events we need to build everything from scratch.
 
-
 ### Events
 `Events` in the simplest terms are notifications.
 Software written such that it largely relies on events for communication is said to be `Event Driven`
