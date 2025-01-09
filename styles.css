@@ -1,0 +1,64 @@
+/* General styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container styles */
+.container {
+    max-width: 1200px; /* Increased width for a more professional look */
+    margin: 50px auto;
+    padding: 40px; /* Increased padding for better spacing */
+    background-color: #fff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Softer shadow for a more elegant look */
+    border-radius: 10px; /* Slightly increased border radius */
+}
+
+/* Heading styles */
+h1 {
+    font-size: 3em; /* Larger font size for the heading */
+    margin-bottom: 20px; /* Increased margin for better spacing */
+    color: #2c3e50;
+    text-align: center; /* Centered heading for a balanced look */
+}
+
+/* Paragraph styles */
+p {
+    font-size: 1.2em;
+    line-height: 1.8; /* Increased line height for better readability */
+    text-align: center; /* Centered text for a balanced look */
+}
+
+/* Contact section styles */
+.contact-section {
+    margin-top: 40px; /* Increased margin for better spacing */
+    text-align: center; /* Centered contact section */
+}
+
+.contact-section p {
+    font-size: 1.5em; /* Larger font size for the contact heading */
+    font-weight: bold;
+}
+
+.contact-section ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.contact-section ul li {
+    display: inline-block; /* Display list items inline */
+    margin: 0 15px; /* Add horizontal spacing between icons */
+}
+
+.contact-section ul li a {
+    text-decoration: none;
+    color: #3498db;
+    font-size: 2em; /* Larger font size for icons */
+}
+
+.contact-section ul li a:hover {
+    color: #2980b9; /* Change color on hover */
+}
