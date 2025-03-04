@@ -45,7 +45,10 @@ function createBlogPostCard(post) {
 // Function to load blog posts
 async function loadBlogPosts() {
     try {
-        const response = await fetch('posts/posts.json');
+        const response = await fetch('/posts/posts.json');
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
         const posts = await response.json();
         
         const blogPostsContainer = document.getElementById('blog-posts');
@@ -57,6 +60,10 @@ async function loadBlogPosts() {
         }
     } catch (error) {
         console.error('Error loading blog posts:', error);
+        const blogPostsContainer = document.getElementById('blog-posts');
+        if (blogPostsContainer) {
+            blogPostsContainer.innerHTML = '<p class="error">Sorry, there was an error loading the blog posts. Please try again later.</p>';
+        }
     }
 }
 
