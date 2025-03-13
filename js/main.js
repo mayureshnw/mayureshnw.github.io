@@ -82,7 +82,17 @@ async function loadBlogPost() {
         if (contentContainer) {
             // Strip frontmatter before rendering
             const cleanMarkdown = stripFrontmatter(markdown);
-            contentContainer.innerHTML = marked.parse(cleanMarkdown);
+            contentContainer.innerHTML = marked.parse(cleanMarkdown, {
+                highlight: function(code, lang) {
+                    const language = hljs.getLanguage(lang) ? lang : 'plaintext';
+                    return hljs.highlight(code, { language }).value;
+                }
+            });
+            
+            // Initialize syntax highlighting on all code blocks
+            document.querySelectorAll('pre code').forEach((block) => {
+                hljs.highlightElement(block);
+            });
         }
     } catch (error) {
         console.error('Error loading blog post:', error);
@@ -96,4 +106,4 @@ document.addEventListener('DOMContentLoaded', () => {
     } else if (document.getElementById('blog-post-content')) {
         loadBlogPost();
     }
-}); 
+});
