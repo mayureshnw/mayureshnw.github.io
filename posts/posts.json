@@ -1,16 +1,9 @@
 [
     {
         "id": "events",
-        "title": "Getting Started with Web Development",
-        "excerpt": "Learn the basics of web development and start your journey in creating amazing websites.",
+        "title": "Events",
+        "excerpt": "Explore the fundamentals of event-driven programming in Python. Learn how to implement a simple event system from scratch, understanding the core concepts of event emission and listening. This post demonstrates how to build a basic event library that facilitates real-time communication between different parts of your application.",
         "date": "2024-03-03",
-        "tags": ["web development", "html", "css", "javascript"]
-    },
-    {
-        "id": "idempotency",
-        "title": "Why I Love Programming",
-        "excerpt": "A personal reflection on what makes programming such an exciting and rewarding career.",
-        "date": "2024-03-02",
-        "tags": ["programming", "career", "personal"]
+        "tags": ["events", "python"]
     }
 ] 
