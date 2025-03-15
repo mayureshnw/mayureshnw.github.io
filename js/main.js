@@ -25,7 +25,7 @@ function createBlogPostCard(post) {
     
     item.innerHTML = `
         <h2>
-            <a href="post.html?id=${post.id}">${post.title}</a>
+            <a href="/blog/post.html?id=${post.id}">${post.title}</a>
         </h2>
         <p class="excerpt">${post.excerpt}</p>
         <div class="meta">
@@ -75,7 +75,7 @@ async function loadBlogPost() {
     if (!postId) return;
     
     try {
-        const response = await fetch(`posts/${postId}.md`);
+        const response = await fetch(`/posts/${postId}.md`);
         const markdown = await response.text();
         
         const contentContainer = document.getElementById('blog-post-content');
