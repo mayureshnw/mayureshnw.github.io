@@ -5,5 +5,12 @@
         "excerpt": "Explore the fundamentals of event-driven programming in Python. Learn how to implement a simple event system from scratch, understanding the core concepts of event emission and listening. This post demonstrates how to build a basic event library that facilitates real-time communication between different parts of your application.",
         "date": "2024-03-03",
         "tags": ["events", "python"]
+    },
+    {
+        "id": "get-awaiter",
+        "title": "Thread Exhaustion Due to GetAwaiter().GetResult() in C#",
+        "excerpt": "Learn about thread starvation issues in C# when using GetAwaiter().GetResult() with async APIs. This post explores the problems that arise from synchronous blocking in async operations and provides best practices to avoid thread exhaustion.",
+        "date": "2025-03-15",
+        "tags": ["csharp", "async", "threading", "concurrency", "performance"]
     }
 ] 
