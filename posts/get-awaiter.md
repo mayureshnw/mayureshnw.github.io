@@ -129,25 +129,3 @@ graph TD
     style B2 fill:#f66,stroke:#333,stroke-width:2px
     style B3 fill:#f66,stroke:#333,stroke-width:2px
 ```
-
-## What is Thread Starvation?
-- Definition of thread starvation
-- How it affects application performance
-
-## How `GetAwaiter().GetResult()` Causes Thread Starvation
-- Explanation of synchronous blocking
-- Example code demonstrating the issue
-- Analysis of the example
-
-## Best Practices to Avoid Thread Starvation
-- Use `await` instead of `GetAwaiter().GetResult()`
-- ConfigureAwait(false) to avoid context capturing
-- Other asynchronous programming tips
-
-## Conclusion
-- Summary of key points
-- Encouragement to adopt best practices
-
-## References
-- Links to official documentation
-- Additional reading materials
