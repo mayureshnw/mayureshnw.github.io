@@ -24,13 +24,14 @@ params:
     title: "Mayuresh Waykole"
     Content: "Software Engineer"
     buttonText: "About Me"
-  social:
-    - name: "GitHub"
-      icon: "github"
-      url: "https://github.com/mayureshnw"
+  socialIcons:
     - name: "LinkedIn"
-      icon: "linkedin"
+      icon: "linkedin-in"
       url: "https://www.linkedin.com/in/mayureshnw/"
-  analytics:
-    google:
-      SiteVerificationTag: "G-8HWZ6PDEN1"
+  ShowReadingTime: true
+  ShowWordCount: true
+
+
+services:
+  googleAnalytics:
+    id: "G-8HWZ6PDEN1"
