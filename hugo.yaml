@@ -3,10 +3,15 @@ languageCode: en-us
 title: Mayuresh Waykole
 theme: ["PaperMod"]
 
+caches:
+  images:
+    dir: :cacheDir/images
+
 enableRobotsTXT: true
 minify:
   disableXML: true
   minifyOutput: true
+
 
 menu:
   main:
