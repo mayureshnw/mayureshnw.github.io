@@ -1,7 +1,12 @@
 ---
-title: Events
-date: 2019-05-01T22:12:03.284Z
+author: "Mayuresh Waykole"
+title: 'Events'
 tags: [events, python]
+description: "Something about events"
+date: 2019-05-01T22:12:03.284Z
+draft: false
+ShowToc: true
+TocOpen: true
 ---
 # Events
 

@@ -1,6 +1,15 @@
-# Thread Exhaustion Due to GetAwaiter().GetResult() in C#
+---
+author: "Mayuresh Waykole"
+title: 'Thread Exhaustion Due to GetAwaiter().GetResult() in C#'
+tags: []
+description: ""
+date: 2019-05-01T22:12:03.284Z
+draft: false
+ShowToc: true
+TocOpen: true
+---
 
-## 
+# Thread Exhaustion Due to GetAwaiter().GetResult() in C#
 
 Recently we've seen an abundance of Async only API's in c# and common libraries like httpclient.
 In most cases, this encorages best practice async/await development especially on the server side, however not all is good.

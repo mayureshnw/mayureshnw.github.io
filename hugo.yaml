@@ -1,0 +1,25 @@
+baseURL: https://mayureshwaykole.com/
+languageCode: en-us
+title: Mayuresh Waykole
+theme: ["PaperMod"]
+
+enableRobotsTXT: true
+minify:
+  disableXML: true
+  minifyOutput: true
+
+params:
+  homeInfoParams:
+    title: "Mayuresh Waykole"
+    Content: "Software Engineer"
+    buttonText: "About Me"
+  social:
+    - name: "GitHub"
+      icon: "github"
+      url: "https://github.com/mayureshnw"
+    - name: "LinkedIn"
+      icon: "linkedin"
+      url: "https://www.linkedin.com/in/mayureshnw/"
+  analytics:
+    google:
+      SiteVerificationTag: "G-8HWZ6PDEN1"

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Mayuresh Waykole</title>
+    <link>http://localhost:1313/</link>
+    <description>Recent content on Mayuresh Waykole</description>
+    <generator>Hugo -- 0.146.5</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 01 May 2019 22:12:03 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title></title>
+      <link>http://localhost:1313/posts/idempotency/</link>
+      <pubDate>Wed, 01 May 2019 22:12:03 +0000</pubDate>
+      <guid>http://localhost:1313/posts/idempotency/</guid>
+      <description>&lt;h2 id=&#34;idempotency-a-cornerstone-of-reliable-systems&#34;&gt;Idempotency: A Cornerstone of Reliable Systems&lt;/h2&gt;
+&lt;p&gt;In the ever-increasing complexity of modern software systems, especially those distributed across networks, ensuring reliability and predictability is paramount. One crucial principle that underpins this goal is &lt;strong&gt;idempotency&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;What is Idempotency?&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;At its core, idempotency describes an operation that can be performed multiple times without changing the result beyond the initial application. Imagine a light switch – flipping it once turns the light on, flipping it again turns it off, and subsequent flips simply toggle the state. This is a classic example of an idempotent operation.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Challenges of Brownfield development in software systems</title>
+      <link>http://localhost:1313/posts/brownfield/</link>
+      <pubDate>Wed, 01 May 2019 22:12:03 +0000</pubDate>
+      <guid>http://localhost:1313/posts/brownfield/</guid>
+      <description>&lt;h1 id=&#34;challenges-of-brownfield-development-in-software-systems&#34;&gt;Challenges of Brownfield development in software systems&lt;/h1&gt;
+&lt;p&gt;The term &amp;ldquo;brownfield&amp;rdquo; originated as way of referring to  land that was already developed.
+&amp;ldquo;brownfield development&amp;rdquo; meant re-developing or improving this existing land/structure.&lt;/p&gt;
+&lt;p&gt;In software, this often refers to improvement work done upon an existing software system.&lt;/p&gt;
+&lt;p&gt;In my experience if you&amp;rsquo;re working at any of big tech companies, you&amp;rsquo;re more likely than not, to work on an existing software system.
+This could have been developed anywhere from last year to decades old.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Events</title>
+      <link>http://localhost:1313/posts/events/</link>
+      <pubDate>Wed, 01 May 2019 22:12:03 +0000</pubDate>
+      <guid>http://localhost:1313/posts/events/</guid>
+      <description>Something about events</description>
+    </item>
+    <item>
+      <title>Thread Exhaustion Due to GetAwaiter().GetResult() in C#</title>
+      <link>http://localhost:1313/posts/get-awaiter/</link>
+      <pubDate>Wed, 01 May 2019 22:12:03 +0000</pubDate>
+      <guid>http://localhost:1313/posts/get-awaiter/</guid>
+      <description>&lt;h1 id=&#34;thread-exhaustion-due-to-getawaitergetresult-in-c&#34;&gt;Thread Exhaustion Due to GetAwaiter().GetResult() in C#&lt;/h1&gt;
+&lt;p&gt;Recently we&amp;rsquo;ve seen an abundance of Async only API&amp;rsquo;s in c# and common libraries like httpclient.
+In most cases, this encorages best practice async/await development especially on the server side, however not all is good.
+In some unique situations, we need to call these async method in a synchronous manner.&lt;/p&gt;
+&lt;p&gt;The most common way to do this is using &lt;code&gt;GetAwaiter.GetResult()&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Task&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;string&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; pingTask &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; new &lt;span style=&#34;color:#a6e22e&#34;&gt;HttpClient&lt;/span&gt;().&lt;span style=&#34;color:#a6e22e&#34;&gt;GetStringAsync&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;https://google.com&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;var webpage &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; pingTask.&lt;span style=&#34;color:#a6e22e&#34;&gt;GetAwaiter&lt;/span&gt;().&lt;span style=&#34;color:#a6e22e&#34;&gt;GetResult&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The &lt;code&gt;GetAwaiter().GetResult()&lt;/code&gt; call blocks the calling thread and this can cause thread starvation.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

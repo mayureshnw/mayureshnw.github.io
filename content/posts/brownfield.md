@@ -1,3 +1,14 @@
+---
+author: "Mayuresh Waykole"
+title: 'Challenges of Brownfield development in software systems'
+tags: []
+description: ""
+date: 2019-05-01T22:12:03.284Z
+draft: false
+ShowToc: true
+TocOpen: true
+---
+
 # Challenges of Brownfield development in software systems
 
 The term "brownfield" originated as way of referring to  land that was already developed.
