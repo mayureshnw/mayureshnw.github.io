@@ -8,6 +8,13 @@ minify:
   disableXML: true
   minifyOutput: true
 
+menu:
+  main:
+    - identifier: archives
+      name: Archives
+      url: /archives/
+      weight: 10
+
 params:
   homeInfoParams:
     title: "Mayuresh Waykole"
