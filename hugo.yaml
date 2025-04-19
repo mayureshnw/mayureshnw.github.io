@@ -27,8 +27,10 @@ menu:
 params:
   homeInfoParams:
     title: "Mayuresh Waykole"
-    Content: "Software Engineer"
-    buttonText: "About Me"
+    Content: |
+      I am a software engineer with a passion for building scalable and efficient systems.
+
+      Interested in **Distributed Systems**, **Observability** and **AiOps**.
   socialIcons:
     - name: "LinkedIn"
       icon: "linkedin-in"
