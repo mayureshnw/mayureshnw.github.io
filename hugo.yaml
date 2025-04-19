@@ -14,6 +14,10 @@ menu:
       name: Archives
       url: /archives/
       weight: 10
+    - identifier: tags
+      name: Tags
+      url: /tags/
+      weight: 20
 
 params:
   homeInfoParams:
