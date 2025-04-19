@@ -4,7 +4,7 @@ title: 'Challenges of Brownfield development in software systems'
 tags: ["Software Engineering"]
 description: "hello"
 date: 2019-05-01T22:12:03.284Z
-draft: false
+draft: true
 ShowToc: true
 TocOpen: true
 ---
