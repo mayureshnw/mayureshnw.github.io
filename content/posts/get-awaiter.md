@@ -1,9 +1,9 @@
 ---
 author: "Mayuresh Waykole"
 title: 'Thread Exhaustion Due to GetAwaiter().GetResult() in C#'
-tags: []
+tags: [c#, 'Task Parallel Library', 'Thread Exhaustion', Concurrency]
 description: ""
-date: 2019-05-01T22:12:03.284Z
+date: 2025-03-20T22:12:03.284Z
 draft: false
 ShowToc: true
 TocOpen: true
