@@ -2,6 +2,7 @@
 author: "Mayuresh Waykole"
 title: 'Thread Exhaustion Due to GetAwaiter().GetResult() in C#'
 tags: [c#, 'Task Parallel Library', 'Thread Exhaustion', Concurrency]
+categories: [engineering]
 description: ""
 date: 2025-03-20T22:12:03.284Z
 draft: false

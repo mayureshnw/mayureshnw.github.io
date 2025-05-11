@@ -23,21 +23,32 @@ menu:
       name: Tags
       url: /tags/
       weight: 20
-
+    - identifier: Engineering
+      name: Engineering
+      url: /categories/engineering/
+      weight: 30
 params:
   homeInfoParams:
     title: "Mayuresh Waykole"
     Content: |
-      I am a software engineer with a passion for building scalable and efficient systems.
+      I'm a software engineer who loves building scalable and efficient systems. I'm into 
 
-      Interested in **Distributed Systems**, **Observability** and **AiOps**.
+        - **Distributed Systems** 🌐, **Observability** 👀 **AIOps** 🤖 
+        - 
+      
+      Over the years, I've worked on designing and leading some pretty cool projects 🚀. I enjoy mentoring and figuring out technical strategies that make a real difference 💡.
+      
+      - 
+
+      I also love to travel 🌍 and explore new places. When I'm not coding, you can find me hiking 🥾, reading 📚, or just enjoying a good cup of chai ☕.
+
   socialIcons:
     - name: "LinkedIn"
       icon: "linkedin-in"
       url: "https://www.linkedin.com/in/mayureshwaykole/"
   ShowReadingTime: true
   ShowWordCount: true
-
+  ShowShareButtons: true
 
 services:
   googleAnalytics:
