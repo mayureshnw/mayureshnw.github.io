@@ -52,7 +52,6 @@ params:
   schema:
     publisherType: "Person"
     url: "https://mayureshwaykole.com/"
-    image: "/images/mayuresh.jpg"
     sameAs:
       - "https://www.linkedin.com/in/mayureshwaykole/"
       - "https://www.instagram.com/mayuresh2212/"
