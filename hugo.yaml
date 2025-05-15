@@ -28,13 +28,13 @@ menu:
       url: /categories/engineering/
       weight: 30
 params:
+  description: "I'm a software engineer who loves building scalable and efficient systems. I'm into Distributed Systems, Observability, and AIOps."
   homeInfoParams:
     title: "Mayuresh Waykole"
     Content: |
       I'm a software engineer who loves building scalable and efficient systems. I'm into 
 
         - **Distributed Systems** 🌐, **Observability** 👀 **AIOps** 🤖 
-        - 
       
       Over the years, I've worked on designing and leading some pretty cool projects 🚀. I enjoy mentoring and figuring out technical strategies that make a real difference 💡.
       
@@ -49,6 +49,18 @@ params:
   ShowReadingTime: true
   ShowWordCount: true
   ShowShareButtons: true
+  schema:
+    publisherType: "Person"
+    url: "https://mayureshwaykole.com/"
+    image: "/images/mayuresh.jpg"
+    sameAs:
+      - "https://www.linkedin.com/in/mayureshwaykole/"
+      - "https://www.instagram.com/mayuresh2212/"
+      - "https://scholar.google.com/citations?user=Qv_4FVAAAAAJ"
+      - "https://mayureshwaykole.medium.com/"
+      - "https://github.com/mayureshwaykole"
+      - "https://www.facebook.com/mayuresh.waykole.1"
+      - "https://x.com/mayureshwaykole"
 
 services:
   googleAnalytics:
