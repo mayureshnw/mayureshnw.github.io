@@ -46,6 +46,9 @@ params:
     - name: "LinkedIn"
       icon: "linkedin-in"
       url: "https://www.linkedin.com/in/mayureshwaykole/"
+    - name: "X"
+      icon: "x-in"
+      url: "https://x.com/MayureshWaykole"
   ShowReadingTime: true
   ShowWordCount: true
   ShowShareButtons: true
