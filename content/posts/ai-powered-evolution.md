@@ -48,7 +48,7 @@ The increasing capabilities of AI are poised to reshape software development tea
 
 The role of **senior engineers** will likely shift towards architectural vision, mentoring teams in AI adoption, and strategically evaluating and integrating new AI technologies. Their deep understanding of system design and best practices will be crucial in guiding the effective use of AI.
 
-Management focus will evolve from strict task assignment and goal definition ****to **orchestrating human-AI collaboration**. Leaders will need to foster environments where humans and AI can work synergistically, leveraging each other's strengths. This will likely lead to the emergence of new team dynamics and collaborative workflows centered around AI-powered tools.
+Management focus will evolve from strict task assignment and goal definition to **orchestrating human-AI collaboration**. Leaders will need to foster environments where humans and AI can work synergistically, leveraging each other's strengths. This will likely lead to the emergence of new team dynamics and collaborative workflows centered around AI-powered tools.
 
 ### Implications and the Future Landscape
 
