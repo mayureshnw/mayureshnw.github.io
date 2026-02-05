@@ -15,6 +15,10 @@ minify:
 
 menu:
   main:
+    - identifier: about
+      name: About
+      url: /about/
+      weight: 5
     - identifier: archives
       name: Archives
       url: /archives/
@@ -32,15 +36,11 @@ params:
   homeInfoParams:
     title: "Mayuresh Waykole"
     Content: |
-      I'm a software engineer who loves building scalable and efficient systems. I'm into 
+      Senior software engineer specializing in **Distributed Systems**, **Observability**, and **AIOps**.
 
-        - **Distributed Systems** 🌐, **Observability** 👀 **AIOps** 🤖 
-      
-      Over the years, I've worked on designing and leading some pretty cool projects 🚀. I enjoy mentoring and figuring out technical strategies that make a real difference 💡.
-      
-      - 
+      I write about building scalable, reliable systems and the evolving landscape of software engineering.
 
-      I also love to travel 🌍 and explore new places. When I'm not coding, you can find me hiking 🥾, reading 📚, or just enjoying a good cup of chai ☕.
+      [Learn more about me →](/about/)
 
   socialIcons:
     - name: "LinkedIn"
@@ -57,11 +57,7 @@ params:
     url: "https://mayureshwaykole.com/"
     sameAs:
       - "https://www.linkedin.com/in/mayureshwaykole/"
-      - "https://www.instagram.com/mayuresh2212/"
-      - "https://scholar.google.com/citations?user=Qv_4FVAAAAAJ"
-      - "https://mayureshwaykole.medium.com/"
       - "https://github.com/mayureshwaykole"
-      - "https://www.facebook.com/mayuresh.waykole.1"
       - "https://x.com/mayureshwaykole"
 
 services:
