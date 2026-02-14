@@ -3,7 +3,7 @@ author: "Mayuresh Waykole"
 title: 'Challenges of Brownfield development in software systems'
 tags: ["Software Engineering"]
 categories: [engineering]
-description: "hello"
+description: "Explore the unique challenges of brownfield software development including technical debt, legacy architecture, security constraints, and governance complexities."
 date: 2019-05-01T22:12:03.284Z
 draft: true
 ShowToc: true

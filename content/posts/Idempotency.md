@@ -1,9 +1,9 @@
 ---
 author: "Mayuresh Waykole"
-title: ''
-tags: []
+title: 'Idempotency: A Cornerstone of Reliable Systems'
+tags: [Distributed Systems, Idempotency, System Design, Reliability, API Design]
 categories: [engineering]
-description: ""
+description: "Understanding idempotency in distributed systems. Learn implementation patterns, real-world challenges, and best practices for building fault-tolerant services."
 date: 2019-05-01T22:12:03.284Z
 draft: true
 ShowToc: true

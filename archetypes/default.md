@@ -2,7 +2,7 @@
 author: "Mayuresh Waykole"
 title: '{{ replace .File.ContentBaseName "-" " " | title }}'
 tags: []
-description: ""
+description: "TODO: Add a 150-160 character SEO description"
 date: '{{ .Date }}'
 draft: true
 ShowToc: true

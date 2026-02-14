@@ -3,7 +3,7 @@ author: "Mayuresh Waykole"
 title: 'From Code to Conversation: How AI is Turning Software Development into a Soft Skill'
 tags: [AI in Software Development, Human-AI Collaboration, Prompt Engineering, Future of Work, Software Engineering Skills, AI Code Review, Technical Leadership, AI-Driven Transformation, Engineering Management, Responsible AI Development, Upskilling for AI]
 categories: [engineering]
-description: ""
+description: "How AI is transforming software development from a technical craft to a collaborative skill. Exploring the shift from coding to conversation in the age of LLMs."
 date: 2025-05-18T02:28:00.000Z
 draft: true
 ShowToc: false

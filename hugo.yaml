@@ -32,6 +32,13 @@ menu:
       url: /categories/engineering/
       weight: 30
 params:
+  env: production
+  keywords:
+    - Distributed Systems
+    - Observability
+    - AIOps
+    - Software Engineering
+    - System Design
   description: "I'm a software engineer who loves building scalable and efficient systems. I'm into Distributed Systems, Observability, and AIOps."
   homeInfoParams:
     title: "Mayuresh Waykole"
