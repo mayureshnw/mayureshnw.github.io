@@ -1,11 +1,13 @@
 ---
 author: "Mayuresh Waykole"
 title: 'Thread Exhaustion Due to GetAwaiter().GetResult() in C#'
-tags: [c#, 'Task Parallel Library', 'Thread Exhaustion', Concurrency]
-categories: [engineering]
 description: "Deep dive into thread pool exhaustion caused by GetAwaiter().GetResult() in C#. Learn why blocking on async code leads to deadlocks and how to fix it."
 date: 2025-03-20T22:12:03.284Z
+lastmod: 2025-03-20T22:12:03.284Z
 draft: false
+categories: [engineering]
+tags: [C#, Async/Await, Concurrency, Thread Pool, Thread Starvation]
+topics: [Reliability / Architecture]
 ShowToc: true
 TocOpen: true
 ---

@@ -1,10 +1,20 @@
 ---
 author: "Mayuresh Waykole"
 title: '{{ replace .File.ContentBaseName "-" " " | title }}'
-tags: []
-description: "TODO: Add a 150-160 character SEO description"
+description: "TODO: Add a 1-2 sentence summary for search and social previews."
 date: '{{ .Date }}'
+lastmod: '{{ .Date }}'
 draft: true
+categories: [engineering]
+tags: []
+topics: []
+series: ""
+featured: false
+canonicalURL: ""
+aliases: []
+cover:
+  image: ""
+  alt: ""
 ShowToc: true
 TocOpen: true
 ---

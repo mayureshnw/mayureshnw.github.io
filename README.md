@@ -1,12 +1,106 @@
-# My Site
-hugo site.
-> brew install hugo
+# Mayuresh Waykole
 
+Personal site and engineering blog built with Hugo and the PaperMod theme.
 
-## Theme
-https://github.com/adityatelange/hugo-PaperMod/wiki/Installation
+## Stack
 
-## Theme usage
-> git submodule add --depth=1 https://github.com/adityatelange/hugo-PaperMod.git themes/PaperMod
-> git submodule update --init --recursive # needed when you reclone your repo (submodules may not get cloned automatically)
-> git submodule update --remote --merge
+- Hugo Extended `0.147.3`
+- PaperMod theme via git submodule
+- GitHub Pages deployment from this repository
+
+## Branch and deployment model
+
+- `main` is the canonical branch for day-to-day development.
+- Open pull requests against `main`.
+- Pushes to `main` trigger the GitHub Pages deployment workflow in `.github/workflows/hugo.yaml`.
+
+## Local setup
+
+1. Install Hugo Extended `0.147.3` locally.
+2. Clone the repository and initialize the PaperMod submodule:
+
+   ```bash
+   git submodule update --init --recursive
+   ```
+
+## Local development
+
+- Preview including drafts:
+
+  ```bash
+  hugo server -D
+  ```
+
+- Preview published content only:
+
+  ```bash
+  hugo server
+  ```
+
+- Production build:
+
+  ```bash
+  hugo --gc --minify
+  ```
+
+The generated site is written to `public/`.
+
+## Publishing metadata contract
+
+Create new posts with:
+
+```bash
+hugo new content/posts/post-title/index.md
+```
+
+The archetype standardizes the frontmatter below.
+Posts belong in page bundles under `content/posts/<slug>/index.md`; reserve top-level `content/*.md` files for standalone pages such as `about.md` and `archives.md`.
+
+### Required on every post
+
+| Field | Guidance |
+| --- | --- |
+| `title` | Clear working title. Update it before publishing. |
+| `description` | Required summary for SEO and social previews. Keep it concise and specific. |
+| `date` | Original publish date. |
+| `lastmod` | Last meaningful update date. Keep it in sync when revising published posts. |
+| `draft` | `true` while in progress, `false` when ready to publish. |
+| `categories` | Keep this as `categories: [engineering]` until navigation is expanded beyond the current Engineering section. |
+| `tags` | Populate before publishing with specific keywords and technologies for search/discovery. |
+| `topics` | Populate before publishing with 1-2 values from the approved list below. |
+| `ShowToc` / `TocOpen` | Control table-of-contents visibility and default state. |
+
+Approved `topics` values for Phase 1:
+
+- `Distributed Systems`
+- `Observability`
+- `AIOps / AI Engineering`
+- `Reliability / Architecture`
+- `Engineering Leadership`
+
+### Optional when relevant
+
+| Field | Guidance |
+| --- | --- |
+| `series` | Use for a named multi-post sequence. Leave blank for standalone posts. |
+| `featured` | Set to `true` only when a post should be treated as editorially highlighted. |
+| `canonicalURL` | Use when the canonical version lives elsewhere. |
+| `aliases` | Old paths that should redirect to the current post URL. |
+| `cover.image` / `cover.alt` | Use when a post has a hero/cover image; always include meaningful alt text when an image is set. |
+
+### How `tags`, `topics`, and `series` differ
+
+- `tags` are granular keywords such as technologies, patterns, or problem spaces.
+- `topics` are the small, curated pillar labels used to organize the editorial direction of the site.
+- `series` groups posts that belong to the same narrative or multi-part run.
+
+### Tag and naming conventions
+
+- Keep `tags` concise and reader-facing. Prefer 3-6 tags that describe the main technologies, patterns, or problem spaces in the post.
+- Use consistent display casing for `tags` (for example `OpenTelemetry`, `Prompt Engineering`, `Technical Debt`) instead of sentence fragments or long summary phrases.
+- Prefer lower-case kebab-case filenames or folders for new content (for example `content/posts/thread-pool-starvation/index.md`). Leave legacy filenames and URLs alone unless a dedicated migration also adds the right `aliases`.
+
+### Current Hugo compatibility note
+
+- Keep `categories: [engineering]` on posts for now so they continue to appear under the existing Engineering navigation.
+- Do **not** add a `topics` taxonomy to `hugo.yaml` yet; this Phase 1 todo only standardizes the metadata contract.

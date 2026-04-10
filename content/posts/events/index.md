@@ -1,11 +1,13 @@
 ---
 author: "Mayuresh Waykole"
 title: 'Events'
-tags: [events, python]
-categories: [engineering]
 description: "Learn event-driven programming patterns in Python. A practical guide to implementing custom event systems with code examples."
 date: 2019-05-01T22:12:03.284Z
+lastmod: 2019-05-01T22:12:03.284Z
 draft: false
+categories: [engineering]
+tags: [Python, Events, Event-Driven Architecture]
+topics: [Distributed Systems]
 ShowToc: true
 TocOpen: true
 ---
