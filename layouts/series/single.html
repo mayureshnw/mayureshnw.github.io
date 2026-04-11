@@ -5,7 +5,8 @@
     {{- $installments = $installments | append . -}}
   {{- end -}}
 {{- end -}}
-{{- $relatedTopics := .Params.relatedTopics | default (slice) -}}
+{{- $focusAreas := .Params.focusAreas | default (slice) -}}
+{{- $upNext := .Params.upNext | default (slice) -}}
 {{- $installmentsByDate := sort $installments "Date" "desc" -}}
 
 <div class="brand-shell series-shell">
@@ -20,7 +21,7 @@
       ) -}}
 
       {{- with .Content -}}
-      <div class="brand-page-copy-body topic-page-copy">
+      <div class="brand-page-copy-body series-page-copy">
         {{- if not ($.Param "disableAnchoredHeadings") -}}
           {{- partial "anchored_headings.html" . -}}
         {{- else -}}
@@ -34,7 +35,6 @@
         <a class="brand-action brand-action--strong" href="{{ (index $installments 0).RelPermalink }}">Start with {{ (index $installments 0).LinkTitle }}</a>
         {{- end -}}
         <a class="brand-action" href="/series/">All series</a>
-        <a class="brand-action" href="/topics/">Browse topics</a>
         <a class="brand-action" href="/archives/">Archives</a>
       </div>
     </div>
@@ -56,14 +56,14 @@
           <span class="brand-stat-label">Latest live essay</span>
         </div>
         <div class="brand-stat">
-          <span class="brand-stat-value">{{ len $relatedTopics }}</span>
-          <span class="brand-stat-label">Connected topics</span>
+          <span class="brand-stat-value">{{ len $focusAreas }}</span>
+          <span class="brand-stat-label">Focus areas</span>
         </div>
       </div>
     </aside>
   </section>
 
-  <div class="topic-hub-layout">
+  <div class="series-layout">
     <section class="brand-surface brand-surface--soft">
       {{- partial "brand/page_intro.html" (dict
         "title" "Read this series"
@@ -75,7 +75,6 @@
         {{- partial "site/post-card-list.html" (dict
           "pages" $installments
           "showMeta" true
-          "showTopics" true
           "showSeries" true
           "class" "brand-post-list brand-post-list--editorial"
         ) -}}
@@ -84,11 +83,11 @@
       {{- end -}}
     </section>
 
-    <aside class="topic-hub-sidebar">
-      {{- with .Params.focusAreas -}}
+    <aside class="series-sidebar">
+      {{- with $focusAreas -}}
       <section class="brand-surface">
         <p class="brand-section-eyebrow">Focus areas</p>
-        <ul class="topic-sidebar-list">
+        <ul class="brand-sidebar-list">
           {{- range . -}}
           <li>{{ . }}</li>
           {{- end -}}
@@ -96,28 +95,12 @@
       </section>
       {{- end -}}
 
-      {{- with .Params.upNext -}}
+      {{- with $upNext -}}
       <section class="brand-surface">
         <p class="brand-section-eyebrow">Planned next</p>
-        <ul class="topic-sidebar-list">
+        <ul class="brand-sidebar-list">
           {{- range . -}}
           <li>{{ . }}</li>
-          {{- end -}}
-        </ul>
-      </section>
-      {{- end -}}
-
-      {{- with $relatedTopics -}}
-      <section class="brand-surface">
-        <p class="brand-section-eyebrow">Connected topics</p>
-        <ul class="topic-sidebar-list">
-          {{- range . -}}
-            {{- $relatedTopic := . -}}
-            {{- $relatedTopicPages := where (where (where site.Pages "Type" "topics") "Kind" "term") "LinkTitle" $relatedTopic -}}
-            {{- if gt (len $relatedTopicPages) 0 -}}
-              {{- $relatedTopicPage := index $relatedTopicPages 0 -}}
-            <li><a href="{{ $relatedTopicPage.RelPermalink }}">{{ $relatedTopic }}</a></li>
-            {{- end -}}
           {{- end -}}
         </ul>
       </section>

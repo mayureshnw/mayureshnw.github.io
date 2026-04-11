@@ -59,11 +59,6 @@
   {{- range (.Params.tags | default slice) -}}
     {{- $tags = $tags | append . -}}
   {{- end -}}
-  {{- range (.Params.topics | default slice) -}}
-    {{- if not (in $tags .) -}}
-      {{- $tags = $tags | append . -}}
-    {{- end -}}
-  {{- end -}}
   {{- if gt (len $tags) 0 -}}
     {{- $item = merge $item (dict "tags" $tags) -}}
   {{- end -}}

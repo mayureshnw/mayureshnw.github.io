@@ -7,7 +7,6 @@ lastmod: 2025-11-13T00:00:00.000Z
 draft: true
 categories: [engineering]
 tags: [OpenTelemetry, Prometheus, Metrics, Observability]
-topics: [Observability]
 ShowToc: true
 TocOpen: true
 ---

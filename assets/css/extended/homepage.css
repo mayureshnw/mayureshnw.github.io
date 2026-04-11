@@ -11,13 +11,6 @@
     gap: 1.25rem;
 }
 
-.brand-home-discovery {
-    display: grid;
-    gap: 1.25rem;
-    align-items: start;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
 .brand-home-hero-shell {
     display: grid;
     gap: 1.75rem;
@@ -244,7 +237,6 @@
 
 .brand-home-curated,
 .brand-home-recent,
-.brand-home-pillars,
 .brand-home-connect {
     overflow: hidden;
 }
@@ -286,53 +278,6 @@
     line-height: 1.55;
 }
 
-.brand-home-pillars-grid {
-    display: grid;
-    gap: 0.75rem;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.brand-home-pillar {
-    display: grid;
-    gap: 0.75rem;
-    padding: 1rem;
-    border: 1px solid var(--brand-divider);
-    border-radius: var(--brand-card-radius);
-    background: var(--entry);
-}
-
-.brand-home-pillar__header {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 0.75rem;
-}
-
-.brand-home-pillar__header h3 {
-    margin: 0;
-    font-size: 1rem;
-    line-height: 1.2;
-    font-weight: 650;
-}
-
-.brand-home-pillar__count,
-.brand-home-pillar__empty {
-    font-size: 0.82rem;
-    color: var(--secondary);
-}
-
-.brand-home-pillar p {
-    margin: 0;
-    color: var(--secondary);
-    line-height: 1.6;
-}
-
-.brand-home-pillar__link {
-    font-weight: 600;
-    margin-top: 0.1rem;
-}
-
 .brand-home-recent-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
 }
@@ -363,9 +308,7 @@
 }
 
 @media (max-width: 1180px) {
-    .brand-home-discovery,
-    .brand-home-recent-list,
-    .brand-home-pillars-grid {
+    .brand-home-recent-list {
         grid-template-columns: 1fr;
     }
 }

@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a Hugo-based personal blog and portfolio site for Mayuresh Waykole (https://mayureshwaykole.com), focused on software engineering topics including Distributed Systems, Observability, and AIOps. The site uses repo-owned Hugo layouts and CSS and is deployed via GitHub Pages.
+This is a Hugo-based personal blog and portfolio site for Mayuresh Waykole (https://mayureshwaykole.com), focused on software engineering areas including Distributed Systems, Observability, and AIOps. The site uses repo-owned Hugo layouts and CSS and is deployed via GitHub Pages.
 
 ## Essential Commands
 
@@ -69,7 +69,6 @@ lastmod: 2025-05-18T02:28:00.000Z
 draft: true
 categories: [engineering]
 tags: [Tag1, Tag2, Tag3]
-topics: [Distributed Systems]
 series: ""
 featured: false
 canonicalURL: ""
@@ -107,8 +106,7 @@ The deployment workflow uses Hugo Extended v0.147.3. Keep this consistent for lo
 
 ### Content Guidelines
 - Posts should be categorized under `categories: [engineering]` to appear in the Engineering menu
-- `description`, `date`, `lastmod`, `draft`, `tags`, `topics`, `ShowToc`, and `TocOpen` should be present on every post
-- `topics` should use only these Phase 1 pillar values: `Distributed Systems`, `Observability`, `AIOps / AI Engineering`, `Reliability / Architecture`, `Engineering Leadership`
-- `tags` are granular discovery terms; `topics` are curated pillar labels; `series` is for a named multi-part sequence
+- `description`, `date`, `lastmod`, `draft`, `tags`, `ShowToc`, and `TocOpen` should be present on every post
+- `tags` are granular discovery terms; `series` is for a named multi-part sequence
 - `series`, `featured`, `canonicalURL`, `aliases`, and `cover` fields are optional and should be filled only when relevant
 - Always set `draft: false` when ready to publish

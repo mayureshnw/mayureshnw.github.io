@@ -7,28 +7,6 @@
 {{- $featuredPosts := where $pages "Params.featured" true -}}
 {{- $publishedCount := len $pages -}}
 {{- $curatedPosts := first 2 (union $featuredPosts $pages) -}}
-{{- $topicPillars := slice
-  (dict
-    "title" "Distributed Systems"
-    "description" "Patterns for idempotency, event-driven workflows, and services that stay dependable under load."
-  )
-  (dict
-    "title" "Observability"
-    "description" "Instrumentation, telemetry, and feedback loops that make complex systems easier to operate and debug."
-  )
-  (dict
-    "title" "AIOps / AI Engineering"
-    "description" "Using AI to improve developer workflows, operational leverage, and the day-to-day practice of engineering."
-  )
-  (dict
-    "title" "Reliability / Architecture"
-    "description" "Architecture decisions, brownfield evolution, and reliability trade-offs in software built for the long term."
-  )
-  (dict
-    "title" "Engineering Leadership"
-    "description" "Technical direction, communication, and the habits that help teams scale with clarity."
-  )
--}}
 
 <div class="brand-shell brand-home">
   {{- if $isFirstPage -}}
@@ -78,8 +56,8 @@
                 <span>{{ if eq $publishedCount 1 }}published essay{{ else }}published essays{{ end }}</span>
               </div>
               <div class="brand-home-stat">
-                <strong>{{ len $topicPillars }}</strong>
-                <span>editorial themes</span>
+                <strong>{{ len $curatedPosts }}</strong>
+                <span>recommended starts</span>
               </div>
             </div>
           </div>
@@ -87,70 +65,33 @@
       </aside>
     </section>
 
-    <section class="brand-home-discovery">
-      <aside class="brand-surface brand-home-curated">
-        {{- if gt (len $featuredPosts) 0 -}}
-          {{- partial "site/section-header.html" (dict
-            "title" "Featured reading"
-            "description" "A few editorially highlighted pieces to start with."
-            "level" 2
-            "class" "brand-home-section-header"
-          ) -}}
-        {{- else -}}
-          {{- partial "site/section-header.html" (dict
-            "title" "Start here"
-            "description" "A few strong entries to begin with across architecture, distributed systems, and observability."
-            "level" 2
-            "class" "brand-home-section-header"
-          ) -}}
-        {{- end -}}
-
-        {{- if gt (len $curatedPosts) 0 -}}
-          {{- partial "site/post-card-list.html" (dict
-            "pages" $curatedPosts
-            "showMeta" true
-            "showTopics" true
-            "showSeries" true
-            "class" "brand-home-curated-list"
-          ) -}}
-        {{- else -}}
-        <p class="brand-empty-state">New writing is on the way.</p>
-        {{- end -}}
-      </aside>
-
-      <section class="brand-surface brand-surface--soft brand-home-pillars">
+    <section class="brand-surface brand-home-curated">
+      {{- if gt (len $featuredPosts) 0 -}}
         {{- partial "site/section-header.html" (dict
-          "title" "Topic pillars"
-          "description" "Five recurring themes shape the archive and what gets written next."
+          "title" "Featured reading"
+          "description" "A few editorially highlighted pieces to start with."
           "level" 2
           "class" "brand-home-section-header"
         ) -}}
-        <div class="brand-home-pillars-grid">
-          {{- range $topicPillars -}}
-            {{- $topicPages := where $pages "Params.topics" "intersect" (slice .title) -}}
-            {{- $topicCount := len $topicPages -}}
-            {{- $topicHubPages := where (where (where site.Pages "Type" "topics") "Kind" "term") "LinkTitle" .title -}}
-          <article class="brand-home-pillar">
-            <div class="brand-home-pillar__header">
-              <h3>{{ .title }}</h3>
-              <span class="brand-home-pillar__count">
-                {{ $topicCount }} {{ if eq $topicCount 1 }}essay{{ else }}essays{{ end }}
-              </span>
-            </div>
-            <p>{{ .description }}</p>
-            {{- if and (gt (len $topicHubPages) 0) (gt $topicCount 0) -}}
-              {{- $topicHub := index $topicHubPages 0 -}}
-            <a class="brand-home-pillar__link" href="{{ $topicHub.RelPermalink }}">Explore the topic hub →</a>
-            {{- else if gt $topicCount 0 -}}
-              {{- $sample := index (first 1 $topicPages) 0 -}}
-            <a class="brand-home-pillar__link" href="{{ $sample.RelPermalink }}">Read {{ $sample.Title }} →</a>
-            {{- else -}}
-            <span class="brand-home-pillar__empty">Writing in progress.</span>
-            {{- end -}}
-          </article>
-          {{- end -}}
-        </div>
-      </section>
+      {{- else -}}
+        {{- partial "site/section-header.html" (dict
+          "title" "Start here"
+          "description" "A few strong entries to begin with across architecture, distributed systems, and observability."
+          "level" 2
+          "class" "brand-home-section-header"
+        ) -}}
+      {{- end -}}
+
+      {{- if gt (len $curatedPosts) 0 -}}
+        {{- partial "site/post-card-list.html" (dict
+          "pages" $curatedPosts
+          "showMeta" true
+          "showSeries" true
+          "class" "brand-home-curated-list"
+        ) -}}
+      {{- else -}}
+      <p class="brand-empty-state">New writing is on the way.</p>
+      {{- end -}}
     </section>
   </section>
   {{- end -}}
@@ -171,7 +112,6 @@
       {{- partial "site/post-card-list.html" (dict
         "pages" $paginator.Pages
         "showMeta" true
-        "showTopics" true
         "showSeries" true
         "class" "brand-home-recent-list"
       ) -}}

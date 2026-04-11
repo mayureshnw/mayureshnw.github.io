@@ -1,5 +1,4 @@
-.section-posts .main,
-.taxonomy-topics .main {
+.section-posts .main {
     max-width: calc(1120px + var(--gap) * 2);
 }
 
@@ -211,17 +210,6 @@
     display: inline-flex;
     align-items: center;
     gap: 0.35rem;
-}
-
-.brand-post-card-topics a {
-    color: inherit;
-    text-decoration: underline;
-    text-decoration-color: rgba(125, 125, 125, 0.35);
-    text-underline-offset: 0.18rem;
-}
-
-.brand-post-card-topics a:hover {
-    text-decoration-color: currentColor;
 }
 
 @media (max-width: 900px) {

@@ -74,16 +74,7 @@ Posts belong in page bundles under `content/posts/<slug>/index.md`; reserve top-
 | `draft` | `true` while in progress, `false` when ready to publish. |
 | `categories` | Keep this as `categories: [engineering]` until navigation is expanded beyond the current Engineering section. |
 | `tags` | Populate before publishing with specific keywords and technologies for search/discovery. |
-| `topics` | Populate before publishing with 1-2 values from the approved list below. |
 | `ShowToc` / `TocOpen` | Control table-of-contents visibility and default state. |
-
-Approved `topics` values for Phase 1:
-
-- `Distributed Systems`
-- `Observability`
-- `AIOps / AI Engineering`
-- `Reliability / Architecture`
-- `Engineering Leadership`
 
 ### Optional when relevant
 
@@ -95,10 +86,9 @@ Approved `topics` values for Phase 1:
 | `aliases` | Old paths that should redirect to the current post URL. |
 | `cover.image` / `cover.alt` | Use when a post has a hero/cover image; always include meaningful alt text when an image is set. |
 
-### How `tags`, `topics`, and `series` differ
+### How `tags` and `series` differ
 
 - `tags` are granular keywords such as technologies, patterns, or problem spaces.
-- `topics` are the small, curated pillar labels used to organize the editorial direction of the site.
 - `series` groups posts that belong to the same narrative or multi-part run.
 
 ### Tag and naming conventions
@@ -110,13 +100,11 @@ Approved `topics` values for Phase 1:
 ### Current discovery surfaces
 
 - Keep `categories: [engineering]` on posts so they continue to appear under the existing Engineering navigation.
-- `topics` is now a Hugo taxonomy and the reader-facing topic hub surface at `/topics/`.
 - Keep `series` lightweight and manual for now; use `content/series/` for curated landing pages until there is enough real series content to justify stronger automation.
 
 ### Phase 2 editorial notes
 
 - `featured: true` now opts a post into the homepage's featured/recommended reading pool. If no posts are marked featured, the homepage falls back to recent writing automatically.
-- Topic hub copy lives under `content/topics/`; keep those pages aligned with the approved `topics` vocabulary instead of inventing new labels ad hoc.
 - Post-page connect and related-reading surfaces are driven by `layouts/partials/site/post-supplemental.html`, while the About page positioning copy lives in `content/about.md`.
 
 ### Metadata ownership audit snapshot

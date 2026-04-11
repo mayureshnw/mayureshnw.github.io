@@ -7,7 +7,6 @@ lastmod: 2025-05-18T02:28:00.000Z
 draft: true
 categories: [engineering]
 tags: [AI Engineering, Human-AI Collaboration, Prompt Engineering, Engineering Leadership]
-topics: [AIOps / AI Engineering, Engineering Leadership]
 ShowToc: false
 TocOpen: false
 ---

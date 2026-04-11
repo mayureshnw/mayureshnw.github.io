@@ -48,10 +48,6 @@ menu:
       name: Archives
       url: /archives/
       weight: 10
-    - identifier: topics
-      name: Topics
-      url: /topics/
-      weight: 15
     - identifier: tags
       name: Tags
       url: /tags/
@@ -63,7 +59,6 @@ menu:
 taxonomies:
   tag: tags
   category: categories
-  topic: topics
 params:
   env: production
   mainSections:

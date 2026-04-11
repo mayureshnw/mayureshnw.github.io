@@ -3,15 +3,12 @@
 {{- if isset . "showMeta" -}}
   {{- $showMeta = .showMeta -}}
 {{- end -}}
-{{- $showTopics := false -}}
-{{- if isset . "showTopics" -}}
-  {{- $showTopics = .showTopics -}}
-{{- end -}}
 {{- $showSeries := false -}}
 {{- if isset . "showSeries" -}}
   {{- $showSeries = .showSeries -}}
 {{- end -}}
 {{- $summary := $page.Description | default ($page.Summary | plainify | htmlUnescape) -}}
+{{- $seriesValues := partial "brand/post_value_slice.html" $page.Params.series -}}
 <article class="{{ .class | default "post-entry" }}">
   {{- $isHidden := ($page.Param "cover.hiddenInList") | default ($page.Param "cover.hidden") | default false -}}
   {{- partial "cover.html" (dict "cxt" $page "IsSingle" false "isHidden" $isHidden) -}}
@@ -33,29 +30,14 @@
     <p>{{ . }}{{ if and (not $page.Description) $page.Truncated }}...{{ end }}</p>
   </div>
   {{- end -}}
-  {{- if or $showMeta (and $showTopics $page.Params.topics) (and $showSeries $page.Params.series) -}}
+  {{- if or $showMeta (and $showSeries (gt (len $seriesValues) 0)) -}}
   <footer class="entry-footer">
     {{- if $showMeta -}}
       {{- partial "post_meta.html" $page -}}
     {{- end -}}
-    {{- if and $showTopics $page.Params.topics -}}
+    {{- if and $showSeries (gt (len $seriesValues) 0) -}}
       {{- if $showMeta -}}<br>{{- end -}}
-      <span class="brand-post-card-topics">
-        {{- range $index, $topic := $page.Params.topics -}}
-          {{- if gt $index 0 -}} · {{- end -}}
-          {{- $topicPages := where (where (where site.Pages "Type" "topics") "Kind" "term") "LinkTitle" $topic -}}
-          {{- if gt (len $topicPages) 0 -}}
-            {{- $topicPage := index $topicPages 0 -}}
-          <a href="{{ $topicPage.RelPermalink }}">{{ $topic }}</a>
-          {{- else -}}
-          {{- $topic -}}
-          {{- end -}}
-        {{- end -}}
-      </span>
-    {{- end -}}
-    {{- if and $showSeries $page.Params.series -}}
-      {{- if or $showMeta (and $showTopics $page.Params.topics) -}}<br>{{- end -}}
-      Series: {{ $page.Params.series }}
+      Series: {{ delimit $seriesValues " · " }}
     {{- end -}}
   </footer>
   {{- end -}}

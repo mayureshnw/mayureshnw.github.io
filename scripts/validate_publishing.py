@@ -14,13 +14,6 @@ DOCS_TO_SCAN = [
     REPO_ROOT / ".github" / "pull_request_template.md",
     REPO_ROOT / ".github" / "new-post-checklist.md",
 ]
-APPROVED_TOPICS = {
-    "Distributed Systems",
-    "Observability",
-    "AIOps / AI Engineering",
-    "Reliability / Architecture",
-    "Engineering Leadership",
-}
 REQUIRED_FIELDS = [
     "title",
     "description",
@@ -29,7 +22,6 @@ REQUIRED_FIELDS = [
     "draft",
     "categories",
     "tags",
-    "topics",
     "ShowToc",
     "TocOpen",
 ]
@@ -120,7 +112,6 @@ def validate_post(markdown_file: Path) -> list[str]:
     description = str(frontmatter["description"]).strip()
     categories = coerce_list(frontmatter["categories"])
     tags = coerce_list(frontmatter["tags"])
-    topics = coerce_list(frontmatter["topics"])
     is_draft = bool(frontmatter["draft"])
     cover = frontmatter.get("cover", {})
 
@@ -135,19 +126,11 @@ def validate_post(markdown_file: Path) -> list[str]:
     if "engineering" not in categories:
         errors.append(f"{relative(markdown_file)}: categories must include 'engineering'")
 
-    invalid_topics = [topic for topic in topics if topic and topic not in APPROVED_TOPICS]
-    if invalid_topics:
-        errors.append(
-            f"{relative(markdown_file)}: topics contain unapproved values: {', '.join(invalid_topics)}"
-        )
-
     if not is_draft:
         if description.startswith("TODO:"):
             errors.append(f"{relative(markdown_file)}: published posts cannot keep the default TODO description")
         if not tags:
             errors.append(f"{relative(markdown_file)}: published posts must set at least one tag")
-        if not topics:
-            errors.append(f"{relative(markdown_file)}: published posts must set at least one approved topic")
 
     if isinstance(cover, dict):
         cover_image = str(cover.get("image", "")).strip()

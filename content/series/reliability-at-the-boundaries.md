@@ -13,10 +13,6 @@ focusAreas:
 upNext:
   - Idempotency patterns for retry-safe APIs, jobs, and workers
   - Operational feedback loops for async systems with OpenTelemetry metrics
-relatedTopics:
-  - Distributed Systems
-  - Reliability / Architecture
-  - Observability
 installments:
   - /posts/events
   - /posts/get-awaiter

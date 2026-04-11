@@ -2,10 +2,6 @@
 {{- if isset . "showMeta" -}}
   {{- $showMeta = .showMeta -}}
 {{- end -}}
-{{- $showTopics := false -}}
-{{- if isset . "showTopics" -}}
-  {{- $showTopics = .showTopics -}}
-{{- end -}}
 {{- $showSeries := false -}}
 {{- if isset . "showSeries" -}}
   {{- $showSeries = .showSeries -}}
@@ -18,7 +14,6 @@
       "page" .
       "badge" (cond .Params.featured "Featured" "")
       "showMeta" $showMeta
-      "showTopics" $showTopics
       "showSeries" $showSeries
     ) -}}
   {{- end -}}

@@ -7,7 +7,6 @@ lastmod: 2019-05-01T22:12:03.284Z
 draft: true
 categories: [engineering]
 tags: [Brownfield Development, Legacy Systems, Technical Debt, Software Architecture]
-topics: [Reliability / Architecture, Engineering Leadership]
 ShowToc: true
 TocOpen: true
 ---

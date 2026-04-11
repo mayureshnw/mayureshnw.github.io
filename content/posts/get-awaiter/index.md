@@ -7,7 +7,6 @@ lastmod: 2025-03-20T22:12:03.284Z
 draft: false
 categories: [engineering]
 tags: [C#, Async/Await, Concurrency, Thread Pool, Thread Starvation]
-topics: [Reliability / Architecture]
 featured: true
 series: "Reliability at the Boundaries"
 ShowToc: true

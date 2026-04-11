@@ -3,7 +3,6 @@
 {{- $pool := where site.RegularPages "Type" "in" $mainSections -}}
 {{- $pool = where $pool "Permalink" "ne" .Permalink -}}
 {{- $currentTags := partial "brand/post_value_slice.html" .Params.tags -}}
-{{- $currentTopics := partial "brand/post_value_slice.html" .Params.topics -}}
 {{- $currentSeries := partial "brand/post_value_slice.html" .Params.series -}}
 {{- $matches := slice -}}
 
@@ -16,15 +15,6 @@
   {{- if gt (len $sharedSeries) 0 -}}
     {{- $score = add $score 100 -}}
     {{- $reason = printf "Same series · %s" (index $sharedSeries 0) -}}
-  {{- end -}}
-
-  {{- $candidateTopics := partial "brand/post_value_slice.html" $candidate.Params.topics -}}
-  {{- $sharedTopics := intersect $currentTopics $candidateTopics -}}
-  {{- if gt (len $sharedTopics) 0 -}}
-    {{- $score = add $score (mul (len $sharedTopics) 35) -}}
-    {{- if not $reason -}}
-      {{- $reason = printf "Shared topic · %s" (index $sharedTopics 0) -}}
-    {{- end -}}
   {{- end -}}
 
   {{- $candidateTags := partial "brand/post_value_slice.html" $candidate.Params.tags -}}
@@ -97,7 +87,7 @@
     </div>
     <div class="brand-page-description">
       {{- if gt (len $matches) 0 -}}
-      Picked from nearby topics, tags, and series metadata—then topped up with recent writing when the metadata is light.
+      Picked from nearby series and tags—then topped up with recent writing when the metadata is light.
       {{- else -}}
       A few more posts to explore next.
       {{- end -}}
@@ -111,7 +101,6 @@
         "class" "post-entry brand-post-card brand-post-card--related"
         "eyebrow" .reason
         "showMeta" true
-        "showTopics" true
         "showSeries" true
       ) -}}
     {{- end -}}

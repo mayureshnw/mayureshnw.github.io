@@ -1,10 +1,5 @@
 {{- define "main" -}}
 {{- $eyebrow := "Engineering essay" -}}
-{{- with .Params.topics -}}
-  {{- if gt (len .) 0 -}}
-    {{- $eyebrow = index . 0 -}}
-  {{- end -}}
-{{- end -}}
 
 <div class="brand-shell brand-post-shell">
   <article class="post-single brand-post-single brand-surface brand-surface--hero">

@@ -14,10 +14,6 @@
 {{- if isset . "showMeta" -}}
   {{- $showMeta = .showMeta -}}
 {{- end -}}
-{{- $showTopics := false -}}
-{{- if isset . "showTopics" -}}
-  {{- $showTopics = .showTopics -}}
-{{- end -}}
 {{- $showSeries := false -}}
 {{- if isset . "showSeries" -}}
   {{- $showSeries = .showSeries -}}
@@ -62,17 +58,13 @@
   </div>
   {{- end -}}
 
-  {{- if or $showMeta (and $showTopics $page.Params.topics) (and $showSeries $page.Params.series) -}}
+  {{- if or $showMeta (and $showSeries (gt (len $seriesValues) 0)) -}}
   <footer class="entry-footer">
     {{- if $showMeta -}}
       {{- partial "post_meta.html" $page -}}
     {{- end -}}
-    {{- if and $showTopics $page.Params.topics -}}
-      {{- if $showMeta -}}<br>{{- end -}}
-      {{- delimit $page.Params.topics " · " -}}
-    {{- end -}}
     {{- if and $showSeries (gt (len $seriesValues) 0) -}}
-      {{- if or $showMeta (and $showTopics $page.Params.topics) -}}<br>{{- end -}}
+      {{- if $showMeta -}}<br>{{- end -}}
       Series: {{ delimit $seriesValues " · " }}
     {{- end -}}
   </footer>
