@@ -1,0 +1,16 @@
+<section class="{{ .class | default "brand-block" }}"{{ with .id }} id="{{ . }}"{{ end }}>
+  {{- partial "site/section-header.html" (dict
+    "page" .page
+    "eyebrow" .eyebrow
+    "title" .title
+    "description" .description
+    "actions" .actions
+    "level" (.level | default 2)
+    "class" (.headerClass | default "page-header")
+  ) -}}
+  {{- with .content -}}
+  <div class="{{ $.contentClass | default "brand-block-content" }}">
+    {{ . }}
+  </div>
+  {{- end -}}
+</section>

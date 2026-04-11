@@ -1,0 +1,63 @@
+{{- $page := .page -}}
+{{- $showMeta := true -}}
+{{- if isset . "showMeta" -}}
+  {{- $showMeta = .showMeta -}}
+{{- end -}}
+{{- $showTopics := false -}}
+{{- if isset . "showTopics" -}}
+  {{- $showTopics = .showTopics -}}
+{{- end -}}
+{{- $showSeries := false -}}
+{{- if isset . "showSeries" -}}
+  {{- $showSeries = .showSeries -}}
+{{- end -}}
+{{- $summary := $page.Description | default ($page.Summary | plainify | htmlUnescape) -}}
+<article class="{{ .class | default "post-entry" }}">
+  {{- $isHidden := ($page.Param "cover.hiddenInList") | default ($page.Param "cover.hidden") | default false -}}
+  {{- partial "cover.html" (dict "cxt" $page "IsSingle" false "isHidden" $isHidden) -}}
+  <header class="entry-header">
+    {{- with .eyebrow -}}
+    <p class="entry-hint">{{ . }}</p>
+    {{- end -}}
+    <h2 class="entry-hint-parent">
+      {{- $page.Title -}}
+      {{- if or .badge $page.Params.featured -}}
+      <span class="entry-hint" title="{{ .badge | default "Featured" }}">
+        {{ .badge | default "Featured" }}
+      </span>
+      {{- end -}}
+    </h2>
+  </header>
+  {{- with $summary -}}
+  <div class="entry-content">
+    <p>{{ . }}{{ if and (not $page.Description) $page.Truncated }}...{{ end }}</p>
+  </div>
+  {{- end -}}
+  {{- if or $showMeta (and $showTopics $page.Params.topics) (and $showSeries $page.Params.series) -}}
+  <footer class="entry-footer">
+    {{- if $showMeta -}}
+      {{- partial "post_meta.html" $page -}}
+    {{- end -}}
+    {{- if and $showTopics $page.Params.topics -}}
+      {{- if $showMeta -}}<br>{{- end -}}
+      <span class="brand-post-card-topics">
+        {{- range $index, $topic := $page.Params.topics -}}
+          {{- if gt $index 0 -}} · {{- end -}}
+          {{- $topicPages := where (where (where site.Pages "Type" "topics") "Kind" "term") "LinkTitle" $topic -}}
+          {{- if gt (len $topicPages) 0 -}}
+            {{- $topicPage := index $topicPages 0 -}}
+          <a href="{{ $topicPage.RelPermalink }}">{{ $topic }}</a>
+          {{- else -}}
+          {{- $topic -}}
+          {{- end -}}
+        {{- end -}}
+      </span>
+    {{- end -}}
+    {{- if and $showSeries $page.Params.series -}}
+      {{- if or $showMeta (and $showTopics $page.Params.topics) -}}<br>{{- end -}}
+      Series: {{ $page.Params.series }}
+    {{- end -}}
+  </footer>
+  {{- end -}}
+  <a class="entry-link" aria-label="post link to {{ $page.Title | plainify }}" href="{{ $page.Permalink }}"></a>
+</article>

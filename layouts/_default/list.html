@@ -1,0 +1,116 @@
+{{- define "main" -}}
+{{- $pages := .RegularPages.ByDate.Reverse -}}
+{{- $paginator := .Paginate $pages -}}
+{{- $isPostsSection := and (eq .Kind "section") (eq .Section "posts") -}}
+{{- $eyebrow := "Archive" -}}
+{{- if $isPostsSection -}}
+  {{- $eyebrow = "Writing archive" -}}
+{{- else if eq .Kind "term" -}}
+  {{- $eyebrow = printf "%s archive" (.Data.Singular | humanize) -}}
+{{- else if eq .Kind "section" -}}
+  {{- $eyebrow = printf "%s archive" (.Section | humanize) -}}
+{{- end -}}
+{{- $resultsTitle := "Entries in this archive" -}}
+{{- $resultsDescription := "Published writing collected in one place for easier browsing." -}}
+{{- if $isPostsSection -}}
+  {{- $resultsTitle = "Recent writing" -}}
+  {{- $resultsDescription = "Published essays and working notes organized for readers who prefer a clean, chronological archive." -}}
+{{- end -}}
+
+<div class="brand-shell brand-list-shell{{ if $isPostsSection }} brand-posts-shell{{ end }}">
+  <section class="brand-surface brand-surface--hero brand-page-hero{{ if $isPostsSection }} brand-page-hero--split{{ end }}">
+    <div class="brand-page-copy">
+      {{- partial "brand/page_intro.html" (dict
+        "page" .
+        "showBreadcrumbs" true
+        "showRss" (and (or (eq .Kind `term`) (eq .Kind `section`)) (.Param "ShowRssButtonInSectionTermList"))
+        "eyebrow" $eyebrow
+        "title" .Title
+        "description" .Description
+      ) -}}
+
+      {{- with .Content -}}
+      <div class="brand-page-copy-body">
+        {{- if not ($.Param "disableAnchoredHeadings") -}}
+          {{- partial "anchored_headings.html" . -}}
+        {{- else -}}
+          {{- . -}}
+        {{- end -}}
+      </div>
+      {{- end -}}
+
+      {{- if $isPostsSection -}}
+      <div class="brand-page-actions">
+        <a class="brand-action brand-action--strong" href="/topics/">Browse topics</a>
+        <a class="brand-action" href="/archives/">Archives</a>
+        <a class="brand-action" href="/about/">About Mayuresh</a>
+      </div>
+      {{- end -}}
+    </div>
+
+    {{- if $isPostsSection -}}
+    <aside class="brand-page-panel">
+      <div class="brand-stat-grid">
+        <div class="brand-stat">
+          <span class="brand-stat-value">{{ len $pages }}</span>
+          <span class="brand-stat-label">{{ cond (eq (len $pages) 1) "Published essay" "Published essays" }}</span>
+        </div>
+        <div class="brand-stat">
+          <span class="brand-stat-value">
+            {{- if gt (len $pages) 0 -}}
+              {{- (index $pages 0).Date.Format "Jan 2006" -}}
+            {{- else -}}
+              Soon
+            {{- end -}}
+          </span>
+          <span class="brand-stat-label">Latest update</span>
+        </div>
+        <div class="brand-stat">
+          <span class="brand-stat-value">{{ len site.Taxonomies.topics }}</span>
+          <span class="brand-stat-label">Topic hubs</span>
+        </div>
+      </div>
+    </aside>
+    {{- end -}}
+  </section>
+
+  <section class="brand-surface brand-surface--soft brand-list-results">
+    {{- partial "brand/page_intro.html" (dict
+      "title" $resultsTitle
+      "description" $resultsDescription
+      "class" "brand-section-header--compact"
+    ) -}}
+
+    {{- partial "site/post-card-list.html" (dict
+      "pages" $paginator.Pages
+      "showMeta" true
+      "showTopics" true
+      "showSeries" true
+      "class" "brand-post-list brand-post-list--editorial"
+    ) -}}
+
+    {{- if gt $paginator.TotalPages 1 -}}
+    <footer class="page-footer">
+      <nav class="pagination">
+        {{- if $paginator.HasPrev }}
+        <a class="prev" href="{{ $paginator.Prev.URL | absURL }}">
+          «&nbsp;{{ i18n "prev_page" }}&nbsp;
+          {{- if (.Param "ShowPageNums") }}
+          {{- sub $paginator.PageNumber 1 }}/{{ $paginator.TotalPages }}
+          {{- end }}
+        </a>
+        {{- end }}
+        {{- if $paginator.HasNext }}
+        <a class="next" href="{{ $paginator.Next.URL | absURL }}">
+          {{- i18n "next_page" }}&nbsp;
+          {{- if (.Param "ShowPageNums") }}
+          {{- add 1 $paginator.PageNumber }}/{{ $paginator.TotalPages }}
+          {{- end }}&nbsp;»
+        </a>
+        {{- end }}
+      </nav>
+    </footer>
+    {{- end -}}
+  </section>
+</div>
+{{- end -}}

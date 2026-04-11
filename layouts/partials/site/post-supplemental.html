@@ -1,0 +1,31 @@
+{{- $mainSections := site.Params.mainSections | default (slice "posts") -}}
+{{- if and .IsPage (in $mainSections .Type) -}}
+  {{- $linkedin := "" -}}
+  {{- $github := "" -}}
+  {{- range site.Params.schema.sameAs -}}
+    {{- if and (eq $linkedin "") (in . "linkedin.com") -}}
+      {{- $linkedin = . -}}
+    {{- end -}}
+    {{- if and (eq $github "") (in . "github.com") -}}
+      {{- $github = . -}}
+    {{- end -}}
+  {{- end -}}
+  <div class="brand-post-supplemental">
+  {{- partial "site/author-shell.html" (dict
+    "page" .
+    "title" "About the author"
+    "body" "I write about distributed systems, observability, reliability, and AI engineering from the perspective of building software that has to work in the real world."
+  ) -}}
+  {{- partial "site/cta-shell.html" (dict
+    "title" "Connect and keep reading"
+    "body" "If this post sparked an idea, the best place to start a conversation today is LinkedIn. GitHub is where I share projects and experiments, and this site is growing into the home for longer-form notes and future direct updates."
+    "actions" (slice
+      (dict "label" "Connect on LinkedIn" "url" $linkedin)
+      (dict "label" "See GitHub projects" "url" $github)
+      (dict "label" "Read more posts" "url" "/archives/")
+      (dict "label" "About me" "url" "/about/")
+    )
+  ) -}}
+  {{- partial "brand/post_related.html" . -}}
+  </div>
+{{- end -}}

@@ -1,0 +1,120 @@
+{{- $limit := 3 -}}
+{{- $mainSections := site.Params.mainSections | default (slice "posts") -}}
+{{- $pool := where site.RegularPages "Type" "in" $mainSections -}}
+{{- $pool = where $pool "Permalink" "ne" .Permalink -}}
+{{- $currentTags := partial "brand/post_value_slice.html" .Params.tags -}}
+{{- $currentTopics := partial "brand/post_value_slice.html" .Params.topics -}}
+{{- $currentSeries := partial "brand/post_value_slice.html" .Params.series -}}
+{{- $matches := slice -}}
+
+{{- range $candidate := $pool -}}
+  {{- $score := 0 -}}
+  {{- $reason := "" -}}
+
+  {{- $candidateSeries := partial "brand/post_value_slice.html" $candidate.Params.series -}}
+  {{- $sharedSeries := intersect $currentSeries $candidateSeries -}}
+  {{- if gt (len $sharedSeries) 0 -}}
+    {{- $score = add $score 100 -}}
+    {{- $reason = printf "Same series · %s" (index $sharedSeries 0) -}}
+  {{- end -}}
+
+  {{- $candidateTopics := partial "brand/post_value_slice.html" $candidate.Params.topics -}}
+  {{- $sharedTopics := intersect $currentTopics $candidateTopics -}}
+  {{- if gt (len $sharedTopics) 0 -}}
+    {{- $score = add $score (mul (len $sharedTopics) 35) -}}
+    {{- if not $reason -}}
+      {{- $reason = printf "Shared topic · %s" (index $sharedTopics 0) -}}
+    {{- end -}}
+  {{- end -}}
+
+  {{- $candidateTags := partial "brand/post_value_slice.html" $candidate.Params.tags -}}
+  {{- $sharedTags := intersect $currentTags $candidateTags -}}
+  {{- if gt (len $sharedTags) 0 -}}
+    {{- $score = add $score (mul (len $sharedTags) 15) -}}
+    {{- if not $reason -}}
+      {{- $reason = printf "Shared tag · %s" (index $sharedTags 0) -}}
+    {{- end -}}
+  {{- end -}}
+
+  {{- if $candidate.Params.featured -}}
+    {{- $score = add $score 5 -}}
+    {{- if not $reason -}}
+      {{- $reason = "Featured post" -}}
+    {{- end -}}
+  {{- end -}}
+
+  {{- if gt $score 0 -}}
+    {{- $matches = $matches | append (dict "page" $candidate "score" $score "reason" $reason) -}}
+  {{- end -}}
+{{- end -}}
+
+{{- $selected := slice -}}
+{{- $seen := newScratch -}}
+
+{{- range sort $matches "score" "desc" -}}
+  {{- if ge (len $selected) $limit -}}
+    {{- break -}}
+  {{- end -}}
+  {{- $key := .page.RelPermalink -}}
+  {{- if not ($seen.Get $key) -}}
+    {{- $selected = $selected | append . -}}
+    {{- $seen.Set $key true -}}
+  {{- end -}}
+{{- end -}}
+
+{{- if lt (len $selected) $limit -}}
+  {{- range (where $pool "Params.featured" true).ByDate.Reverse -}}
+    {{- if ge (len $selected) $limit -}}
+      {{- break -}}
+    {{- end -}}
+    {{- $key := .RelPermalink -}}
+    {{- if not ($seen.Get $key) -}}
+      {{- $selected = $selected | append (dict "page" . "reason" "Featured post") -}}
+      {{- $seen.Set $key true -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- if lt (len $selected) $limit -}}
+  {{- range $pool.ByDate.Reverse -}}
+    {{- if ge (len $selected) $limit -}}
+      {{- break -}}
+    {{- end -}}
+    {{- $key := .RelPermalink -}}
+    {{- if not ($seen.Get $key) -}}
+      {{- $selected = $selected | append (dict "page" . "reason" "Latest writing") -}}
+      {{- $seen.Set $key true -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- if gt (len $selected) 0 -}}
+<section class="brand-surface brand-post-related" aria-labelledby="post-related-heading">
+  <header class="brand-section-header brand-section-header--compact">
+    <p class="brand-section-eyebrow">Keep reading</p>
+    <div class="brand-section-heading-row">
+      <h2 class="brand-section-title" id="post-related-heading">Related posts</h2>
+    </div>
+    <div class="brand-page-description">
+      {{- if gt (len $matches) 0 -}}
+      Picked from nearby topics, tags, and series metadata—then topped up with recent writing when the metadata is light.
+      {{- else -}}
+      A few more posts to explore next.
+      {{- end -}}
+    </div>
+  </header>
+
+  <div class="brand-related-list">
+    {{- range $selected -}}
+      {{- partial "brand/post_card.html" (dict
+        "page" .page
+        "class" "post-entry brand-post-card brand-post-card--related"
+        "eyebrow" .reason
+        "showMeta" true
+        "showTopics" true
+        "showSeries" true
+      ) -}}
+    {{- end -}}
+  </div>
+</section>
+{{- end -}}

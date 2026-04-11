@@ -1,0 +1,82 @@
+{{- define "main" -}}
+{{- $isTopics := or (eq .Type "topics") (eq .Data.Plural "topics") -}}
+
+{{- if $isTopics -}}
+  {{- $terms := .Data.Terms.ByCount -}}
+  {{- $mainSections := site.Params.mainSections | default (slice "posts") -}}
+  {{- $posts := where site.RegularPages "Type" "in" $mainSections -}}
+  {{- $postsWithTopics := where $posts "Params.topics" "!=" nil -}}
+
+  <div class="brand-shell topic-discovery-shell">
+    <section class="brand-surface brand-surface--hero brand-page-hero brand-page-hero--split">
+      <div class="brand-page-copy">
+        {{- partial "brand/page_intro.html" (dict
+          "page" .
+          "title" .Title
+          "description" .Description
+          "showBreadcrumbs" true
+          "eyebrow" "Topic hubs"
+        ) -}}
+        {{- with .Content -}}
+        <div class="brand-page-copy-body topic-page-copy">
+          {{- . -}}
+        </div>
+        {{- end -}}
+        <div class="brand-page-actions">
+          <a class="brand-action brand-action--strong" href="/posts/">Browse posts</a>
+          <a class="brand-action" href="/archives/">Archives</a>
+          <a class="brand-action" href="/about/">About Mayuresh</a>
+        </div>
+      </div>
+
+      <aside class="brand-page-panel">
+        <div class="brand-stat-grid">
+          <div class="brand-stat">
+            <span class="brand-stat-value">{{ len $terms }}</span>
+            <span class="brand-stat-label">Active topics</span>
+          </div>
+          <div class="brand-stat">
+            <span class="brand-stat-value">{{ len $postsWithTopics }}</span>
+            <span class="brand-stat-label">Posts organized by pillar</span>
+          </div>
+          <div class="brand-stat">
+            <span class="brand-stat-value">Curated</span>
+            <span class="brand-stat-label">Reader-first topic hubs</span>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="brand-surface brand-surface--soft topic-discovery-results">
+      {{- partial "brand/page_intro.html" (dict
+        "title" "Explore the topic hubs"
+        "description" "Each topic groups related essays, highlights strong starting points, and keeps the archive easy to navigate."
+        "class" "brand-section-header--compact"
+      ) -}}
+      {{- partial "brand/topic_discovery_index.html" (dict
+        "page" . 
+        "terms" $terms
+      ) -}}
+    </section>
+  </div>
+{{- else -}}
+  {{- if .Title -}}
+  <header class="page-header">
+    <h1>{{ .Title }}</h1>
+    {{- if .Description -}}
+    <div class="post-description">
+      {{ .Description }}
+    </div>
+    {{- end -}}
+  </header>
+  {{- end -}}
+
+  <ul class="terms-tags">
+    {{- range .Data.Terms.Alphabetical -}}
+    <li>
+      <a href="{{ .Page.RelPermalink }}">{{ .Page.LinkTitle }} <sup><strong><sup>{{ .Count }}</sup></strong></sup></a>
+    </li>
+    {{- end -}}
+  </ul>
+{{- end -}}
+{{- end -}}

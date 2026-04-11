@@ -1,0 +1,24 @@
+{{- $tags := .Language.Params.Taxonomies.tag | default "tags" -}}
+{{- $tagTerms := .GetTerms $tags -}}
+{{- $showPostNav := (.Param "ShowPostNavLinks") -}}
+{{- $showShare := and site.Params.ShowShareButtons (ne .Params.disableShare true) -}}
+
+{{- if or (gt (len $tagTerms) 0) $showPostNav $showShare -}}
+<div class="brand-post-footer-meta">
+  {{- if gt (len $tagTerms) 0 -}}
+  <ul class="post-tags">
+    {{- range $tagTerms -}}
+    <li><a href="{{ .Permalink }}">{{ .LinkTitle }}</a></li>
+    {{- end -}}
+  </ul>
+  {{- end -}}
+
+  {{- if $showPostNav -}}
+  {{- partial "post_nav_links.html" . -}}
+  {{- end -}}
+
+  {{- if $showShare -}}
+  {{- partial "share_icons.html" . -}}
+  {{- end -}}
+</div>
+{{- end -}}

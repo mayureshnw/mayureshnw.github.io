@@ -1,0 +1,23 @@
+{{- $name := site.Params.author | default site.Title -}}
+{{- with .page -}}
+  {{- $name = .Params.author | default $name -}}
+{{- end -}}
+{{- $name = .name | default $name -}}
+{{- $body := .body | default site.Params.description -}}
+<aside class="{{ .class | default "post-entry brand-author-shell" }}">
+  <header class="entry-header">
+    <h2>{{ .title | default "About the author" }}</h2>
+  </header>
+  {{- with $body -}}
+  <div class="entry-content">
+    {{ . | markdownify }}
+  </div>
+  {{- end -}}
+  <footer class="entry-footer">
+    {{ $name }}
+    {{- if site.Params.socialIcons -}}
+    <br>
+    {{- partial "social_icons.html" (dict "align" "left") -}}
+    {{- end -}}
+  </footer>
+</aside>

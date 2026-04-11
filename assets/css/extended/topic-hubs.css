@@ -1,0 +1,149 @@
+.topic-page-copy > :last-child {
+    margin-bottom: 0;
+}
+
+.topic-card-grid,
+.series-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 0.75rem;
+}
+
+.topic-card,
+.series-card {
+    height: 100%;
+}
+
+.topic-discovery-results,
+.topic-hub-layout > .brand-surface,
+.topic-hub-sidebar .brand-surface {
+    overflow: hidden;
+}
+
+.topic-card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.topic-card-eyebrow {
+    margin-bottom: 0.35rem;
+}
+
+.topic-card-title,
+.series-card-title {
+    margin: 0;
+    font-size: clamp(1.08rem, 1.5vw, 1.25rem);
+    line-height: 1.18;
+    letter-spacing: -0.025em;
+    font-weight: 650;
+}
+
+.topic-card-title a,
+.series-card-title a,
+.series-card-link,
+.topic-card-link {
+    text-decoration: none;
+}
+
+.topic-card-title a:hover,
+.series-card-title a:hover,
+.series-card-link:hover,
+.topic-card-link:hover {
+    text-decoration: underline;
+}
+
+.topic-card-count {
+    flex-shrink: 0;
+    padding: 0.28rem 0.7rem;
+    border: 1px solid var(--brand-divider);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--secondary);
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.topic-card-summary,
+.topic-card-related,
+.series-empty-state > p {
+    color: var(--secondary);
+}
+
+.topic-card-summary {
+    margin: 0;
+    line-height: 1.65;
+}
+
+.topic-pill-list,
+.topic-card-links ul,
+.topic-sidebar-list {
+    margin: 0;
+    padding-left: 1.1rem;
+}
+
+.topic-pill-list li,
+.topic-card-links li,
+.topic-sidebar-list li {
+    margin-bottom: 0.45rem;
+}
+
+.topic-card-links {
+    margin-top: 0.9rem;
+    padding-top: 0.9rem;
+    border-top: 1px solid var(--brand-divider);
+}
+
+.topic-card-links-title {
+    margin: 0 0 0.5rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--secondary);
+}
+
+.topic-hub-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.45fr) minmax(260px, 0.85fr);
+    gap: 1.25rem;
+    align-items: start;
+}
+
+.topic-hub-sidebar {
+    display: grid;
+    gap: 1rem;
+    align-content: start;
+}
+
+.topic-card-related {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.series-empty-state {
+    max-width: 48rem;
+}
+
+.series-empty-state h2 {
+    margin-top: 0;
+}
+
+.series-card-link,
+.topic-card-link {
+    display: inline-flex;
+    margin-top: 0.75rem;
+    font-weight: 600;
+}
+
+.topic-sidebar-list {
+    color: var(--secondary);
+    line-height: 1.65;
+}
+
+@media (max-width: 900px) {
+    .topic-hub-layout {
+        grid-template-columns: 1fr;
+    }
+}

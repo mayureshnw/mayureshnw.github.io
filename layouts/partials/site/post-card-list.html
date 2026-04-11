@@ -1,0 +1,26 @@
+{{- $showMeta := true -}}
+{{- if isset . "showMeta" -}}
+  {{- $showMeta = .showMeta -}}
+{{- end -}}
+{{- $showTopics := false -}}
+{{- if isset . "showTopics" -}}
+  {{- $showTopics = .showTopics -}}
+{{- end -}}
+{{- $showSeries := false -}}
+{{- if isset . "showSeries" -}}
+  {{- $showSeries = .showSeries -}}
+{{- end -}}
+{{- $pages := .pages | default (slice) -}}
+{{- if gt (len $pages) 0 -}}
+<div class="{{ .class | default "brand-card-list" }}">
+  {{- range $pages -}}
+    {{- partial "site/post-card.html" (dict
+      "page" .
+      "badge" (cond .Params.featured "Featured" "")
+      "showMeta" $showMeta
+      "showTopics" $showTopics
+      "showSeries" $showSeries
+    ) -}}
+  {{- end -}}
+</div>
+{{- end -}}

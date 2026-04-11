@@ -1,0 +1,17 @@
+{{- $classes := slice "brand-foundation" (printf "kind-%s" .Kind) -}}
+{{- with .Type -}}
+  {{- $classes = $classes | append (printf "type-%s" (urlize .)) -}}
+{{- end -}}
+{{- with .Section -}}
+  {{- $classes = $classes | append (printf "section-%s" (urlize .)) -}}
+{{- end -}}
+{{- with .Data.Plural -}}
+  {{- $classes = $classes | append (printf "taxonomy-%s" (urlize .)) -}}
+{{- end -}}
+{{- with .Layout -}}
+  {{- $classes = $classes | append (printf "layout-%s" (urlize .)) -}}
+{{- end -}}
+{{- if .IsHome -}}
+  {{- $classes = $classes | append "surface-home" -}}
+{{- end -}}
+{{- delimit $classes " " -}}

@@ -1,0 +1,23 @@
+{{- $actions := .actions | default (slice) -}}
+<aside class="{{ .class | default "post-entry brand-cta-shell" }}">
+  <header class="entry-header">
+    <h2>{{ .title | default "Continue the conversation" }}</h2>
+  </header>
+  {{- with .body -}}
+  <div class="entry-content">
+    {{ . | markdownify }}
+  </div>
+  {{- end -}}
+  {{- if gt (len $actions) 0 -}}
+  <footer class="entry-footer">
+    <div class="brand-cta-actions">
+    {{- range $index, $action := $actions -}}
+      {{- if $action.url -}}
+      {{- $isExternal := or (hasPrefix $action.url "https://") (hasPrefix $action.url "http://") -}}
+      <a class="brand-cta-action" href="{{ $action.url }}"{{ if $isExternal }} target="_blank" rel="noopener noreferrer me"{{ end }}>{{ $action.label }}</a>
+      {{- end -}}
+    {{- end -}}
+    </div>
+  </footer>
+  {{- end -}}
+</aside>

@@ -1,0 +1,11 @@
+{{- $items := slice -}}
+{{- with . -}}
+  {{- if reflect.IsSlice . -}}
+    {{- range . -}}
+      {{- $items = $items | append (printf "%v" .) -}}
+    {{- end -}}
+  {{- else -}}
+    {{- $items = $items | append (printf "%v" .) -}}
+  {{- end -}}
+{{- end -}}
+{{- return $items -}}

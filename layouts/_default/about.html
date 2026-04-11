@@ -1,0 +1,35 @@
+{{- define "main" -}}
+<article class="post-single brand-surface brand-surface-about">
+  {{- partial "site/section-header.html" (dict
+    "page" .
+    "showBreadcrumbs" true
+    "title" .Title
+    "description" .Summary
+    "level" 1
+    "class" "post-header"
+  ) -}}
+  {{- if .Content -}}
+  <div class="post-content">
+    {{- if not (.Param "disableAnchoredHeadings") -}}
+      {{- partial "anchored_headings.html" .Content -}}
+    {{- else -}}
+      {{- .Content -}}
+    {{- end -}}
+  </div>
+  {{- end -}}
+  {{- partial "site/author-shell.html" (dict
+    "page" .
+    "title" "What I focus on"
+    "body" "I write about distributed systems, observability, reliability, and AI engineering from the perspective of building and operating software at scale."
+  ) -}}
+  {{- partial "site/cta-shell.html" (dict
+    "title" "Start with the writing"
+    "body" "If you're here for engineering essays, the homepage and archives are the best places to start."
+    "actions" (slice
+      (dict "label" "Latest writing" "url" "/")
+      (dict "label" "Archives" "url" "/archives/")
+      (dict "label" "Engineering" "url" "/categories/engineering/")
+    )
+  ) -}}
+</article>
+{{- end -}}

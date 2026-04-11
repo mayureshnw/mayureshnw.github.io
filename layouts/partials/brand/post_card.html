@@ -1,0 +1,82 @@
+{{- $page := .page -}}
+{{- $paginator := .paginator -}}
+{{- $class := .class | default "" -}}
+{{- if not $class -}}
+  {{- $class = "post-entry brand-post-card" -}}
+  {{- $userPreferred := or site.Params.disableSpecial1stPost site.Params.homeInfoParams -}}
+  {{- if and .isHome $paginator (eq $paginator.PageNumber 1) (eq .index 0) (not $userPreferred) -}}
+    {{- $class = "first-entry brand-post-card brand-post-card--feature" -}}
+  {{- else if .term -}}
+    {{- $class = "post-entry tag-entry brand-post-card" -}}
+  {{- end -}}
+{{- end -}}
+{{- $showMeta := not ($page.Param "hideMeta") -}}
+{{- if isset . "showMeta" -}}
+  {{- $showMeta = .showMeta -}}
+{{- end -}}
+{{- $showTopics := false -}}
+{{- if isset . "showTopics" -}}
+  {{- $showTopics = .showTopics -}}
+{{- end -}}
+{{- $showSeries := false -}}
+{{- if isset . "showSeries" -}}
+  {{- $showSeries = .showSeries -}}
+{{- end -}}
+{{- $summary := .summary | default ($page.Description | default ($page.Summary | plainify | htmlUnescape)) -}}
+{{- $summary = $summary | plainify | htmlUnescape -}}
+{{- $badge := .badge | default "" -}}
+{{- if and (not $badge) $page.Params.featured -}}
+  {{- $badge = "Featured" -}}
+{{- end -}}
+{{- $seriesValues := partial "brand/post_value_slice.html" $page.Params.series -}}
+
+<article class="{{ $class }}">
+  {{- $isHidden := ($page.Param "cover.hiddenInList") | default ($page.Param "cover.hidden") | default false -}}
+  {{- partial "cover.html" (dict "cxt" $page "IsSingle" false "isHidden" $isHidden) -}}
+
+  <header class="entry-header">
+    {{- with .eyebrow -}}
+    <p class="entry-hint">{{ . }}</p>
+    {{- end -}}
+    <h2 class="entry-hint-parent">
+      {{- $page.Title -}}
+      {{- if $page.Draft -}}
+      <span class="entry-hint" title="Draft">
+        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" fill="currentColor">
+          <path
+            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
+        </svg>
+        Draft
+      </span>
+      {{- else if $badge -}}
+      <span class="entry-hint" title="{{ $badge }}">
+        {{- $badge -}}
+      </span>
+      {{- end -}}
+    </h2>
+  </header>
+
+   {{- if and (ne ($page.Param "hideSummary") true) $summary -}}
+  <div class="entry-content">
+    <p>{{ $summary }}{{ if and (not $page.Description) $page.Truncated }}...{{ end }}</p>
+  </div>
+  {{- end -}}
+
+  {{- if or $showMeta (and $showTopics $page.Params.topics) (and $showSeries $page.Params.series) -}}
+  <footer class="entry-footer">
+    {{- if $showMeta -}}
+      {{- partial "post_meta.html" $page -}}
+    {{- end -}}
+    {{- if and $showTopics $page.Params.topics -}}
+      {{- if $showMeta -}}<br>{{- end -}}
+      {{- delimit $page.Params.topics " · " -}}
+    {{- end -}}
+    {{- if and $showSeries (gt (len $seriesValues) 0) -}}
+      {{- if or $showMeta (and $showTopics $page.Params.topics) -}}<br>{{- end -}}
+      Series: {{ delimit $seriesValues " · " }}
+    {{- end -}}
+  </footer>
+  {{- end -}}
+
+  <a class="entry-link" aria-label="post link to {{ $page.Title | plainify }}" href="{{ $page.Permalink }}"></a>
+</article>

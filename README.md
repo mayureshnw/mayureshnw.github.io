@@ -100,7 +100,14 @@ Approved `topics` values for Phase 1:
 - Use consistent display casing for `tags` (for example `OpenTelemetry`, `Prompt Engineering`, `Technical Debt`) instead of sentence fragments or long summary phrases.
 - Prefer lower-case kebab-case filenames or folders for new content (for example `content/posts/thread-pool-starvation/index.md`). Leave legacy filenames and URLs alone unless a dedicated migration also adds the right `aliases`.
 
-### Current Hugo compatibility note
+### Current discovery surfaces
 
-- Keep `categories: [engineering]` on posts for now so they continue to appear under the existing Engineering navigation.
-- Do **not** add a `topics` taxonomy to `hugo.yaml` yet; this Phase 1 todo only standardizes the metadata contract.
+- Keep `categories: [engineering]` on posts so they continue to appear under the existing Engineering navigation.
+- `topics` is now a Hugo taxonomy and the reader-facing topic hub surface at `/topics/`.
+- Keep `series` lightweight and manual for now; use `content/series/` for curated landing pages until there is enough real series content to justify stronger automation.
+
+### Phase 2 editorial notes
+
+- `featured: true` now opts a post into the homepage's featured/recommended reading pool. If no posts are marked featured, the homepage falls back to recent writing automatically.
+- Topic hub copy lives under `content/topics/`; keep those pages aligned with the approved `topics` vocabulary instead of inventing new labels ad hoc.
+- Post-page connect and related-reading surfaces are driven by `layouts/partials/site/post-supplemental.html`, while the About page positioning copy lives in `content/about.md`.

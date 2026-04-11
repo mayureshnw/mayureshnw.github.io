@@ -1,0 +1,239 @@
+.brand-foundation {
+    --brand-surface-radius: 14px;
+    --brand-card-radius: 12px;
+    --brand-soft-surface: rgba(125, 125, 125, 0.02);
+    --brand-soft-surface-strong: rgba(125, 125, 125, 0.045);
+    --brand-divider: rgba(125, 125, 125, 0.12);
+    --brand-divider-strong: rgba(125, 125, 125, 0.18);
+    --brand-shadow: 0 18px 36px -32px rgba(15, 23, 42, 0.18);
+}
+
+.brand-shell {
+    display: grid;
+    gap: 2rem;
+}
+
+.brand-surface {
+    padding: 1.5rem;
+    background: var(--entry);
+    border: 1px solid var(--brand-divider);
+    border-radius: var(--brand-surface-radius);
+    box-shadow: var(--brand-shadow);
+}
+
+.brand-surface--hero {
+    padding: 1.75rem;
+}
+
+.brand-surface--soft {
+    background: var(--entry);
+    box-shadow: none;
+}
+
+.brand-section-header {
+    display: grid;
+    gap: 0.65rem;
+    margin-bottom: 1.25rem;
+}
+
+.brand-section-header--compact {
+    margin-bottom: 1.25rem;
+}
+
+.brand-section-eyebrow {
+    margin: 0;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--secondary);
+}
+
+.brand-section-heading-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.brand-section-title {
+    margin: 0;
+    font-size: clamp(1.65rem, 2.7vw, 2.2rem);
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    font-weight: 650;
+    text-wrap: balance;
+}
+
+.brand-page-description {
+    max-width: 42rem;
+    color: var(--secondary);
+    line-height: 1.65;
+}
+
+.brand-page-description > :last-child {
+    margin-bottom: 0;
+}
+
+.brand-page-hero {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.brand-page-hero--split {
+    grid-template-columns: minmax(0, 1.3fr) minmax(16rem, 0.85fr);
+    align-items: start;
+}
+
+.brand-page-copy,
+.brand-page-panel {
+    min-width: 0;
+}
+
+.brand-page-copy-body {
+    max-width: 40rem;
+    color: var(--secondary);
+    line-height: 1.7;
+}
+
+.brand-page-copy-body > :last-child {
+    margin-bottom: 0;
+}
+
+.brand-page-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    margin-top: 1.25rem;
+}
+
+.brand-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.6rem;
+    padding: 0.65rem 1rem;
+    border: 1px solid var(--brand-divider-strong);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--primary);
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    text-decoration: none;
+    transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.brand-action:hover {
+    border-color: var(--secondary);
+    background: var(--brand-soft-surface);
+}
+
+.brand-action--strong {
+    background: var(--primary);
+    color: var(--theme);
+    border-color: var(--primary);
+}
+
+.brand-action--strong:hover {
+    background: var(--primary);
+    color: var(--theme);
+    border-color: var(--primary);
+}
+
+.brand-page-panel {
+    display: grid;
+    gap: 0.75rem;
+    align-content: start;
+}
+
+.brand-stat-grid {
+    display: grid;
+    gap: 0.75rem;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+}
+
+.brand-stat {
+    padding: 0.9rem 1rem;
+    border: 1px solid var(--brand-divider);
+    border-radius: var(--brand-card-radius);
+    background: transparent;
+}
+
+.brand-stat-value {
+    display: block;
+    font-size: clamp(1.15rem, 2vw, 1.5rem);
+    line-height: 1;
+    letter-spacing: -0.03em;
+    font-weight: 650;
+    color: var(--primary);
+}
+
+.brand-stat-label {
+    display: block;
+    margin-top: 0.4rem;
+    color: var(--secondary);
+    font-size: 0.84rem;
+    line-height: 1.5;
+}
+
+.brand-post-list {
+    display: grid;
+    gap: var(--gap);
+}
+
+.brand-post-card {
+    position: relative;
+}
+
+.brand-post-single,
+.brand-rich-content {
+    overflow: hidden;
+}
+
+.brand-empty-state {
+    margin: 0;
+    color: var(--secondary);
+}
+
+.brand-section-rss {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--secondary);
+    opacity: 0.8;
+}
+
+.brand-section-rss:hover {
+    color: var(--primary);
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
+    .brand-surface,
+    .brand-surface--hero {
+        padding: 1.25rem;
+    }
+
+    .brand-page-hero--split,
+    .brand-stat-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .brand-page-panel {
+        padding-left: 0;
+    }
+
+    .brand-section-heading-row {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .brand-page-actions {
+        flex-direction: column;
+    }
+
+    .brand-action {
+        width: 100%;
+    }
+}

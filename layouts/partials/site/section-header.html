@@ -1,0 +1,35 @@
+{{- $page := .page -}}
+{{- $level := .level | default 2 -}}
+{{- $title := .title -}}
+{{- if or .title .description .eyebrow .actions .showBreadcrumbs -}}
+<header class="{{ .class | default "page-header" }}">
+  {{- if and .showBreadcrumbs $page -}}
+    {{- partial "breadcrumbs.html" $page -}}
+  {{- end -}}
+  {{- with .eyebrow -}}
+  <p class="entry-hint">{{ . }}</p>
+  {{- end -}}
+  {{- with $title -}}
+    {{- if eq $level 1 -}}
+  <h1>{{ . }}{{ with $.titleSuffix }} {{ . | safeHTML }}{{ end }}</h1>
+    {{- else if eq $level 3 -}}
+  <h3>{{ . }}{{ with $.titleSuffix }} {{ . | safeHTML }}{{ end }}</h3>
+    {{- else -}}
+  <h2>{{ . }}{{ with $.titleSuffix }} {{ . | safeHTML }}{{ end }}</h2>
+    {{- end -}}
+  {{- end -}}
+  {{- with .description -}}
+  <div class="post-description">
+    {{ . | markdownify }}
+  </div>
+  {{- end -}}
+  {{- with .actions -}}
+  <div class="entry-footer">
+    {{- range $index, $action := . -}}
+      {{- if gt $index 0 -}}&nbsp;·&nbsp;{{- end -}}
+      <a href="{{ $action.url }}">{{ $action.label }}</a>
+    {{- end -}}
+  </div>
+  {{- end -}}
+</header>
+{{- end -}}

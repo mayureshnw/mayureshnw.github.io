@@ -1,0 +1,52 @@
+{{- $terms := .terms | default (slice) -}}
+
+{{- if gt (len $terms) 0 -}}
+<div class="topic-card-grid">
+  {{- range $terms -}}
+    {{- $termPage := .Page -}}
+    {{- $posts := .Pages.ByDate.Reverse -}}
+    <article class="brand-surface topic-card">
+      <div class="topic-card-header">
+        <div>
+          <p class="brand-section-eyebrow topic-card-eyebrow">Topic hub</p>
+          <h2 class="topic-card-title">
+            <a href="{{ $termPage.RelPermalink }}">{{ $termPage.LinkTitle }}</a>
+          </h2>
+        </div>
+        <span class="topic-card-count">{{ .Count }} {{ cond (eq .Count 1) "post" "posts" }}</span>
+      </div>
+
+      {{- with $termPage.Description -}}
+      <p class="topic-card-summary">{{ . }}</p>
+      {{- end -}}
+
+      {{- with $termPage.Params.focusAreas -}}
+      <ul class="topic-pill-list">
+        {{- range first 3 . -}}
+        <li>{{ . }}</li>
+        {{- end -}}
+      </ul>
+      {{- end -}}
+
+      {{- if gt (len $posts) 0 -}}
+      <div class="topic-card-links">
+        <p class="topic-card-links-title">Start here</p>
+        <ul>
+          {{- range first 2 $posts -}}
+          <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+          {{- end -}}
+        </ul>
+      </div>
+      {{- end -}}
+
+      {{- with $termPage.Params.relatedTopics -}}
+      <p class="topic-card-related">Related: {{ delimit . " · " }}</p>
+      {{- end -}}
+
+      <a class="topic-card-link" href="{{ $termPage.RelPermalink }}">Explore hub →</a>
+    </article>
+  {{- end -}}
+</div>
+{{- else -}}
+<p class="brand-empty-state">Topic hubs will appear here as posts adopt the approved topic vocabulary.</p>
+{{- end -}}

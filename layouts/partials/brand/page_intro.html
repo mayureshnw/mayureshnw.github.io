@@ -1,0 +1,44 @@
+{{- $page := .page -}}
+{{- $title := .title -}}
+{{- if and (not $title) $page -}}
+  {{- $title = $page.Title -}}
+{{- end -}}
+{{- $description := .description -}}
+{{- if and (not $description) $page $page.Description -}}
+  {{- $description = $page.Description -}}
+{{- end -}}
+{{- $eyebrow := .eyebrow -}}
+
+<header class="brand-section-header{{ with .class }} {{ . }}{{ end }}">
+  {{- if and $page .showBreadcrumbs -}}
+  {{- partial "breadcrumbs.html" $page -}}
+  {{- end -}}
+
+  {{- with $eyebrow -}}
+  <p class="brand-section-eyebrow">{{ . }}</p>
+  {{- end -}}
+
+  {{- with $title -}}
+  <div class="brand-section-heading-row">
+    <h1 class="brand-section-title">{{ . }}</h1>
+    {{- if and $page $.showRss -}}
+      {{- with $page.OutputFormats.Get "rss" -}}
+      <a class="brand-section-rss" href="{{ .RelPermalink }}" title="RSS" aria-label="RSS">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round" height="23">
+          <path d="M4 11a9 9 0 0 1 9 9" />
+          <path d="M4 4a16 16 0 0 1 16 16" />
+          <circle cx="5" cy="19" r="1" />
+        </svg>
+      </a>
+      {{- end -}}
+    {{- end -}}
+  </div>
+  {{- end -}}
+
+  {{- with $description -}}
+  <div class="brand-page-description">
+    {{- . | markdownify -}}
+  </div>
+  {{- end -}}
+</header>
