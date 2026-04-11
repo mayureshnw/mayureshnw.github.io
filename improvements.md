@@ -202,7 +202,7 @@ Recommended homepage elements:
 
 A strong technical brand compounds through topic ownership, not just individual articles.
 
-Instead of relying mostly on archives and tag lists, build curated topic hub pages for core areas. These pages should aggregate relevant posts and help new readers understand your expertise quickly.
+Instead of relying mostly on flat post feeds and tag lists, build curated topic hub pages for core areas. These pages should aggregate relevant posts and help new readers understand your expertise quickly.
 
 ### 10. Strengthen SEO and distribution infrastructure
 
@@ -260,7 +260,7 @@ Already repo-owned today:
 
 - `layouts/index.html` homepage
 - `layouts/_default/single.html` post layout
-- `layouts/_default/list.html`, `term.html`, and `terms.html` archive/topic discovery surfaces
+- `layouts/_default/list.html`, `term.html`, and `terms.html` section/tag discovery surfaces
 - `layouts/_default/about.html` about page
 - `layouts/series/list.html` series landing
 - `layouts/partials/brand/*` and `layouts/partials/site/*` brand-specific presentation components
@@ -287,7 +287,7 @@ Use PaperMod as a temporary scaffold while progressively taking ownership of the
 | Ownership milestone | What becomes repo-owned next | Prerequisites | Success signal |
 | --- | --- | --- | --- |
 | M1. Freeze the dependency boundary | Confirm the inherited partial set above and keep new feature work inside repo-owned `layouts/partials/{brand,site}` and `assets/css/extended/`. | Current branded layouts remain stable. | Theme usage stops expanding; PaperMod is a compatibility layer, not the design system. |
-| M2. Own the global shell | Replace `head.html`, `header.html`, `footer.html`, and, if needed for navigation consistency, `breadcrumbs.html`. | Agreed navigation, metadata, and brand shell requirements. | Homepage, about, archives, topics, and series pages render site chrome without PaperMod partials. |
+| M2. Own the global shell | Replace `head.html`, `header.html`, `footer.html`, and, if needed for navigation consistency, `breadcrumbs.html`. | Agreed navigation, metadata, and brand shell requirements. | Homepage, about, section/tag discovery pages, topics, and series pages render site chrome without PaperMod partials. |
 | M3. Own post primitives | Replace `cover.html`, `post_meta.html`, `toc.html`, `post_nav_links.html`, `social_icons.html`, `share_icons.html`, and `anchored_headings.html` as needed. | M2 complete and post design tokens/content behavior stable. | Single-post rendering is controlled locally; PaperMod no longer dictates reader-visible post behavior. |
 | M4. Exit the theme cleanly | Remove unused PaperMod params, re-home any remaining helpers, update docs, remove `theme: ["PaperMod"]`, and delete the submodule. | M2 and M3 complete; no required runtime calls into theme-only templates. | `hugo --gc --minify` succeeds without `themes/PaperMod/`, and key pages pass smoke testing. |
 
@@ -295,10 +295,10 @@ Use PaperMod as a temporary scaffold while progressively taking ownership of the
 
 PaperMod is safe to remove only when all of the following are true:
 
-- the repo owns the global shell and all reader-visible components on homepage, posts, archives, topics, series, and about
+- the repo owns the global shell and all reader-visible components on homepage, posts, section/tag discovery pages, topics, series, and about
 - no required template resolution depends on `themes/PaperMod/`
 - `hugo --gc --minify` succeeds on a branch where the theme config and submodule are removed
-- a visual smoke check passes for homepage, a single post, `/about/`, `/archives/`, `/topics/`, one topic term page, and one series page
+- a visual smoke check passes for homepage, a single post, `/about/`, `/categories/engineering/`, `/tags/`, `/topics/`, one topic term page, and one series page
 - local setup and deployment docs no longer mention initializing the PaperMod submodule
 
 ### Sequencing guidance

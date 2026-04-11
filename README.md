@@ -68,7 +68,7 @@ hugo new content/posts/post-title/index.md
 ```
 
 The archetype standardizes the frontmatter below.
-Posts belong in page bundles under `content/posts/<slug>/index.md`; reserve top-level `content/*.md` files for standalone pages such as `about.md` and `archives.md`.
+Posts belong in page bundles under `content/posts/<slug>/index.md`; reserve top-level `content/*.md` files for standalone pages such as `about.md`.
 
 ### Required on every post
 
@@ -101,7 +101,7 @@ Posts belong in page bundles under `content/posts/<slug>/index.md`; reserve top-
 ### Current discovery surfaces
 
 - Keep `categories: [engineering]` on posts so they continue to appear under the existing Engineering navigation.
-- Discovery stays centered on the archive, tags, and standalone essays.
+- Discovery stays centered on Engineering, tags, and standalone essays.
 
 ### Phase 2 editorial notes
 
@@ -112,6 +112,6 @@ Posts belong in page bundles under `content/posts/<slug>/index.md`; reserve top-
 
 - The repo owns the base layout shell plus the shared `head`, `header`, and `footer` partials used by the site chrome.
 - Open Graph, Twitter cards, JSON-LD, canonical-link behavior, page-image helpers, and RSS are now repo-owned under `layouts/partials/` and `layouts/_default/`.
-- The site now emits a repo-owned JSON Feed (`feed.json`) for the homepage plus section and term archives via `hugo.yaml`, `layouts/index.jsonfeed.json`, and `layouts/_default/*jsonfeed.json`.
+- The site now emits a repo-owned JSON Feed (`feed.json`) for the homepage plus section and term listing pages via `hugo.yaml`, `layouts/index.jsonfeed.json`, and `layouts/_default/*jsonfeed.json`.
 - Default social previews now fall back to `static/images/social-preview.png` via `params.images` when a page does not define its own `cover.image` or other page image.
 - Shared light-theme primitives now live directly in `assets/css/` and `layouts/partials/`, so the site no longer requires a third-party theme submodule to build.

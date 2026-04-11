@@ -6,7 +6,7 @@
 </head>
 
 <body class="
-{{- if (or (ne .Kind `page` ) (eq .Layout `archives`)) -}}
+{{- if ne .Kind `page` -}}
 {{- print "list" -}}
 {{- end -}}
 {{- with partial "site/body-class.html" . -}}

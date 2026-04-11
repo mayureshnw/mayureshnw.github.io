@@ -47,7 +47,6 @@ The site auto-deploys to GitHub Pages on push to `main` branch via `.github/work
 ```
 content/
   about.md        # Standalone site page
-  archives.md     # Standalone archive/list page
   posts/          # Page bundles for blog posts (content/posts/post-name/index.md)
 archetypes/
   default.md      # Template for new posts with author, tags, date, TOC settings
@@ -58,7 +57,7 @@ public/           # Generated site output (gitignored)
 ```
 
 ### Content Format
-All blog posts live in `content/posts/<bundle-name>/index.md` page bundles. Top-level `content/*.md` files are reserved for standalone/list pages (for example `about.md` or `archives.md`). Posts should not be placed directly under `content/`.
+All blog posts live in `content/posts/<bundle-name>/index.md` page bundles. Top-level `content/*.md` files are reserved for standalone pages such as `about.md`. Posts should not be placed directly under `content/`.
 ```yaml
 ---
 author: "Mayuresh Waykole"
@@ -88,7 +87,7 @@ TocOpen: true
 
 ### Menu Structure
 Site navigation (defined in `hugo.yaml`):
-- Archives (`/archives/`)
+- About (`/about/`)
 - Tags (`/tags/`)
 - Engineering category (`/categories/engineering/`)
 

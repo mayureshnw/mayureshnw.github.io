@@ -44,18 +44,14 @@ menu:
       name: About
       url: /about/
       weight: 5
-    - identifier: archives
-      name: Archives
-      url: /archives/
-      weight: 10
     - identifier: tags
       name: Tags
       url: /tags/
-      weight: 20
+      weight: 10
     - identifier: Engineering
       name: Engineering
       url: /categories/engineering/
-      weight: 30
+      weight: 20
 taxonomies:
   tag: tags
   category: categories
