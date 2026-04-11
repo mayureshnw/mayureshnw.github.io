@@ -3,6 +3,14 @@
 {{- if isset . "showMeta" -}}
   {{- $showMeta = .showMeta -}}
 {{- end -}}
+{{- $showSummary := true -}}
+{{- if isset . "showSummary" -}}
+  {{- $showSummary = .showSummary -}}
+{{- end -}}
+{{- $showBadge := true -}}
+{{- if isset . "showBadge" -}}
+  {{- $showBadge = .showBadge -}}
+{{- end -}}
 {{- $summary := $page.Description | default ($page.Summary | plainify | htmlUnescape) -}}
 <article class="{{ .class | default "article-card" }}">
   <header class="entry-header">
@@ -11,17 +19,19 @@
     {{- end -}}
     <h2 class="entry-hint-parent">
       {{- $page.Title -}}
-      {{- if or .badge $page.Params.featured -}}
+      {{- if and $showBadge (or .badge $page.Params.featured) -}}
       <span class="entry-hint" title="{{ .badge | default "Featured" }}">
         {{ .badge | default "Featured" }}
       </span>
       {{- end -}}
     </h2>
   </header>
+  {{- if $showSummary -}}
   {{- with $summary -}}
   <div class="entry-content">
     <p>{{ . }}{{ if and (not $page.Description) $page.Truncated }}...{{ end }}</p>
   </div>
+  {{- end -}}
   {{- end -}}
   {{- if $showMeta -}}
   <footer class="entry-footer">

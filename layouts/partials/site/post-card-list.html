@@ -2,6 +2,14 @@
 {{- if isset . "showMeta" -}}
   {{- $showMeta = .showMeta -}}
 {{- end -}}
+{{- $showSummary := true -}}
+{{- if isset . "showSummary" -}}
+  {{- $showSummary = .showSummary -}}
+{{- end -}}
+{{- $showBadge := true -}}
+{{- if isset . "showBadge" -}}
+  {{- $showBadge = .showBadge -}}
+{{- end -}}
 {{- $pages := .pages | default (slice) -}}
 {{- if gt (len $pages) 0 -}}
 <div class="{{ .class | default "brand-card-list" }}">
@@ -10,6 +18,8 @@
       "page" .
       "badge" (cond .Params.featured "Featured" "")
       "showMeta" $showMeta
+      "showSummary" $showSummary
+      "showBadge" $showBadge
     ) -}}
   {{- end -}}
 </div>

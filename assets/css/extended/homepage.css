@@ -92,6 +92,7 @@
 }
 
 .brand-home-links-section,
+.brand-home-latest-section,
 .brand-link-section {
     display: grid;
     gap: 1.75rem;
@@ -172,6 +173,78 @@
     font-size: 0.96rem;
     line-height: 1.7;
     color: var(--secondary);
+}
+
+.brand-home-empty {
+    margin: 0;
+    max-width: 40rem;
+    color: var(--secondary);
+    font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+    font-size: 1rem;
+    line-height: 1.75;
+}
+
+.brand-home-post-list .article-card {
+    margin: 0;
+    padding: 0.95rem 2rem 0.95rem 0;
+    border-top: 1px solid var(--border);
+}
+
+.brand-home-post-list .entry-header h2 {
+    margin: 0;
+    max-width: 42rem;
+    color: var(--primary);
+    font-size: clamp(0.84rem, 1.4vw, 1.08rem);
+    line-height: 1.45;
+    letter-spacing: -0.01em;
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.18em;
+    text-decoration-color: var(--border);
+}
+
+.brand-home-post-list .entry-hint-parent {
+    justify-content: flex-start;
+}
+
+.brand-home-post-list .entry-content,
+.brand-home-post-list .entry-footer,
+.brand-home-post-list .entry-hint {
+    display: none;
+}
+
+.brand-home-post-list .article-card::after {
+    content: "->";
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    color: var(--secondary);
+    font-size: 0.92rem;
+    line-height: 1;
+    transition: transform 0.2s ease, color 0.2s ease;
+    pointer-events: none;
+}
+
+.brand-home-post-list .article-card:hover .entry-header h2,
+.brand-home-post-list .article-card:focus-within .entry-header h2 {
+    text-decoration-color: currentColor;
+}
+
+.brand-home-post-list .article-card:hover::after,
+.brand-home-post-list .article-card:focus-within::after {
+    color: var(--primary);
+    transform: translate(0.18rem, -50%);
+}
+
+.brand-home-post-list .card-link {
+    cursor: pointer;
+}
+
+.brand-home-latest-actions {
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
 }
 
 @media (max-width: 900px) {

@@ -1,4 +1,5 @@
 {{- define "main" -}}
+{{- $latestPosts := first 3 ((where site.RegularPages "Section" "posts").ByDate.Reverse) -}}
 <div class="brand-home">
   <section class="brand-home-intro-section">
     <p class="brand-home-eyebrow">Engineering blog · distributed systems · observability · reliability</p>
@@ -17,51 +18,31 @@
     </nav>
   </section>
 
-  <section class="brand-home-links-section" aria-labelledby="home-links-title">
+  <section class="brand-home-latest-section" aria-labelledby="home-latest-title">
     <div class="brand-home-section-intro">
-      <h2 id="home-links-title">Where to start</h2>
-      <p>This homepage stays intentionally quiet. Use these entry points for essays, background, and the best places to continue the conversation.</p>
+      <h2 id="home-latest-title">Latest writing</h2>
+      <p>The newest published essays appear here first, so readers can start from the latest work without leaving the homepage.</p>
     </div>
 
-    <div class="brand-home-link-groups">
-      <section class="brand-home-link-group" aria-labelledby="home-links-writing">
-        <h3 id="home-links-writing">Writing</h3>
-        <ul class="brand-home-link-list">
-          <li>
-            <a href="/categories/engineering/">Engineering</a>
-            <p>The main stream for essays on systems, reliability, observability, and AI engineering.</p>
-          </li>
-        </ul>
-      </section>
+    {{- if gt (len $latestPosts) 0 -}}
+      {{- partial "site/post-card-list.html" (dict
+        "pages" $latestPosts
+        "showMeta" false
+        "showSummary" false
+        "showBadge" false
+        "class" "brand-post-list brand-post-list--editorial brand-home-post-list"
+      ) -}}
+    {{- else -}}
+    <p class="brand-home-empty">New essays will appear here as they are published.</p>
+    {{- end -}}
 
-      <section class="brand-home-link-group" aria-labelledby="home-links-browse">
-        <h3 id="home-links-browse">Browse</h3>
-        <ul class="brand-home-link-list">
-          <li>
-            <a href="/tags/">Tags</a>
-            <p>Browse by tool, pattern, or problem space.</p>
-          </li>
-          <li>
-            <a href="/about/">About</a>
-            <p>Background, interests, and the longer arc behind the writing.</p>
-          </li>
-        </ul>
-      </section>
-
-      <section class="brand-home-link-group" aria-labelledby="home-links-elsewhere">
-        <h3 id="home-links-elsewhere">Elsewhere</h3>
-        <ul class="brand-home-link-list">
-          <li>
-            <a href="https://www.linkedin.com/in/mayureshwaykole/" target="_blank" rel="noopener noreferrer me">LinkedIn</a>
-            <p>The easiest place to start a conversation.</p>
-          </li>
-          <li>
-            <a href="https://github.com/mayureshwaykole" target="_blank" rel="noopener noreferrer me">GitHub</a>
-            <p>Projects, experiments, and code outside the essays.</p>
-          </li>
-        </ul>
-      </section>
-    </div>
+    <nav class="brand-home-latest-actions brand-home-inline-links" aria-label="Writing links">
+      <a href="/categories/engineering/">View all writing</a>
+      <span aria-hidden="true">/</span>
+      <a href="/tags/">Browse tags</a>
+      <span aria-hidden="true">/</span>
+      <a href="/about/">About</a>
+    </nav>
   </section>
 </div>
 {{- end -}}
