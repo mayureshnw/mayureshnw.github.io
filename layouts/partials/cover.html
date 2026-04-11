@@ -3,7 +3,7 @@
 <figure class="entry-cover">
     {{- $loading := cond $.IsSingle "eager" "lazy" }}
     {{- $addLink := (and site.Params.cover.linkFullImages $.IsSingle) }}
-    {{- $prod := (hugo.IsProduction | or (eq site.Params.env "production")) }}
+    {{- $prod := hugo.IsProduction }}
     {{- $alt := (.Params.cover.alt | default .Params.cover.caption | plainify) }}
     {{- $responsiveImages := (.Params.cover.responsiveImages | default site.Params.cover.responsiveImages) | default true }}
 

@@ -11,7 +11,7 @@
                     {{- if hugo.IsExtended -}}
                         {{- $processableFormats = $processableFormats | append "webp" -}}
                     {{- end -}}
-                    {{- $prod := (hugo.IsProduction | or (eq site.Params.env "production")) }}
+                    {{- $prod := hugo.IsProduction }}
                     {{- if and (in $processableFormats $img.MediaType.SubType) (eq $prod true)}}
                         {{- if site.Params.label.iconHeight }}
                             {{- $img = $img.Resize (printf "x%d" site.Params.label.iconHeight) }}

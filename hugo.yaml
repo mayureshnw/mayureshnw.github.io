@@ -60,7 +60,6 @@ taxonomies:
   tag: tags
   category: categories
 params:
-  env: production
   mainSections:
     - posts
   images:

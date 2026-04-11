@@ -41,6 +41,13 @@ Personal site and engineering blog built with Hugo and repo-owned layouts, parti
 
 The generated site is written to `public/`.
 
+## URL strategy
+
+- Keep `baseURL` set to the production origin in `hugo.yaml`: `https://mayureshwaykole.com/`.
+- Use `hugo server` or `hugo server -D` for local preview. Hugo serves the site from `http://localhost:1313/` by default and rewrites absolute URLs to the local origin while previewing.
+- Keep plain `hugo` production-targeted. `hugo --gc --minify` should continue to emit production URLs.
+- Gate production-only behavior with Hugo environment checks such as `hugo.IsProduction`; do not hard-code a production override in site params for local development.
+
 ## Publishing guardrails
 
 - Validate post frontmatter and repo-local markdown links before publishing:
