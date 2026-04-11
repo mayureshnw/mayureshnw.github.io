@@ -2,39 +2,52 @@
 title: "About"
 layout: "about"
 url: "/about/"
-summary: "Senior software engineer writing about distributed systems, observability, reliability, and AI engineering."
+description: "Senior software engineer focused on distributed systems, observability, reliability, and AI-assisted engineering."
+summary: "I build and write about systems that need to stay reliable, observable, and understandable as they scale."
 ShowToc: false
+heroIntro: |
+  I work on the parts of software engineering that matter once systems meet scale: architecture, operational clarity, feedback loops, and the tooling that helps teams move with confidence.
+heroSupporting: |
+  My day-to-day interests sit at the intersection of **distributed systems**, **observability**, **reliability**, and **AI-assisted engineering**. I care about turning complexity into systems that are easier to reason about, easier to operate, and easier for teams to improve over time.
+heroLinks:
+  - label: "Engineering"
+    url: "/categories/engineering/"
+  - label: "Tags"
+    url: "/tags/"
+  - label: "LinkedIn"
+    url: "https://www.linkedin.com/in/mayureshwaykole/"
+  - label: "GitHub"
+    url: "https://github.com/mayureshwaykole"
+panelSections:
+  - title: "Current focus"
+    items:
+      - "Distributed systems and failure-aware architecture"
+      - "Observability that improves time-to-understanding"
+      - "Reliable delivery and operational feedback loops"
+      - "AI engineering that adds real leverage for teams"
+  - title: "What this site is for"
+    copy: "A place for practical writing on systems design, production learning, and the trade-offs that shape engineering work over time."
+  - title: "Best ways to connect"
+    items:
+      - "LinkedIn for conversation and professional context"
+      - "GitHub for projects, experiments, and code"
 ---
 
-## Hi, I'm Mayuresh
+## What I Work On
 
-I'm a senior software engineer who likes turning complex systems into reliable, understandable products. My work sits at the intersection of distributed systems, observability, reliability, and AI-assisted engineering.
+- **Distributed systems and reliability** - I am drawn to architectures that stay resilient under load, failure, and change.
+- **Observability** - I care about the signals, workflows, and context that help teams understand production behavior quickly.
+- **AI engineering and AIOps** - I am interested in using AI where it makes engineering systems and operational work more effective.
+- **Technical leadership** - I enjoy helping teams make strong trade-offs, align on architecture, and turn good ideas into dependable delivery.
 
-I care about building software that scales, surfacing the signals teams need to operate confidently, and helping good technical ideas move from prototype to production.
+I like operating across the boundary between hands-on engineering and technical strategy, especially when the goal is to help teams move faster without losing robustness or clarity.
 
-### What I Work On
+## What You'll Find Here
 
-- **Distributed Systems & Reliability** - Designing resilient architectures, failure-aware services, and dependable workflows
-- **Observability** - Building feedback loops with metrics, traces, and operational context that help teams debug faster
-- **AI Engineering & AIOps** - Applying AI where it makes engineering systems and operational work more effective
-- **Technical Leadership** - Mentoring engineers, shaping architecture, and helping teams make strong trade-offs over time
+This site is where I publish essays and notes about building software at scale: the patterns that hold up under pressure, the trade-offs worth understanding, and the tooling shifts changing how engineers work.
 
-Over the years, I've worked on projects that push the boundaries of scale and reliability. I enjoy combining hands-on engineering with technical strategy so teams can move quickly without losing robustness.
+I want the writing to be useful for engineers designing systems, improving developer workflows, or leading technical work through ambiguity. The goal is not just to explain concepts, but to make them practical enough to use.
 
-### Why I Write
+## Beyond Work
 
-This site is where I share lessons from building and operating software at scale: patterns that hold up under pressure, trade-offs worth understanding, and the tooling shifts that are changing how engineers work.
-
-My goal is to make these ideas practical—useful for people designing systems, improving developer workflows, or leading engineering work through ambiguity.
-
-### How I Like to Connect
-
-If a post resonates, **LinkedIn** is the easiest place to start a conversation today. **GitHub** is the best place to see what I'm building and experimenting with, and this site is evolving into the home for longer-form notes and future direct updates.
-
-- [Connect on LinkedIn](https://www.linkedin.com/in/mayureshwaykole/)
-- [Explore projects on GitHub](https://github.com/mayureshwaykole)
-- [Follow along on X/Twitter](https://x.com/MayureshWaykole)
-
-### Beyond Work
-
-When I'm not architecting systems, you'll usually find me hiking trails, exploring new places, reading, or enjoying a good cup of chai.
+Outside of engineering, you'll usually find me hiking trails, exploring new places, reading, or enjoying a good cup of chai.

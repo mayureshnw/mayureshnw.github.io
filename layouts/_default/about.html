@@ -1,38 +1,94 @@
 {{- define "main" -}}
+{{- $heroLinks := .Params.heroLinks -}}
+{{- $panelSections := .Params.panelSections -}}
 <div class="brand-shell brand-about-shell">
-  <section class="brand-surface brand-surface--hero brand-page-hero">
-    <div class="brand-page-copy">
+  <section class="brand-surface brand-surface--hero brand-page-hero brand-page-hero--split brand-about-hero">
+    <div class="brand-page-copy brand-about-copy">
       {{- partial "brand/page_intro.html" (dict
         "page" .
         "eyebrow" "About"
         "title" .Title
-        "description" .Summary
+        "description" (.Summary | default .Description)
       ) -}}
-      {{- if .Content -}}
-      <div class="brand-page-copy-body brand-about-copy">
-        {{- partial "site/anchored-headings.html" .Content -}}
+
+      {{- with .Params.heroIntro -}}
+      <div class="brand-editorial-summary brand-about-hero-summary">
+        {{ . | markdownify }}
       </div>
       {{- end -}}
+
+      {{- with .Params.heroSupporting -}}
+      <div class="brand-editorial-supporting brand-about-hero-supporting">
+        {{ . | markdownify }}
+      </div>
+      {{- end -}}
+
+      {{- with $heroLinks -}}
+      <nav class="brand-inline-links brand-about-inline-links" aria-label="About page links">
+        {{- range $index, $link := . -}}
+        {{- if gt $index 0 -}}
+        <span aria-hidden="true">/</span>
+        {{- end -}}
+        {{- $href := $link.url -}}
+        {{- $isExternal := or (hasPrefix $href "https://") (hasPrefix $href "http://") -}}
+        <a href="{{ $href }}"{{ if $isExternal }} target="_blank" rel="noopener noreferrer me"{{ end }}>{{ $link.label }}</a>
+        {{- end -}}
+      </nav>
+      {{- end -}}
     </div>
+
+    {{- with $panelSections -}}
+    <aside class="brand-page-panel brand-about-panel" aria-label="About page context">
+      {{- range . -}}
+      <section class="brand-about-panel-section">
+        {{- with .title -}}
+        <p class="brand-about-panel-title">{{ . }}</p>
+        {{- end -}}
+
+        {{- with .copy -}}
+        <div class="brand-about-panel-copy">
+          {{ . | markdownify }}
+        </div>
+        {{- end -}}
+
+        {{- with .items -}}
+        <ul class="brand-about-panel-list">
+          {{- range . -}}
+          <li>{{ . | markdownify }}</li>
+          {{- end -}}
+        </ul>
+        {{- end -}}
+      </section>
+      {{- end -}}
+    </aside>
+    {{- end -}}
   </section>
 
-  <section class="brand-surface brand-surface--soft brand-link-section" aria-labelledby="about-next-title">
+  {{- if .Content -}}
+  <section class="brand-surface brand-surface--soft brand-about-story">
+    <div class="brand-page-copy-body brand-about-story-copy">
+      {{- partial "site/anchored-headings.html" .Content -}}
+    </div>
+  </section>
+  {{- end -}}
+
+  <section class="brand-surface brand-surface--soft brand-link-section brand-about-links" aria-labelledby="about-next-title">
     <div class="brand-link-section-intro">
       <h2 id="about-next-title">Where to go next</h2>
-      <p>Start with the writing if you want the ideas first, or use LinkedIn and GitHub if you want the conversation and projects around them.</p>
+      <p>If you want the best next steps after this page, start with the essays, browse by tag, or use the external profiles for conversation and code.</p>
     </div>
 
     <div class="brand-link-groups">
       <section class="brand-link-group" aria-labelledby="about-links-writing">
-        <h3 id="about-links-writing">Writing</h3>
+        <h3 id="about-links-writing">Start here</h3>
         <ul class="brand-link-list">
           <li>
-            <a href="/">Home</a>
-            <p>The front page and overall editorial framing for the site.</p>
+            <a href='{{ "categories/engineering/" | relLangURL }}'>Engineering</a>
+            <p>The main stream for long-form writing on systems, reliability, observability, and AI engineering.</p>
           </li>
           <li>
-            <a href="/categories/engineering/">Engineering</a>
-            <p>The main stream for long-form writing on systems, reliability, and AI engineering.</p>
+            <a href='{{ "" | relLangURL }}'>Home</a>
+            <p>The quietest entry point if you want the overall framing first.</p>
           </li>
         </ul>
       </section>
@@ -41,8 +97,8 @@
         <h3 id="about-links-browse">Browse</h3>
         <ul class="brand-link-list">
           <li>
-            <a href="/tags/">Tags</a>
-            <p>Browse by problem space, pattern, or tool.</p>
+            <a href='{{ "tags/" | relLangURL }}'>Tags</a>
+            <p>Browse by pattern, problem space, or tool.</p>
           </li>
         </ul>
       </section>
@@ -57,6 +113,10 @@
           <li>
             <a href="https://github.com/mayureshwaykole" target="_blank" rel="noopener noreferrer me">GitHub</a>
             <p>Projects, experiments, and code outside the essays.</p>
+          </li>
+          <li>
+            <a href="https://x.com/MayureshWaykole" target="_blank" rel="noopener noreferrer me">X / Twitter</a>
+            <p>Short updates, links, and ideas in progress.</p>
           </li>
         </ul>
       </section>
