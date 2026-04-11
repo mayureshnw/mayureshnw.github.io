@@ -69,7 +69,6 @@ lastmod: 2025-05-18T02:28:00.000Z
 draft: true
 categories: [engineering]
 tags: [Tag1, Tag2, Tag3]
-series: ""
 featured: false
 canonicalURL: ""
 aliases: []
@@ -107,6 +106,6 @@ The deployment workflow uses Hugo Extended v0.147.3. Keep this consistent for lo
 ### Content Guidelines
 - Posts should be categorized under `categories: [engineering]` to appear in the Engineering menu
 - `description`, `date`, `lastmod`, `draft`, `tags`, `ShowToc`, and `TocOpen` should be present on every post
-- `tags` are granular discovery terms; `series` is for a named multi-part sequence
-- `series`, `featured`, `canonicalURL`, `aliases`, and `cover` fields are optional and should be filled only when relevant
+- `tags` are granular discovery terms
+- `featured`, `canonicalURL`, `aliases`, and `cover` fields are optional and should be filled only when relevant
 - Always set `draft: false` when ready to publish

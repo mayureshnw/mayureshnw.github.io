@@ -7,7 +7,6 @@ lastmod: '{{ .Date }}'
 draft: true
 categories: [engineering]
 tags: []
-series: ""
 featured: false
 canonicalURL: ""
 aliases: []

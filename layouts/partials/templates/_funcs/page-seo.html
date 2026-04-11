@@ -1,7 +1,7 @@
 {{- $mainSections := site.Params.mainSections | default (slice "posts") -}}
 {{- $isPost := and .IsPage (in $mainSections .Section) -}}
 {{- $isAboutPage := and .IsPage (eq .Layout "about") -}}
-{{- $isCollectionPage := or (eq .Kind "section") (eq .Kind "taxonomy") (eq .Kind "term") (and .IsPage (or (eq .Layout "archives") (eq .Section "series"))) -}}
+{{- $isCollectionPage := or (eq .Kind "section") (eq .Kind "taxonomy") (eq .Kind "term") (and .IsPage (eq .Layout "archives")) -}}
 {{- $ogType := "website" -}}
 {{- $schemaType := "WebPage" -}}
 

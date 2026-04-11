@@ -1,19 +1,37 @@
-{{- if (.Param "ShowBreadCrumbs") -}}
-<div class="breadcrumbs">
-    {{- $url := replace .Parent.Permalink (printf "%s" site.Home.Permalink) "" }}
-    {{- $lang_url := strings.TrimPrefix (printf "%s/" .Lang) $url -}}
-
-    <a href="{{ "" | absLangURL }}">{{ i18n "home" | default "Home" }}</a>
-    {{- $scratch := newScratch }}
-    {{- range $index, $element := split $lang_url "/" }}
-
-    {{- $scratch.Add "path" (printf "%s/" $element )}}
-    {{- $bc_pg := site.GetPage ($scratch.Get "path") -}}
-
-    {{- if (and ($bc_pg) (gt (len . ) 0))}}
-    {{- print "&nbsp;»&nbsp;" | safeHTML -}}<a href="{{ $bc_pg.Permalink }}">{{ $bc_pg.Name }}</a>
-    {{- end }}
-
+{{- $page := . -}}
+{{- $force := false -}}
+{{- $includeCurrent := false -}}
+{{- $class := "" -}}
+{{- if reflect.IsMap . -}}
+  {{- $page = .page -}}
+  {{- $force = .force | default false -}}
+  {{- $includeCurrent = .includeCurrent | default false -}}
+  {{- $class = .class | default "" -}}
+{{- end -}}
+{{- if and $page (or $force ($page.Param "ShowBreadCrumbs")) -}}
+  {{- $items := slice (dict "name" (i18n "home" | default "Home") "url" ("" | absLangURL) "isCurrent" false) -}}
+  {{- range $page.Ancestors.Reverse -}}
+    {{- if ne .Permalink site.Home.Permalink -}}
+      {{- $items = $items | append (dict "name" (.Title | default .LinkTitle | default .Name) "url" .Permalink "isCurrent" false) -}}
     {{- end -}}
-</div>
+  {{- end -}}
+  {{- if and $includeCurrent (ne $page.Permalink site.Home.Permalink) -}}
+    {{- $items = $items | append (dict "name" ($page.Title | default $page.LinkTitle | default $page.Name) "url" $page.Permalink "isCurrent" true) -}}
+  {{- end -}}
+  {{- if gt (len $items) 1 -}}
+<nav class="breadcrumbs{{ with $class }} {{ . }}{{ end }}" aria-label="Breadcrumb">
+    <ol>
+      {{- $last := sub (len $items) 1 -}}
+      {{- range $index, $item := $items -}}
+      <li>
+        {{- if and (index $item "isCurrent") (eq $index $last) -}}
+        <span aria-current="page">{{ index $item "name" }}</span>
+        {{- else -}}
+        <a href="{{ index $item "url" }}">{{ index $item "name" }}</a>
+        {{- end -}}
+      </li>
+      {{- end -}}
+    </ol>
+</nav>
+  {{- end -}}
 {{- end -}}

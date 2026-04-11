@@ -1,7 +1,5 @@
 {{- define "main" -}}
 {{- $eyebrow := "Engineering essay" -}}
-{{- $mainSections := site.Params.mainSections | default (slice "posts") -}}
-{{- $showContextLinks := in $mainSections .Type -}}
 
 <div class="brand-shell brand-post-shell">
   <article class="post-single brand-post-single brand-surface brand-surface--hero">
@@ -9,31 +7,21 @@
       {{- partial "brand/page_intro.html" (dict
         "page" .
         "showBreadcrumbs" true
+        "breadcrumbsForce" true
+        "breadcrumbsClass" "brand-post-breadcrumbs"
         "eyebrow" $eyebrow
         "title" .Title
         "description" .Description
         "class" "brand-post-header"
       ) -}}
-      {{- if or (not (.Param "hideMeta")) $showContextLinks }}
+      {{- if not (.Param "hideMeta") }}
       <div class="brand-post-context">
-        {{- if not (.Param "hideMeta") }}
         <div class="post-meta brand-post-meta">
           {{- partial "post_meta.html" . -}}
           {{- partial "translation_list.html" . -}}
           {{- partial "edit_post.html" . -}}
           {{- partial "post_canonical.html" . -}}
         </div>
-        {{- end }}
-
-        {{- if $showContextLinks }}
-        <nav class="brand-inline-links brand-post-links" aria-label="Post links">
-          <a href='{{ "" | relLangURL }}'>Home</a>
-          <span aria-hidden="true">/</span>
-          <a href='{{ "archives/" | relLangURL }}'>Archives</a>
-          <span aria-hidden="true">/</span>
-          <a href='{{ "about/" | relLangURL }}'>About</a>
-        </nav>
-        {{- end -}}
       </div>
       {{- end -}}
     </div>

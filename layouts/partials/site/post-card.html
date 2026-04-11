@@ -3,12 +3,7 @@
 {{- if isset . "showMeta" -}}
   {{- $showMeta = .showMeta -}}
 {{- end -}}
-{{- $showSeries := false -}}
-{{- if isset . "showSeries" -}}
-  {{- $showSeries = .showSeries -}}
-{{- end -}}
 {{- $summary := $page.Description | default ($page.Summary | plainify | htmlUnescape) -}}
-{{- $seriesValues := partial "brand/post_value_slice.html" $page.Params.series -}}
 <article class="{{ .class | default "post-entry" }}">
   {{- $isHidden := ($page.Param "cover.hiddenInList") | default ($page.Param "cover.hidden") | default false -}}
   {{- partial "cover.html" (dict "cxt" $page "IsSingle" false "isHidden" $isHidden) -}}
@@ -30,15 +25,9 @@
     <p>{{ . }}{{ if and (not $page.Description) $page.Truncated }}...{{ end }}</p>
   </div>
   {{- end -}}
-  {{- if or $showMeta (and $showSeries (gt (len $seriesValues) 0)) -}}
+  {{- if $showMeta -}}
   <footer class="entry-footer">
-    {{- if $showMeta -}}
-      {{- partial "post_meta.html" $page -}}
-    {{- end -}}
-    {{- if and $showSeries (gt (len $seriesValues) 0) -}}
-      {{- if $showMeta -}}<br>{{- end -}}
-      Series: {{ delimit $seriesValues " · " }}
-    {{- end -}}
+    {{- partial "post_meta.html" $page -}}
   </footer>
   {{- end -}}
   <a class="entry-link" aria-label="post link to {{ $page.Title | plainify }}" href="{{ $page.Permalink }}"></a>

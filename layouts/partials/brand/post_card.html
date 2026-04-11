@@ -14,17 +14,12 @@
 {{- if isset . "showMeta" -}}
   {{- $showMeta = .showMeta -}}
 {{- end -}}
-{{- $showSeries := false -}}
-{{- if isset . "showSeries" -}}
-  {{- $showSeries = .showSeries -}}
-{{- end -}}
 {{- $summary := .summary | default ($page.Description | default ($page.Summary | plainify | htmlUnescape)) -}}
 {{- $summary = $summary | plainify | htmlUnescape -}}
 {{- $badge := .badge | default "" -}}
 {{- if and (not $badge) $page.Params.featured -}}
   {{- $badge = "Featured" -}}
 {{- end -}}
-{{- $seriesValues := partial "brand/post_value_slice.html" $page.Params.series -}}
 
 <article class="{{ $class }}">
   {{- $isHidden := ($page.Param "cover.hiddenInList") | default ($page.Param "cover.hidden") | default false -}}
@@ -58,15 +53,9 @@
   </div>
   {{- end -}}
 
-  {{- if or $showMeta (and $showSeries (gt (len $seriesValues) 0)) -}}
+  {{- if $showMeta -}}
   <footer class="entry-footer">
-    {{- if $showMeta -}}
-      {{- partial "post_meta.html" $page -}}
-    {{- end -}}
-    {{- if and $showSeries (gt (len $seriesValues) 0) -}}
-      {{- if $showMeta -}}<br>{{- end -}}
-      Series: {{ delimit $seriesValues " · " }}
-    {{- end -}}
+    {{- partial "post_meta.html" $page -}}
   </footer>
   {{- end -}}
 

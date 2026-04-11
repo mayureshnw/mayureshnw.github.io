@@ -9,10 +9,18 @@
 {{- end -}}
 {{- $eyebrow := .eyebrow -}}
 {{- $level := .level | default 1 -}}
+{{- $breadcrumbsClass := .breadcrumbsClass -}}
+{{- $breadcrumbsForce := .breadcrumbsForce | default false -}}
+{{- $breadcrumbsIncludeCurrent := .breadcrumbsIncludeCurrent | default false -}}
 
 <header class="brand-section-header{{ with .class }} {{ . }}{{ end }}">
   {{- if and $page .showBreadcrumbs -}}
-  {{- partial "breadcrumbs.html" $page -}}
+  {{- partial "breadcrumbs.html" (dict
+    "page" $page
+    "force" $breadcrumbsForce
+    "includeCurrent" $breadcrumbsIncludeCurrent
+    "class" $breadcrumbsClass
+  ) -}}
   {{- end -}}
 
   {{- with $eyebrow -}}

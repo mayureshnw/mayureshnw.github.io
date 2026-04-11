@@ -131,6 +131,15 @@
     font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
 }
 
+.brand-post-breadcrumbs {
+    margin: 0;
+}
+
+.brand-post-breadcrumbs a,
+.brand-post-breadcrumbs [aria-current="page"] {
+    font-size: 0.9rem;
+}
+
 .brand-post-context {
     display: grid;
     gap: 0.85rem;
@@ -156,10 +165,6 @@
     border-color: currentColor;
 }
 
-.brand-post-links {
-    padding-top: 0.15rem;
-}
-
 .brand-post-single .entry-cover {
     margin: 0;
     max-width: min(100%, 52rem);
@@ -167,6 +172,10 @@
 
 .brand-post-single .entry-cover img {
     width: 100%;
+}
+
+.brand-post-shell > .brand-post-rich-content {
+    padding-top: 1.15rem;
 }
 
 .brand-post-rich-content .toc {
@@ -238,6 +247,17 @@
 .brand-post-rich-content .post-content {
     max-width: 52rem;
     margin-top: 0;
+}
+
+.brand-post-rich-content .mermaid-diagram {
+    margin: 1.5rem 0;
+    overflow-x: auto;
+}
+
+.brand-post-rich-content .mermaid-diagram svg {
+    display: block;
+    max-width: 100%;
+    height: auto;
 }
 
 .brand-post-rich-content .post-content > p:first-of-type {

@@ -159,8 +159,6 @@
         {{- $listedPages = .RegularPages.ByDate.Reverse -}}
       {{- else if and .IsPage (eq .Layout "archives") -}}
         {{- $listedPages = (where site.RegularPages "Type" "in" (site.Params.mainSections | default (slice "posts"))).ByDate.Reverse -}}
-      {{- else if and .IsPage (eq .Section "series") -}}
-        {{- $listedPages = (where site.RegularPages "Params.series" .Title).ByDate.Reverse -}}
       {{- end -}}
       {{- $listItems := slice -}}
       {{- range $index, $page := $listedPages | first 20 -}}

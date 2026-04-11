@@ -80,18 +80,12 @@ Posts belong in page bundles under `content/posts/<slug>/index.md`; reserve top-
 
 | Field | Guidance |
 | --- | --- |
-| `series` | Use for a named multi-post sequence. Leave blank for standalone posts. |
 | `featured` | Set to `true` only when a post should be treated as editorially highlighted. |
 | `canonicalURL` | Use when the canonical version lives elsewhere. |
 | `aliases` | Old paths that should redirect to the current post URL. |
 | `cover.image` / `cover.alt` | Use when a post has a hero/cover image; always include meaningful alt text when an image is set. |
 
-### How `tags` and `series` differ
-
-- `tags` are granular keywords such as technologies, patterns, or problem spaces.
-- `series` groups posts that belong to the same narrative or multi-part run.
-
-### Tag and naming conventions
+### Tag conventions
 
 - Keep `tags` concise and reader-facing. Prefer 3-6 tags that describe the main technologies, patterns, or problem spaces in the post.
 - Use consistent display casing for `tags` (for example `OpenTelemetry`, `Prompt Engineering`, `Technical Debt`) instead of sentence fragments or long summary phrases.
@@ -100,7 +94,7 @@ Posts belong in page bundles under `content/posts/<slug>/index.md`; reserve top-
 ### Current discovery surfaces
 
 - Keep `categories: [engineering]` on posts so they continue to appear under the existing Engineering navigation.
-- Keep `series` lightweight and manual for now; use `content/series/` for curated landing pages until there is enough real series content to justify stronger automation.
+- Discovery stays centered on the archive, tags, and standalone essays.
 
 ### Phase 2 editorial notes
 

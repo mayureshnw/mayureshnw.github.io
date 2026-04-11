@@ -7,7 +7,6 @@ lastmod: 2019-05-01T22:12:03.284Z
 draft: false
 categories: [engineering]
 tags: [Python, Events, Event-Driven Architecture]
-series: "Reliability at the Boundaries"
 ShowToc: true
 TocOpen: true
 ---

@@ -2,10 +2,6 @@
 {{- if isset . "showMeta" -}}
   {{- $showMeta = .showMeta -}}
 {{- end -}}
-{{- $showSeries := false -}}
-{{- if isset . "showSeries" -}}
-  {{- $showSeries = .showSeries -}}
-{{- end -}}
 {{- $pages := .pages | default (slice) -}}
 {{- if gt (len $pages) 0 -}}
 <div class="{{ .class | default "brand-card-list" }}">
@@ -14,7 +10,6 @@
       "page" .
       "badge" (cond .Params.featured "Featured" "")
       "showMeta" $showMeta
-      "showSeries" $showSeries
     ) -}}
   {{- end -}}
 </div>
