@@ -170,20 +170,23 @@
 }
 
 .brand-post-rich-content .toc {
-    max-width: 26rem;
-    margin: 0;
-    padding: 0.95rem 0 0;
+    max-width: 32rem;
+    margin: 0 0 2rem;
+    padding: 0;
     border: 0;
-    border-top: 1px solid var(--brand-divider);
     background: transparent;
     border-radius: 0;
 }
 
 .brand-post-rich-content .toc details summary {
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
     margin-inline-start: 0;
-    font-size: 0.78rem;
+    font-size: 0.82rem;
     font-weight: 700;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--secondary);
 }
@@ -193,8 +196,43 @@
 }
 
 .brand-post-rich-content .toc .inner {
-    margin: 0.8rem 0 0;
+    margin: 0.9rem 0 0;
     padding: 0;
+}
+
+.brand-post-rich-content .toc .inner > ul,
+.brand-post-rich-content .toc .inner ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.brand-post-rich-content .toc .inner li {
+    margin: 0;
+}
+
+.brand-post-rich-content .toc .inner li + li {
+    margin-top: 0.5rem;
+}
+
+.brand-post-rich-content .toc .inner li ul {
+    margin-top: 0.45rem;
+    padding-left: 1rem;
+    border-left: 1px solid var(--border);
+}
+
+.brand-post-rich-content .toc a {
+    display: inline-flex;
+    align-items: baseline;
+    color: var(--primary);
+    font-size: 0.98rem;
+    line-height: 1.5;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+}
+
+.brand-post-rich-content .toc a:hover {
+    border-bottom-color: currentColor;
 }
 
 .brand-post-rich-content .post-content {
@@ -203,14 +241,14 @@
 }
 
 .brand-post-rich-content .post-content > p:first-of-type {
-    max-width: 48rem;
-    font-size: clamp(1.14rem, 2.4vw, 1.48rem);
-    line-height: 1.75;
+    max-width: 46rem;
+    font-size: clamp(1.06rem, 1.8vw, 1.18rem);
+    line-height: 1.82;
     color: var(--content);
 }
 
 .brand-post-rich-content .post-content > p:first-of-type + p {
-    margin-top: calc(var(--content-gap) - 0.2rem);
+    margin-top: calc(var(--content-gap) - 0.5rem);
 }
 
 .brand-post-rich-content .post-content > h2:first-child,

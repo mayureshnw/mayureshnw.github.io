@@ -217,23 +217,24 @@
 }
 
 .post-content code {
-    margin: auto 4px;
-    padding: 4px 6px;
-    font-size: 0.78em;
-    line-height: 1.5;
+    margin: 0 0.15em;
+    padding: 0.12em 0.42em;
+    font-size: 0.88em;
+    line-height: inherit;
     background: var(--code-bg);
-    border-radius: 2px;
+    border-radius: 4px;
 }
 
 .post-content pre code {
     display: grid;
     margin: auto 0;
-    padding: 10px;
+    padding: 14px 16px;
     color: rgb(213, 213, 214);
     background: var(--code-block-bg) !important;
     border-radius: var(--radius);
     overflow-x: auto;
-    word-break: break-all;
+    word-break: normal;
+    overflow-wrap: normal;
 }
 
 .post-content blockquote {
