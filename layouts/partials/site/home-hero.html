@@ -1,23 +1,14 @@
 {{- $title := site.Title -}}
 {{- $content := site.Params.description -}}
-{{- $align := "" -}}
 {{- with site.Params.homeInfoParams -}}
   {{- $title = .Title | default $title -}}
   {{- $content = .Content | default $content -}}
-  {{- $align = .AlignSocialIconsTo -}}
 {{- end -}}
-<article class="first-entry home-info brand-home-hero">
-  <header class="entry-header">
-    <h1>{{ $title }}</h1>
-  </header>
+<div class="brand-home-hero">
+  <h1>{{ $title }}</h1>
   {{- with $content -}}
-  <div class="entry-content">
+  <div class="brand-home-summary">
     {{ . | markdownify }}
   </div>
   {{- end -}}
-  {{- if site.Params.socialIcons -}}
-  <footer class="entry-footer">
-    {{- partial "social_icons.html" (dict "align" $align) -}}
-  </footer>
-  {{- end -}}
-</article>
+</div>

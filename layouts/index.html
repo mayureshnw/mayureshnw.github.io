@@ -1,35 +1,72 @@
 {{- define "main" -}}
-<div class="brand-shell brand-home">
-  <section class="brand-surface brand-surface--hero brand-home-hero-shell">
-    <div class="brand-home-hero__copy">
-      <p class="brand-section-eyebrow">Senior software engineer · distributed systems · observability</p>
-      {{- partial "site/home-hero.html" . -}}
-      <p class="brand-home-lede">
-        Building and writing about systems that stay understandable, observable, and reliable as they grow.
-      </p>
-      <div class="brand-home-actions">
-        <a class="brand-home-action brand-home-action--strong" href="/about/">About</a>
-        <a class="brand-home-action" href="/archives/">Archives</a>
-        <a class="brand-home-action" href="/categories/engineering/">Engineering</a>
-      </div>
-    </div>
+<div class="brand-home">
+  <section class="brand-home-intro-section">
+    <p class="brand-home-eyebrow">Engineering blog · distributed systems · observability · reliability</p>
+    {{- partial "site/home-hero.html" . -}}
+    <p class="brand-home-supporting">
+      Practical writing on system design, operational clarity, and the engineering trade-offs that matter once software meets scale.
+    </p>
+    <nav class="brand-home-inline-links" aria-label="Homepage links">
+      <a href="/about/">About</a>
+      <span aria-hidden="true">/</span>
+      <a href="/archives/">Archives</a>
+      <span aria-hidden="true">/</span>
+      <a href="/categories/engineering/">Engineering</a>
+      <span aria-hidden="true">/</span>
+      <a href="https://www.linkedin.com/in/mayureshwaykole/" target="_blank" rel="noopener noreferrer me">LinkedIn</a>
+      <span aria-hidden="true">/</span>
+      <a href="https://github.com/mayureshwaykole" target="_blank" rel="noopener noreferrer me">GitHub</a>
+    </nav>
   </section>
 
-  <section class="brand-surface brand-home-connect">
-    <div class="brand-home-connect__copy">
-      {{- partial "site/section-header.html" (dict
-          "title" "Professional links"
-          "description" "This site holds the long-form writing. LinkedIn and GitHub are the best places to continue the conversation."
-        "level" 2
-        "class" "brand-home-section-header brand-home-section-header--compact"
-      ) -}}
+  <section class="brand-home-links-section" aria-labelledby="home-links-title">
+    <div class="brand-home-section-intro">
+      <h2 id="home-links-title">Where to start</h2>
+      <p>This homepage stays intentionally quiet. Use these entry points for essays, background, and the best places to continue the conversation.</p>
     </div>
 
-    <div class="brand-home-connect__actions">
-      <a class="brand-home-action brand-home-action--strong" href="/about/">About Mayuresh</a>
-      <a class="brand-home-action" href="https://www.linkedin.com/in/mayureshwaykole/">LinkedIn</a>
-      <a class="brand-home-action" href="https://github.com/mayureshwaykole">GitHub</a>
-      <a class="brand-home-action" href="https://x.com/MayureshWaykole">X</a>
+    <div class="brand-home-link-groups">
+      <section class="brand-home-link-group" aria-labelledby="home-links-writing">
+        <h3 id="home-links-writing">Writing</h3>
+        <ul class="brand-home-link-list">
+          <li>
+            <a href="/archives/">Archives</a>
+            <p>All published posts in chronological order.</p>
+          </li>
+          <li>
+            <a href="/categories/engineering/">Engineering</a>
+            <p>The main stream for essays on systems, reliability, observability, and AI engineering.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section class="brand-home-link-group" aria-labelledby="home-links-browse">
+        <h3 id="home-links-browse">Browse</h3>
+        <ul class="brand-home-link-list">
+          <li>
+            <a href="/tags/">Tags</a>
+            <p>Browse by tool, pattern, or problem space.</p>
+          </li>
+          <li>
+            <a href="/about/">About</a>
+            <p>Background, interests, and the longer arc behind the writing.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section class="brand-home-link-group" aria-labelledby="home-links-elsewhere">
+        <h3 id="home-links-elsewhere">Elsewhere</h3>
+        <ul class="brand-home-link-list">
+          <li>
+            <a href="https://www.linkedin.com/in/mayureshwaykole/" target="_blank" rel="noopener noreferrer me">LinkedIn</a>
+            <p>The easiest place to start a conversation.</p>
+          </li>
+          <li>
+            <a href="https://github.com/mayureshwaykole" target="_blank" rel="noopener noreferrer me">GitHub</a>
+            <p>Projects, experiments, and code outside the essays.</p>
+          </li>
+        </ul>
+      </section>
     </div>
   </section>
 </div>

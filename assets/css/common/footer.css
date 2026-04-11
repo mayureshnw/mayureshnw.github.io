@@ -5,11 +5,12 @@
 }
 
 .footer {
-    max-width: calc(var(--main-width) + var(--gap) * 2);
+    max-width: calc(var(--nav-width) + var(--gap) * 2);
     margin: auto;
-    padding: calc((var(--footer-height) - var(--gap)) / 2) var(--gap);
+    padding: 1.5rem var(--gap) 2rem;
     text-align: center;
     line-height: 24px;
+    border-top: 1px solid var(--border);
 }
 
 .footer span {
@@ -33,25 +34,25 @@
 .top-link {
     visibility: hidden;
     position: fixed;
-    bottom: 60px;
-    right: 30px;
+    bottom: 36px;
+    right: 24px;
     z-index: 99;
-    background: var(--tertiary);
+    background: var(--entry);
+    border: 1px solid var(--border);
     width: 42px;
     height: 42px;
     padding: 12px;
-    border-radius: 64px;
+    border-radius: 0;
     transition: visibility 0.5s, opacity 0.8s linear;
 }
 
-.top-link,
-.top-link svg {
-    filter: drop-shadow(0px 0px 0px var(--theme));
+.footer a:hover {
+    color: var(--primary);
 }
 
-.footer a:hover,
 .top-link:hover {
     color: var(--primary);
+    border-color: var(--primary);
 }
 
 .top-link:focus {

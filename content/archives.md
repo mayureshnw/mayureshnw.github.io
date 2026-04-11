@@ -1,6 +1,7 @@
 ---
-title: "Archive"
+title: "Archives"
 layout: "archives"
 url: "/archives/"
-summary: archives
+description: "Published essays and working notes in chronological order."
+summary: "Published essays and working notes in chronological order."
 ---

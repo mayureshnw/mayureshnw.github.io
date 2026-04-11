@@ -71,15 +71,13 @@ params:
     - AIOps
     - Software Engineering
     - System Design
-  description: "I'm a software engineer who loves building scalable and efficient systems. I'm into Distributed Systems, Observability, and AIOps."
+  description: "Engineering writing by Mayuresh Waykole on distributed systems, observability, reliability, and AI engineering."
   homeInfoParams:
     title: "Mayuresh Waykole"
     Content: |
-      Senior software engineer specializing in **Distributed Systems**, **Observability**, and **AIOps**.
+      I write about **distributed systems**, **observability**, **reliability**, and **AI-assisted engineering**.
 
-      I write about building scalable, reliable systems and the evolving landscape of software engineering.
-
-      [Learn more about me →](/about/)
+      This site is where I publish long-form notes on building software that stays understandable, observable, and reliable as it grows.
 
   socialIcons:
     - name: "LinkedIn"

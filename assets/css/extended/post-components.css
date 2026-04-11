@@ -1,33 +1,35 @@
 .section-posts .main {
-    max-width: calc(1120px + var(--gap) * 2);
+    max-width: calc(1040px + var(--gap) * 2);
 }
 
 .brand-list-shell,
 .brand-post-shell {
-    gap: 1.5rem;
+    gap: clamp(2.75rem, 6vw, 4rem);
 }
 
 .brand-list-results,
 .brand-post-rich-content {
-    overflow: hidden;
+    overflow: visible;
 }
 
 .brand-post-list--editorial {
-    gap: 0.75rem;
+    gap: 0;
 }
 
 .brand-post-list--editorial .post-entry {
     margin: 0;
-    border: 1px solid var(--brand-divider);
-    border-radius: var(--brand-card-radius);
-    background: var(--entry);
+    padding-top: 1.25rem;
+    border: 0;
+    border-top: 1px solid var(--border);
+    border-radius: 0;
+    background: transparent;
     box-shadow: none;
-    transition: border-color 0.2s ease, background 0.2s ease;
+    transition: none;
 }
 
 .brand-post-list--editorial .post-entry:hover {
-    border-color: var(--brand-divider-strong);
-    background: var(--brand-soft-surface);
+    border-color: var(--border);
+    background: transparent;
 }
 
 .brand-post-list--editorial .entry-header h2 {
@@ -58,9 +60,9 @@
 
 .brand-post-header .brand-section-title {
     max-width: 18ch;
-    font-size: clamp(1.95rem, 3.2vw, 2.6rem);
-    line-height: 1.02;
-    letter-spacing: -0.04em;
+    font-size: clamp(2.15rem, 3.8vw, 3rem);
+    line-height: 0.98;
+    letter-spacing: -0.045em;
     font-weight: 700;
     text-wrap: balance;
 }
@@ -68,8 +70,9 @@
 .brand-post-header .brand-page-description {
     max-width: 42rem;
     color: var(--secondary);
-    font-size: 1rem;
+    font-size: 1.05rem;
     line-height: 1.75;
+    font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
 }
 
 .brand-post-meta {
@@ -87,8 +90,9 @@
 
 .brand-post-rich-content .toc {
     margin: 0 0 1.5rem;
-    border: 1px solid var(--brand-divider);
-    background: rgba(125, 125, 125, 0.03);
+    border: 1px solid var(--border);
+    background: transparent;
+    border-radius: 0;
 }
 
 .brand-post-rich-content .post-content {
@@ -102,17 +106,17 @@
 
 .brand-post-footer {
     display: grid;
-    gap: 2rem;
+    gap: 1.75rem;
 }
 
 .brand-post-footer-meta {
     display: grid;
-    gap: 1.25rem;
+    gap: 1rem;
 }
 
 .brand-post-supplemental {
     display: grid;
-    gap: 1.5rem;
+    gap: 2rem;
 }
 
 .brand-author-shell,
@@ -120,69 +124,74 @@
 .brand-post-related {
     display: grid;
     gap: 1rem;
-}
-
-.brand-author-shell,
-.brand-cta-shell {
-    padding: 1.25rem;
-    border: 1px solid var(--brand-divider);
-    border-radius: var(--brand-surface-radius);
-    background: var(--entry);
+    margin: 0;
+    padding: 1.25rem 0 0;
+    border: 0;
+    border-top: 1px solid var(--border);
+    border-radius: 0;
+    background: transparent;
     box-shadow: none;
 }
 
 .brand-author-shell .entry-header h2,
 .brand-cta-shell .entry-header h2 {
     margin: 0;
+    font-size: 1.1rem;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
 }
 
 .brand-author-shell .entry-content,
 .brand-cta-shell .entry-content {
     color: var(--secondary);
+    font-size: 0.98rem;
+    line-height: 1.75;
 }
 
 .brand-author-shell .entry-content p,
 .brand-cta-shell .entry-content p {
     margin: 0;
+    font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
 }
 
 .brand-author-shell .entry-footer,
 .brand-cta-shell .entry-footer {
-    display: grid;
-    gap: 0.75rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+    align-items: center;
 }
 
 .brand-cta-actions {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.75rem;
+    gap: 0.4rem 1rem;
 }
 
 .brand-cta-action {
     display: inline-flex;
     align-items: center;
-    justify-content: center;
-    min-height: 2.6rem;
-    padding: 0.65rem 1rem;
-    border: 1px solid var(--brand-divider-strong);
-    border-radius: 999px;
+    justify-content: flex-start;
+    min-height: auto;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
     background: transparent;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     font-weight: 600;
-    letter-spacing: 0.01em;
+    letter-spacing: 0;
     text-decoration: none;
-    transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease, color 0.2s ease;
 }
 
-.brand-cta-action:hover {
-    border-color: var(--primary);
-    background: var(--brand-soft-surface);
-}
-
-.brand-cta-action:first-child {
-    color: var(--theme);
-    background: var(--primary);
-    border-color: var(--primary);
+.brand-cta-action:hover,
+.brand-cta-action:first-child,
+.brand-cta-action:first-child:hover {
+    color: var(--primary);
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid currentColor;
 }
 
 .brand-author-shell .social-icons {
@@ -191,8 +200,9 @@
 
 .brand-related-list {
     display: grid;
-    gap: 0.75rem;
+    gap: 0;
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 2rem;
 }
 
 .brand-post-card--related {
@@ -228,15 +238,8 @@
     }
 
     .brand-author-shell,
-    .brand-cta-shell {
-        padding: 1rem;
-    }
-
-    .brand-cta-actions {
-        flex-direction: column;
-    }
-
-    .brand-cta-action {
-        width: 100%;
+    .brand-cta-shell,
+    .brand-post-related {
+        padding-top: 1rem;
     }
 }

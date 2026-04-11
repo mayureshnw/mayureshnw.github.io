@@ -1,35 +1,75 @@
 {{- define "main" -}}
-<article class="post-single brand-surface brand-surface-about">
-  {{- partial "site/section-header.html" (dict
-    "page" .
-    "showBreadcrumbs" true
-    "title" .Title
-    "description" .Summary
-    "level" 1
-    "class" "post-header"
-  ) -}}
-  {{- if .Content -}}
-  <div class="post-content">
-    {{- if not (.Param "disableAnchoredHeadings") -}}
-      {{- partial "anchored_headings.html" .Content -}}
-    {{- else -}}
-      {{- .Content -}}
-    {{- end -}}
-  </div>
-  {{- end -}}
-  {{- partial "site/author-shell.html" (dict
-    "page" .
-    "title" "What I focus on"
-    "body" "I write about distributed systems, observability, reliability, and AI engineering from the perspective of building and operating software at scale."
-  ) -}}
-  {{- partial "site/cta-shell.html" (dict
-    "title" "Start with the writing"
-    "body" "If you're here for engineering essays, the homepage and archives are the best places to start."
-    "actions" (slice
-      (dict "label" "Latest writing" "url" "/")
-      (dict "label" "Archives" "url" "/archives/")
-      (dict "label" "Engineering" "url" "/categories/engineering/")
-    )
-  ) -}}
-</article>
+<div class="brand-shell brand-about-shell">
+  <section class="brand-surface brand-surface--hero brand-page-hero">
+    <div class="brand-page-copy">
+      {{- partial "brand/page_intro.html" (dict
+        "page" .
+        "showBreadcrumbs" true
+        "eyebrow" "About"
+        "title" .Title
+        "description" .Summary
+      ) -}}
+      {{- if .Content -}}
+      <div class="brand-page-copy-body brand-about-copy">
+        {{- if not (.Param "disableAnchoredHeadings") -}}
+          {{- partial "anchored_headings.html" .Content -}}
+        {{- else -}}
+          {{- .Content -}}
+        {{- end -}}
+      </div>
+      {{- end -}}
+    </div>
+  </section>
+
+  <section class="brand-surface brand-surface--soft brand-link-section" aria-labelledby="about-next-title">
+    <div class="brand-link-section-intro">
+      <h2 id="about-next-title">Where to go next</h2>
+      <p>Start with the writing if you want the ideas first, or use LinkedIn and GitHub if you want the conversation and projects around them.</p>
+    </div>
+
+    <div class="brand-link-groups">
+      <section class="brand-link-group" aria-labelledby="about-links-writing">
+        <h3 id="about-links-writing">Writing</h3>
+        <ul class="brand-link-list">
+          <li>
+            <a href="/">Home</a>
+            <p>The front page and overall editorial framing for the site.</p>
+          </li>
+          <li>
+            <a href="/archives/">Archives</a>
+            <p>All published essays and working notes in one chronological list.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section class="brand-link-group" aria-labelledby="about-links-browse">
+        <h3 id="about-links-browse">Browse</h3>
+        <ul class="brand-link-list">
+          <li>
+            <a href="/categories/engineering/">Engineering</a>
+            <p>The main stream for long-form writing on systems, reliability, and AI engineering.</p>
+          </li>
+          <li>
+            <a href="/tags/">Tags</a>
+            <p>Browse by problem space, pattern, or tool.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section class="brand-link-group" aria-labelledby="about-links-elsewhere">
+        <h3 id="about-links-elsewhere">Elsewhere</h3>
+        <ul class="brand-link-list">
+          <li>
+            <a href="https://www.linkedin.com/in/mayureshwaykole/" target="_blank" rel="noopener noreferrer me">LinkedIn</a>
+            <p>The easiest place to start a conversation.</p>
+          </li>
+          <li>
+            <a href="https://github.com/mayureshwaykole" target="_blank" rel="noopener noreferrer me">GitHub</a>
+            <p>Projects, experiments, and code outside the essays.</p>
+          </li>
+        </ul>
+      </section>
+    </div>
+  </section>
+</div>
 {{- end -}}

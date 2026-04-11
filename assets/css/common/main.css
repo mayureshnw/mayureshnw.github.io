@@ -3,7 +3,7 @@
     min-height: calc(100vh - var(--header-height) - var(--footer-height));
     max-width: calc(var(--main-width) + var(--gap) * 2);
     margin: auto;
-    padding: var(--gap);
+    padding: clamp(1.5rem, 4vw, 2.5rem) var(--gap) clamp(3rem, 7vw, 4.5rem);
 }
 
 .page-header h1 {
@@ -12,30 +12,42 @@
 
 .pagination {
     display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
 }
 
 .pagination a {
-    color: var(--theme);
-    font-size: 13px;
-    line-height: 36px;
-    background: var(--primary);
-    border-radius: calc(36px / 2);
-    padding: 0 16px;
+    color: var(--primary);
+    font-size: 14px;
+    line-height: 1.6;
+    background: transparent;
+    border-radius: 0;
+    padding: 0;
+    border-bottom: 1px solid transparent;
+}
+
+.pagination a:hover {
+    border-bottom-color: currentColor;
 }
 
 .pagination .next {
     margin-inline-start: auto;
 }
 
+.page-footer {
+    margin-top: 2rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--border);
+}
 
 .social-icons a {
     display: inline-flex;
-    padding: 10px;
+    padding: 8px;
 }
 
 .social-icons a svg {
-    height: 26px;
-    width: 26px;
+    height: 22px;
+    width: 22px;
 }
 
 code {

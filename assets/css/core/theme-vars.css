@@ -1,22 +1,22 @@
 :root {
     --gap: 24px;
     --content-gap: 20px;
-    --nav-width: 1024px;
-    --main-width: 720px;
+    --nav-width: 1040px;
+    --main-width: 760px;
     --header-height: 60px;
     --footer-height: 60px;
     --radius: 8px;
-    --theme: rgb(255, 255, 255);
-    --entry: rgb(255, 255, 255);
-    --primary: rgb(30, 30, 30);
-    --secondary: rgb(108, 108, 108);
-    --tertiary: rgb(214, 214, 214);
-    --content: rgb(31, 31, 31);
+    --theme: rgb(247, 245, 239);
+    --entry: rgb(252, 250, 244);
+    --primary: rgb(28, 28, 25);
+    --secondary: rgb(102, 97, 88);
+    --tertiary: rgb(223, 218, 207);
+    --content: rgb(34, 33, 30);
     --code-block-bg: rgb(28, 29, 33);
-    --code-bg: rgb(245, 245, 245);
-    --border: rgb(238, 238, 238);
+    --code-bg: rgb(239, 235, 225);
+    --border: rgb(223, 218, 207);
 }
 
 .list {
-    background: var(--code-bg);
+    background: var(--theme);
 }

@@ -1,0 +1,36 @@
+{{- define "main" -}}
+{{- $mainSections := site.Params.mainSections | default (slice "posts") -}}
+{{- $pages := where site.RegularPages "Type" "in" $mainSections -}}
+{{- $pages = $pages.ByDate.Reverse -}}
+
+<div class="brand-shell brand-list-shell brand-archive-shell">
+  <section class="brand-surface brand-surface--hero">
+    {{- partial "brand/page_intro.html" (dict
+      "page" .
+      "showBreadcrumbs" true
+      "eyebrow" "Writing archive"
+      "title" .Title
+      "description" (.Description | default "Every published essay and note in chronological order.")
+    ) -}}
+
+    {{- with .Content -}}
+    <div class="brand-page-copy-body">
+      {{- if not ($.Param "disableAnchoredHeadings") -}}
+        {{- partial "anchored_headings.html" . -}}
+      {{- else -}}
+        {{- . -}}
+      {{- end -}}
+    </div>
+    {{- end -}}
+  </section>
+
+  <section class="brand-surface brand-surface--soft brand-list-results">
+    {{- partial "site/post-card-list.html" (dict
+      "pages" $pages
+      "showMeta" true
+      "showSeries" true
+      "class" "brand-post-list brand-post-list--editorial"
+    ) -}}
+  </section>
+</div>
+{{- end -}}

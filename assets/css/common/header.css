@@ -1,6 +1,12 @@
+.header {
+    border-bottom: 1px solid var(--border);
+    background: var(--theme);
+}
+
 .nav {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     justify-content: space-between;
     max-width: calc(var(--nav-width) + var(--gap) * 2);
     margin-inline-start: auto;
@@ -23,8 +29,9 @@
 }
 
 .logo a {
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 700;
+    letter-spacing: -0.03em;
 }
 
 .logo a img, .logo a svg {
@@ -37,6 +44,7 @@
 }
 
 #menu {
+    align-items: center;
     list-style: none;
     word-break: keep-all;
     overflow-x: auto;
@@ -48,12 +56,18 @@
 }
 
 #menu a {
-    font-size: 16px;
+    color: var(--secondary);
+    font-size: 15px;
+    transition: color 0.2s ease;
+}
+
+#menu a:hover {
+    color: var(--primary);
 }
 
 #menu .active {
-    font-weight: 500;
-    border-bottom: 2px solid currentColor;
+    font-weight: 600;
+    border-bottom: 1px solid currentColor;
 }
 
 .lang-switch li,
@@ -76,4 +90,14 @@
 
 .logo-switches {
     flex-wrap: inherit;
+}
+
+@media (max-width: 768px) {
+    .logo a {
+        font-size: 20px;
+    }
+
+    #menu a {
+        font-size: 14px;
+    }
 }

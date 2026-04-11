@@ -1,20 +1,27 @@
 {{- define "main" -}}
-{{- if .Title -}}
-<header class="page-header">
-  <h1>{{ .Title }}</h1>
-  {{- if .Description -}}
-  <div class="post-description">
-    {{ .Description }}
-  </div>
-  {{- end -}}
-</header>
-{{- end -}}
+{{- $description := .Description | default "Browse the site's topics and jump directly into the writing." -}}
+<div class="brand-shell brand-terms-shell">
+  <section class="brand-surface brand-surface--hero">
+    {{- partial "brand/page_intro.html" (dict
+      "page" .
+      "showBreadcrumbs" true
+      "eyebrow" "Browse"
+      "title" .Title
+      "description" $description
+    ) -}}
+  </section>
 
-<ul class="terms-tags">
-  {{- range .Data.Terms.Alphabetical -}}
-  <li>
-    <a href="{{ .Page.RelPermalink }}">{{ .Page.LinkTitle }} <sup><strong><sup>{{ .Count }}</sup></strong></sup></a>
-  </li>
-  {{- end -}}
-</ul>
+  <section class="brand-surface brand-surface--soft">
+    <ul class="terms-tags">
+      {{- range .Data.Terms.Alphabetical -}}
+      <li>
+        <a href="{{ .Page.RelPermalink }}">
+          <span>{{ .Page.LinkTitle }}</span>
+          <span class="terms-tags__count">{{ .Count }}</span>
+        </a>
+      </li>
+      {{- end -}}
+    </ul>
+  </section>
+</div>
 {{- end -}}
