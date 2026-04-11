@@ -1,0 +1,194 @@
+{{- $seo := partial "templates/_funcs/page-seo.html" . -}}
+{{- $images := partial "templates/_funcs/social-images.html" . -}}
+{{- $siteDescription := site.Params.description | plainify | htmlUnescape | chomp -}}
+{{- $pageDescription := or .Description .Summary site.Params.description | plainify | htmlUnescape | chomp -}}
+{{- $publisherType := site.Params.schema.publisherType | default "Organization" | title -}}
+{{- $sameAs := slice -}}
+{{- with site.Params.schema.sameAs -}}
+  {{- range . -}}
+    {{- $sameAs = $sameAs | append (trim . " ") -}}
+  {{- end -}}
+{{- else -}}
+  {{- range site.Params.socialIcons -}}
+    {{- with .url -}}
+      {{- $sameAs = $sameAs | append (trim . " ") -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- $siteImage := dict "Permalink" (site.Params.assets.favicon | default "favicon.ico" | absURL) -}}
+{{- with index (partial "templates/_funcs/social-images.html" site.Home) 0 -}}
+  {{- $siteImage = . -}}
+{{- end -}}
+{{- $publisher := dict
+  "@id" (printf "%s#publisher" site.Home.Permalink)
+  "@type" $publisherType
+  "name" site.Title
+  "url" site.Home.Permalink
+-}}
+{{- if eq $publisherType "Person" -}}
+  {{- $publisher = merge $publisher (dict "image" (index $siteImage "Permalink")) -}}
+{{- else -}}
+  {{- $publisher = merge $publisher (dict "logo" (dict "@type" "ImageObject" "url" (index $siteImage "Permalink"))) -}}
+{{- end -}}
+{{- if gt (len $sameAs) 0 -}}
+  {{- $publisher = merge $publisher (dict "sameAs" $sameAs) -}}
+{{- end -}}
+{{- $graph := slice $publisher -}}
+
+{{- if .IsHome -}}
+  {{- $website := dict
+    "@type" "WebSite"
+    "@id" (printf "%s#website" site.Home.Permalink)
+    "url" site.Home.Permalink
+    "name" site.Title
+    "description" $siteDescription
+    "inLanguage" (site.Language.Lang | default "en-us")
+    "publisher" (dict "@id" (index $publisher "@id"))
+  -}}
+  {{- $graph = $graph | append $website -}}
+{{- else -}}
+  {{- $breadcrumbs := slice (dict "@type" "ListItem" "position" 1 "name" site.Title "item" site.Home.Permalink) -}}
+  {{- $position := 1 -}}
+  {{- range .Ancestors.Reverse -}}
+    {{- if ne .Permalink site.Home.Permalink -}}
+      {{- $position = add $position 1 -}}
+      {{- $breadcrumbs = $breadcrumbs | append (dict "@type" "ListItem" "position" $position "name" (.Title | default .LinkTitle | default .Name) "item" .Permalink) -}}
+    {{- end -}}
+  {{- end -}}
+  {{- $position = add $position 1 -}}
+  {{- $breadcrumbs = $breadcrumbs | append (dict "@type" "ListItem" "position" $position "name" (.Title | default .LinkTitle | default .Name) "item" .Permalink) -}}
+  {{- if gt (len $breadcrumbs) 1 -}}
+    {{- $graph = $graph | append (dict "@type" "BreadcrumbList" "itemListElement" $breadcrumbs) -}}
+  {{- end -}}
+
+  {{- if index $seo "isPost" -}}
+    {{- $post := dict
+      "@type" "BlogPosting"
+      "headline" (.Title | plainify)
+      "name" (.Title | plainify)
+      "description" $pageDescription
+      "articleBody" (.Plain | htmlUnescape)
+      "wordCount" .WordCount
+      "inLanguage" (.Language.Lang | default "en-us")
+      "url" .Permalink
+      "mainEntityOfPage" (dict "@type" "WebPage" "@id" .Permalink)
+      "publisher" (dict "@id" (index $publisher "@id"))
+    -}}
+    {{- $keywords := .Params.keywords | default .Params.tags -}}
+    {{- if gt (len $keywords) 0 -}}
+      {{- $post = merge $post (dict "keywords" $keywords) -}}
+    {{- end -}}
+    {{- with .Section -}}
+      {{- $post = merge $post (dict "articleSection" .) -}}
+    {{- end -}}
+    {{- with index $images 0 -}}
+      {{- $post = merge $post (dict "image" (index . "Permalink")) -}}
+    {{- end -}}
+    {{- if not .PublishDate.IsZero -}}
+      {{- $post = merge $post (dict "datePublished" (.PublishDate.Format "2006-01-02T15:04:05Z07:00")) -}}
+    {{- end -}}
+    {{- if not .Lastmod.IsZero -}}
+      {{- $post = merge $post (dict "dateModified" (.Lastmod.Format "2006-01-02T15:04:05Z07:00")) -}}
+    {{- end -}}
+    {{- $authorValue := .Params.author | default site.Params.author | default site.Title -}}
+    {{- $authorType := printf "%T" $authorValue -}}
+    {{- if or (eq $authorType "[]string") (eq $authorType "[]interface {}") -}}
+      {{- $authors := slice -}}
+      {{- range $authorValue -}}
+        {{- $authors = $authors | append (dict "@type" "Person" "name" .) -}}
+      {{- end -}}
+      {{- $post = merge $post (dict "author" $authors) -}}
+    {{- else -}}
+      {{- $post = merge $post (dict "author" (dict "@type" "Person" "name" $authorValue)) -}}
+    {{- end -}}
+    {{- $graph = $graph | append $post -}}
+  {{- else if index $seo "isAboutPage" -}}
+    {{- $person := dict
+      "@type" "Person"
+      "name" site.Title
+      "url" site.Home.Permalink
+      "description" $siteDescription
+      "image" (index $siteImage "Permalink")
+    -}}
+    {{- if gt (len $sameAs) 0 -}}
+      {{- $person = merge $person (dict "sameAs" $sameAs) -}}
+    {{- end -}}
+    {{- $graph = $graph | append $person -}}
+    {{- $aboutPage := dict
+      "@type" "AboutPage"
+      "name" (.Title | plainify)
+      "description" $pageDescription
+      "url" .Permalink
+      "about" (dict "@type" "Person" "name" site.Title "url" site.Home.Permalink)
+      "publisher" (dict "@id" (index $publisher "@id"))
+    -}}
+    {{- with index $images 0 -}}
+      {{- $aboutPage = merge $aboutPage (dict "image" (index . "Permalink")) -}}
+    {{- end -}}
+    {{- $graph = $graph | append $aboutPage -}}
+  {{- else if index $seo "isCollectionPage" -}}
+    {{- $collection := dict
+      "@type" "CollectionPage"
+      "name" (.Title | plainify)
+      "description" $pageDescription
+      "url" .Permalink
+      "publisher" (dict "@id" (index $publisher "@id"))
+    -}}
+    {{- with index $images 0 -}}
+      {{- $collection = merge $collection (dict "image" (index . "Permalink")) -}}
+    {{- end -}}
+    {{- if eq .Kind "taxonomy" -}}
+      {{- $terms := slice -}}
+      {{- range .Data.Terms.Alphabetical -}}
+        {{- $term := dict
+          "@type" "DefinedTerm"
+          "name" .Page.LinkTitle
+          "url" .Page.Permalink
+        -}}
+        {{- with .Page.Description -}}
+          {{- $term = merge $term (dict "description" (. | plainify | htmlUnescape | chomp)) -}}
+        {{- end -}}
+        {{- $terms = $terms | append $term -}}
+      {{- end -}}
+      {{- if gt (len $terms) 0 -}}
+        {{- $collection = merge $collection (dict "mainEntity" (dict "@type" "DefinedTermSet" "name" (.Title | plainify) "hasDefinedTerm" $terms)) -}}
+      {{- end -}}
+    {{- else -}}
+      {{- $listedPages := slice -}}
+      {{- if or (eq .Kind "section") (eq .Kind "term") -}}
+        {{- $listedPages = .RegularPages.ByDate.Reverse -}}
+      {{- else if and .IsPage (eq .Layout "archives") -}}
+        {{- $listedPages = (where site.RegularPages "Type" "in" (site.Params.mainSections | default (slice "posts"))).ByDate.Reverse -}}
+      {{- else if and .IsPage (eq .Section "series") -}}
+        {{- $listedPages = (where site.RegularPages "Params.series" .Title).ByDate.Reverse -}}
+      {{- end -}}
+      {{- $listItems := slice -}}
+      {{- range $index, $page := $listedPages | first 20 -}}
+        {{- $listItems = $listItems | append (dict "@type" "ListItem" "position" (add $index 1) "url" $page.Permalink "name" ($page.Title | plainify)) -}}
+      {{- end -}}
+      {{- if gt (len $listItems) 0 -}}
+        {{- $collection = merge $collection (dict "mainEntity" (dict "@type" "ItemList" "itemListElement" $listItems)) -}}
+      {{- end -}}
+      {{- if eq .Kind "term" -}}
+        {{- $collection = merge $collection (dict "about" (dict "@type" "DefinedTerm" "name" (.Title | plainify) "url" .Permalink)) -}}
+      {{- end -}}
+    {{- end -}}
+    {{- $graph = $graph | append $collection -}}
+  {{- else -}}
+    {{- $webPage := dict
+      "@type" (index $seo "schemaType")
+      "name" (.Title | plainify)
+      "description" $pageDescription
+      "url" .Permalink
+      "publisher" (dict "@id" (index $publisher "@id"))
+    -}}
+    {{- with index $images 0 -}}
+      {{- $webPage = merge $webPage (dict "image" (index . "Permalink")) -}}
+    {{- end -}}
+    {{- $graph = $graph | append $webPage -}}
+  {{- end -}}
+{{- end -}}
+
+<script type="application/ld+json">
+{{- dict "@context" "https://schema.org" "@graph" $graph | jsonify | safeJS -}}
+</script>

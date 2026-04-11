@@ -7,6 +7,10 @@ on:
     branches:
       - main
 
+  pull_request:
+    branches:
+      - main
+
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -47,7 +51,10 @@ jobs:
         with:
           submodules: recursive
           fetch-depth: 0
+      - name: Validate publishing metadata and links
+        run: python3 scripts/validate_publishing.py
       - name: Setup Pages
+        if: github.event_name != 'pull_request'
         id: pages
         uses: actions/configure-pages@v5
       - name: Install Node.js dependencies
@@ -61,12 +68,20 @@ jobs:
           key: hugo-${{ github.run_id }}
           restore-keys:
             hugo-
-      - name: Build with Hugo
+      - name: Build with Hugo for Pages
+        if: github.event_name != 'pull_request'
         run: |
           hugo \
             --gc \
             --minify \
             --baseURL "${{ steps.pages.outputs.base_url }}/" \
+            --cacheDir "${{ runner.temp }}/hugo_cache"
+      - name: Build with Hugo for PR validation
+        if: github.event_name == 'pull_request'
+        run: |
+          hugo \
+            --gc \
+            --minify \
             --cacheDir "${{ runner.temp }}/hugo_cache"
       - name: Cache Save
         id: cache-save
@@ -76,12 +91,14 @@ jobs:
             ${{ runner.temp }}/hugo_cache
           key: ${{ steps.cache-restore.outputs.cache-primary-key }}
       - name: Upload artifact
+        if: github.event_name != 'pull_request'
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./public
 
   # Deployment job
   deploy:
+    if: github.event_name != 'pull_request'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

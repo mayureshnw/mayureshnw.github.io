@@ -1,0 +1,23 @@
+{{- $images := slice -}}
+
+{{- with .Params.cover.image -}}
+  {{- $imageURL := . -}}
+  {{- if $.Params.cover.relative -}}
+    {{- $imageURL = (path.Join $.RelPermalink .) | absURL -}}
+  {{- else -}}
+    {{- $imageURL = . | absURL -}}
+  {{- end -}}
+  {{- $images = $images | append (dict
+    "Permalink" $imageURL
+    "RelPermalink" $imageURL
+    "Alt" ($.Params.cover.alt | default $.Title | plainify)
+  ) -}}
+{{- end -}}
+
+{{- if not $images -}}
+  {{- range partial "templates/_funcs/get-page-images" . -}}
+    {{- $images = $images | append (merge . (dict "Alt" ($.Title | default site.Title | plainify))) -}}
+  {{- end -}}
+{{- end -}}
+
+{{- return $images -}}

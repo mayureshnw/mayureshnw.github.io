@@ -8,6 +8,7 @@ draft: false
 categories: [engineering]
 tags: [Python, Events, Event-Driven Architecture]
 topics: [Distributed Systems]
+series: "Reliability at the Boundaries"
 ShowToc: true
 TocOpen: true
 ---

@@ -244,23 +244,77 @@ The point is not process for its own sake. The point is reducing friction and av
 
 ## PaperMod Recommendation
 
-## Short Answer
+### Short Answer
 
-Do not remove PaperMod immediately, but do not treat it as the long-term foundation either.
+Do not remove PaperMod immediately, but do treat it as a managed dependency on a path to removal.
 
-## Why
+### Why
 
 PaperMod is useful today because it gives speed and a working baseline. Removing it right away would create unnecessary rewrite work before the publishing system and information architecture are mature.
 
 However, for long-term personal brand building, owning the presentation layer is better than living inside theme constraints.
 
-## Recommended approach
+### Current dependency boundary
 
-Use PaperMod as a temporary scaffold while progressively taking ownership of the important surfaces.
+Already repo-owned today:
 
-### Stage 1: Keep PaperMod
+- `layouts/index.html` homepage
+- `layouts/_default/single.html` post layout
+- `layouts/_default/list.html`, `term.html`, and `terms.html` archive/topic discovery surfaces
+- `layouts/_default/about.html` about page
+- `layouts/series/list.html` series landing
+- `layouts/partials/brand/*` and `layouts/partials/site/*` brand-specific presentation components
+- `assets/css/extended/*` custom brand styling
 
-Use it to avoid rebuilding generic theme mechanics from scratch while you improve:
+Still inherited from PaperMod:
+
+- theme wiring in `hugo.yaml` and the `themes/PaperMod/` submodule
+- global shell partials: `head.html`, `header.html`, `footer.html`
+- shared content helpers: `breadcrumbs.html`, `cover.html`, `post_meta.html`, `toc.html`, `anchored_headings.html`
+- post utility/integration partials: `translation_list.html`, `edit_post.html`, `post_canonical.html`, `post_nav_links.html`
+- optional platform partials: `social_icons.html`, `share_icons.html`, `comments.html`
+
+What can stay temporary:
+
+- Keep the PaperMod submodule in place while the site still depends on shared shell or post helper partials.
+- Leave low-differentiation helpers such as `comments.html`, `translation_list.html`, `edit_post.html`, and `post_canonical.html` for late in the migration unless product requirements change.
+- Avoid adding new direct dependencies on PaperMod internals beyond the list above; new work should land in repo-owned `layouts/` or `assets/`.
+
+### Migration / removal sequence
+
+Use PaperMod as a temporary scaffold while progressively taking ownership of the remaining dependency layers.
+
+| Ownership milestone | What becomes repo-owned next | Prerequisites | Success signal |
+| --- | --- | --- | --- |
+| M1. Freeze the dependency boundary | Confirm the inherited partial set above and keep new feature work inside repo-owned `layouts/partials/{brand,site}` and `assets/css/extended/`. | Current branded layouts remain stable. | Theme usage stops expanding; PaperMod is a compatibility layer, not the design system. |
+| M2. Own the global shell | Replace `head.html`, `header.html`, `footer.html`, and, if needed for navigation consistency, `breadcrumbs.html`. | Agreed navigation, metadata, and brand shell requirements. | Homepage, about, archives, topics, and series pages render site chrome without PaperMod partials. |
+| M3. Own post primitives | Replace `cover.html`, `post_meta.html`, `toc.html`, `post_nav_links.html`, `social_icons.html`, `share_icons.html`, and `anchored_headings.html` as needed. | M2 complete and post design tokens/content behavior stable. | Single-post rendering is controlled locally; PaperMod no longer dictates reader-visible post behavior. |
+| M4. Exit the theme cleanly | Remove unused PaperMod params, re-home any remaining helpers, update docs, remove `theme: ["PaperMod"]`, and delete the submodule. | M2 and M3 complete; no required runtime calls into theme-only templates. | `hugo --gc --minify` succeeds without `themes/PaperMod/`, and key pages pass smoke testing. |
+
+### Safe removal criteria
+
+PaperMod is safe to remove only when all of the following are true:
+
+- the repo owns the global shell and all reader-visible components on homepage, posts, archives, topics, series, and about
+- no required template resolution depends on `themes/PaperMod/`
+- `hugo --gc --minify` succeeds on a branch where the theme config and submodule are removed
+- a visual smoke check passes for homepage, a single post, `/about/`, `/archives/`, `/topics/`, one topic term page, and one series page
+- local setup and deployment docs no longer mention initializing the PaperMod submodule
+
+### Sequencing guidance
+
+This should stay a low-risk migration track, not an immediate rewrite:
+
+1. keep PaperMod for generic plumbing that is not currently hurting iteration speed
+2. replace global shell pieces before touching every low-level post helper
+3. move post primitives only when there is clear product/design value or theme friction
+4. remove PaperMod only after the repo can render the full reader journey without it
+
+This sequencing keeps the current site stable while making future removal predictable instead of urgent.
+
+### Near-term focus while PaperMod remains
+
+Use the current theme dependency to avoid rebuilding generic mechanics from scratch while you improve:
 
 - content structure
 - metadata model

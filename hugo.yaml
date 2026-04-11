@@ -12,6 +12,32 @@ minify:
   disableXML: true
   minifyOutput: true
 
+mediaTypes:
+  application/feed+json:
+    suffixes:
+      - json
+
+outputFormats:
+  JSONFeed:
+    mediaType: application/feed+json
+    baseName: feed
+    isPlainText: true
+    rel: alternate
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSONFeed
+  section:
+    - HTML
+    - RSS
+    - JSONFeed
+  term:
+    - HTML
+    - RSS
+    - JSONFeed
+
 
 menu:
   main:
@@ -43,6 +69,8 @@ params:
   env: production
   mainSections:
     - posts
+  images:
+    - images/social-preview.png
   keywords:
     - Distributed Systems
     - Observability

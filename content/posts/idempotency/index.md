@@ -8,6 +8,7 @@ draft: true
 categories: [engineering]
 tags: [Idempotency, Distributed Systems, API Design, Reliability]
 topics: [Distributed Systems, Reliability / Architecture]
+series: "Reliability at the Boundaries"
 ShowToc: true
 TocOpen: true
 ---

@@ -45,6 +45,17 @@ Personal site and engineering blog built with Hugo and the PaperMod theme.
 
 The generated site is written to `public/`.
 
+## Publishing guardrails
+
+- Validate post frontmatter and repo-local markdown links before publishing:
+
+  ```bash
+  python scripts/validate_publishing.py
+  ```
+
+- The deploy workflow now runs the same validation on pull requests to `main` before building the site.
+- Use `.github/new-post-checklist.md` when drafting or polishing a post, and the PR template checklist before merging publishing changes.
+
 ## Publishing metadata contract
 
 Create new posts with:
@@ -111,3 +122,11 @@ Approved `topics` values for Phase 1:
 - `featured: true` now opts a post into the homepage's featured/recommended reading pool. If no posts are marked featured, the homepage falls back to recent writing automatically.
 - Topic hub copy lives under `content/topics/`; keep those pages aligned with the approved `topics` vocabulary instead of inventing new labels ad hoc.
 - Post-page connect and related-reading surfaces are driven by `layouts/partials/site/post-supplemental.html`, while the About page positioning copy lives in `content/about.md`.
+
+### Metadata ownership audit snapshot
+
+- The repo owns the base layout shell in `layouts/_default/baseof.html`, while `<head>` still delegates to PaperMod's `partials/head.html` and repo-owned additions in `layouts/partials/extend_head.html`.
+- Open Graph, Twitter cards, and JSON-LD now have repo-owned overrides under `layouts/partials/templates/`, so page types, social-image fallbacks, and structured data no longer rely entirely on PaperMod defaults.
+- The site now emits a repo-owned JSON Feed (`feed.json`) for the homepage plus section and term archives via `hugo.yaml`, `layouts/index.jsonfeed.json`, and `layouts/_default/*jsonfeed.json`. RSS remains theme-owned for now.
+- Default social previews now fall back to `static/images/social-preview.png` via `params.images` when a page does not define its own `cover.image` or other page image.
+- The remaining metadata ownership gap is mainly canonical-link/RSS behavior (`layouts/partials/post_canonical.html` and `layouts/_default/rss.xml`) if the site later needs full repo-owned feed parity.

@@ -1,0 +1,87 @@
+{{- $mainSections := site.Params.mainSections | default (slice "posts") -}}
+{{- $pages := slice -}}
+{{- if .IsHome -}}
+  {{- $pages = where site.RegularPages "Type" "in" $mainSections -}}
+{{- else -}}
+  {{- $pages = .RegularPages -}}
+{{- end -}}
+{{- $pages = $pages.ByDate.Reverse -}}
+{{- $limit := site.Config.Services.RSS.Limit -}}
+{{- if ge $limit 1 -}}
+  {{- $pages = $pages | first $limit -}}
+{{- end -}}
+{{- $homePageURL := site.Home.Permalink -}}
+{{- $feedURL := "" -}}
+{{- with .OutputFormats.Get "JSONFeed" -}}
+  {{- $feedURL = .Permalink -}}
+{{- end -}}
+{{- $icon := site.Params.assets.apple_touch_icon | default "apple-touch-icon.png" | absURL -}}
+{{- $favicon := site.Params.assets.favicon32x32 | default "favicon-32x32.png" | absURL -}}
+{{- $siteAuthor := dict "name" site.Title "url" site.Home.Permalink -}}
+{{- $feed := dict
+  "version" "https://jsonfeed.org/version/1.1"
+  "title" (cond (eq .Title site.Title) site.Title (printf "%s | %s" .Title site.Title))
+  "home_page_url" $homePageURL
+  "feed_url" $feedURL
+  "description" (or .Description .Summary site.Params.description | plainify | htmlUnescape | chomp)
+  "language" (site.Language.Lang | default "en-us")
+  "icon" $icon
+  "favicon" $favicon
+  "authors" (slice $siteAuthor)
+-}}
+{{- with index (partial "templates/_funcs/social-images.html" site.Home) 0 -}}
+  {{- $feed = merge $feed (dict "image" (index . "Permalink")) -}}
+{{- end -}}
+{{- $items := slice -}}
+{{- range $pages -}}
+  {{- $pageImages := partial "templates/_funcs/social-images.html" . -}}
+  {{- $published := .PublishDate -}}
+  {{- if $published.IsZero -}}
+    {{- $published = .Date -}}
+  {{- end -}}
+  {{- if $published.IsZero -}}
+    {{- $published = .Lastmod -}}
+  {{- end -}}
+  {{- $item := dict
+    "id" .Permalink
+    "url" .Permalink
+    "title" .Title
+    "summary" (or .Description .Summary | plainify | htmlUnescape | chomp)
+    "content_html" .Content
+  -}}
+  {{- if not $published.IsZero -}}
+    {{- $item = merge $item (dict "date_published" ($published.Format "2006-01-02T15:04:05Z07:00")) -}}
+  {{- end -}}
+  {{- if not .Lastmod.IsZero -}}
+    {{- $item = merge $item (dict "date_modified" (.Lastmod.Format "2006-01-02T15:04:05Z07:00")) -}}
+  {{- end -}}
+  {{- $tags := slice -}}
+  {{- range (.Params.tags | default slice) -}}
+    {{- $tags = $tags | append . -}}
+  {{- end -}}
+  {{- range (.Params.topics | default slice) -}}
+    {{- if not (in $tags .) -}}
+      {{- $tags = $tags | append . -}}
+    {{- end -}}
+  {{- end -}}
+  {{- if gt (len $tags) 0 -}}
+    {{- $item = merge $item (dict "tags" $tags) -}}
+  {{- end -}}
+  {{- with index $pageImages 0 -}}
+    {{- $item = merge $item (dict "image" (index . "Permalink")) -}}
+  {{- end -}}
+  {{- $authorValue := .Params.author | default site.Params.author | default site.Title -}}
+  {{- $authorType := printf "%T" $authorValue -}}
+  {{- if or (eq $authorType "[]string") (eq $authorType "[]interface {}") -}}
+    {{- $authors := slice -}}
+    {{- range $authorValue -}}
+      {{- $authors = $authors | append (dict "name" .) -}}
+    {{- end -}}
+    {{- $item = merge $item (dict "authors" $authors) -}}
+  {{- else -}}
+    {{- $item = merge $item (dict "authors" (slice (dict "name" $authorValue))) -}}
+  {{- end -}}
+  {{- $items = $items | append $item -}}
+{{- end -}}
+{{- $feed = merge $feed (dict "items" $items) -}}
+{{- $feed | jsonify (dict "indent" "  ") -}}

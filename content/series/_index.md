@@ -1,6 +1,6 @@
 ---
 title: Series
-description: A home for future multi-part writing, kept intentionally lightweight until there is enough material to justify dedicated series pages.
+description: Curated reading paths for subjects that deserve more editorial structure than a tag page or archive listing.
 ---
 
-Not every topic needs to become a series. When a subject earns a deeper run of connected essays, this section will host that collection manually instead of generating thin taxonomy pages by default.
+This section stays intentionally manual. A series appears only when there is enough connected material to justify a reader-facing landing page with a clear throughline. The goal is to make deeper runs easier to navigate without inventing a sprawling new taxonomy.
