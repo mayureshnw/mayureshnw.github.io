@@ -22,8 +22,6 @@
     <div class="brand-page-copy">
       {{- partial "brand/page_intro.html" (dict
         "page" .
-        "showBreadcrumbs" true
-        "showRss" (and (or (eq .Kind `term`) (eq .Kind `section`)) (.Param "ShowRssButtonInSectionTermList"))
         "eyebrow" $eyebrow
         "title" .Title
         "description" .Description
@@ -31,11 +29,7 @@
 
       {{- with .Content -}}
       <div class="brand-page-copy-body">
-        {{- if not ($.Param "disableAnchoredHeadings") -}}
-          {{- partial "anchored_headings.html" . -}}
-        {{- else -}}
-          {{- . -}}
-        {{- end -}}
+        {{- partial "site/anchored-headings.html" . -}}
       </div>
       {{- end -}}
 
@@ -89,18 +83,12 @@
       <nav class="pagination">
         {{- if $paginator.HasPrev }}
         <a class="prev" href="{{ $paginator.Prev.URL | absURL }}">
-          «&nbsp;{{ i18n "prev_page" }}&nbsp;
-          {{- if (.Param "ShowPageNums") }}
-          {{- sub $paginator.PageNumber 1 }}/{{ $paginator.TotalPages }}
-          {{- end }}
+          «&nbsp;{{ i18n "prev_page" }}
         </a>
         {{- end }}
         {{- if $paginator.HasNext }}
         <a class="next" href="{{ $paginator.Next.URL | absURL }}">
-          {{- i18n "next_page" }}&nbsp;
-          {{- if (.Param "ShowPageNums") }}
-          {{- add 1 $paginator.PageNumber }}/{{ $paginator.TotalPages }}
-          {{- end }}&nbsp;»
+          {{- i18n "next_page" }}&nbsp;»
         </a>
         {{- end }}
       </nav>

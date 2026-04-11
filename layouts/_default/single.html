@@ -2,57 +2,41 @@
 {{- $eyebrow := "Engineering essay" -}}
 
 <div class="brand-shell brand-post-shell">
-  <article class="post-single brand-post-single brand-surface brand-surface--hero">
+  <article class="article-page brand-post-single brand-surface brand-surface--hero">
     <div class="brand-post-hero-copy">
       {{- partial "brand/page_intro.html" (dict
         "page" .
         "showBreadcrumbs" true
-        "breadcrumbsForce" true
         "breadcrumbsClass" "brand-post-breadcrumbs"
         "eyebrow" $eyebrow
         "title" .Title
         "description" .Description
         "class" "brand-post-header"
       ) -}}
-      {{- if not (.Param "hideMeta") }}
       <div class="brand-post-context">
-        <div class="post-meta brand-post-meta">
-          {{- partial "post_meta.html" . -}}
-          {{- partial "translation_list.html" . -}}
-          {{- partial "edit_post.html" . -}}
-          {{- partial "post_canonical.html" . -}}
+        <div class="article-meta brand-post-meta">
+          {{- partial "site/post-meta.html" . -}}
         </div>
       </div>
-      {{- end -}}
     </div>
-    {{- $isHidden := (.Param "cover.hiddenInSingle") | default (.Param "cover.hidden") | default false -}}
-    {{- partial "cover.html" (dict "cxt" . "IsSingle" true "isHidden" $isHidden) -}}
   </article>
 
   <section class="brand-surface brand-surface--soft brand-post-rich-content">
     {{- if (.Param "ShowToc") -}}
-      {{- partial "toc.html" . -}}
+      {{- partial "site/table-of-contents.html" . -}}
     {{- end -}}
 
     {{- if .Content -}}
-    <div class="post-content">
-      {{- if not (.Param "disableAnchoredHeadings") -}}
-        {{- partial "anchored_headings.html" .Content -}}
-      {{- else -}}
-        {{- .Content -}}
-      {{- end -}}
+    <div class="article-content">
+      {{- partial "site/anchored-headings.html" .Content -}}
     </div>
     {{- end }}
   </section>
 
-  <footer class="post-footer brand-post-footer">
+  <footer class="article-footer brand-post-footer">
     {{- partial "brand/post_footer.html" . -}}
   </footer>
 
   {{- partial "site/post-supplemental.html" . -}}
-
-  {{- if (.Param "comments") -}}
-    {{- partial "comments.html" . -}}
-  {{- end -}}
 </div>
 {{- end -}}

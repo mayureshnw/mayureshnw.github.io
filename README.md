@@ -88,9 +88,7 @@ Posts belong in page bundles under `content/posts/<slug>/index.md`; reserve top-
 | Field | Guidance |
 | --- | --- |
 | `featured` | Set to `true` only when a post should be treated as editorially highlighted. |
-| `canonicalURL` | Use when the canonical version lives elsewhere. |
 | `aliases` | Old paths that should redirect to the current post URL. |
-| `cover.image` / `cover.alt` | Use when a post has a hero/cover image; always include meaningful alt text when an image is set. |
 
 ### Tag conventions
 
@@ -113,5 +111,5 @@ Posts belong in page bundles under `content/posts/<slug>/index.md`; reserve top-
 - The repo owns the base layout shell plus the shared `head`, `header`, and `footer` partials used by the site chrome.
 - Open Graph, Twitter cards, JSON-LD, canonical-link behavior, page-image helpers, and RSS are now repo-owned under `layouts/partials/` and `layouts/_default/`.
 - The site now emits a repo-owned JSON Feed (`feed.json`) for the homepage plus section and term listing pages via `hugo.yaml`, `layouts/index.jsonfeed.json`, and `layouts/_default/*jsonfeed.json`.
-- Default social previews now fall back to `static/images/social-preview.png` via `params.images` when a page does not define its own `cover.image` or other page image.
+- Default social previews now fall back to `static/images/social-preview.png` via `params.images` when a page does not define its own page image.
 - Shared light-theme primitives now live directly in `assets/css/` and `layouts/partials/`, so the site no longer requires a third-party theme submodule to build.

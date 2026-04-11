@@ -1,0 +1,22 @@
+{{- define "main" -}}
+<div class="brand-shell brand-not-found-shell">
+  <section class="brand-surface brand-surface--hero brand-page-hero">
+    <div class="brand-page-copy">
+      {{- partial "brand/page_intro.html" (dict
+        "eyebrow" "Page missing"
+        "title" "404"
+        "description" "The page you were looking for does not exist or may have moved."
+      ) -}}
+      <nav class="brand-inline-links" aria-label="Recovery links">
+        <a href="/">Home</a>
+        <span aria-hidden="true">/</span>
+        <a href="/categories/engineering/">Engineering</a>
+        <span aria-hidden="true">/</span>
+        <a href="/tags/">Tags</a>
+        <span aria-hidden="true">/</span>
+        <a href="/about/">About</a>
+      </nav>
+    </div>
+  </section>
+</div>
+{{- end -}}

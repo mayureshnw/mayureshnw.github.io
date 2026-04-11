@@ -88,9 +88,9 @@
 
   <div class="brand-related-list">
     {{- range $selected -}}
-      {{- partial "brand/post_card.html" (dict
+      {{- partial "site/post-card.html" (dict
         "page" .page
-        "class" "post-entry brand-post-card brand-post-card--related"
+        "class" "article-card brand-post-card brand-post-card--related"
         "eyebrow" .reason
         "showMeta" true
       ) -}}

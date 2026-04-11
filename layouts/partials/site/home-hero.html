@@ -1,8 +1,8 @@
 {{- $title := site.Title -}}
 {{- $content := site.Params.description -}}
-{{- with site.Params.homeInfoParams -}}
-  {{- $title = .Title | default $title -}}
-  {{- $content = .Content | default $content -}}
+{{- with site.Params.homeHero -}}
+  {{- $title = .title | default $title -}}
+  {{- $content = .content | default $content -}}
 {{- end -}}
 <div class="brand-home-hero brand-editorial-hero">
   <h1 class="brand-page-title">{{ $title }}</h1>

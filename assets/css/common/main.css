@@ -40,12 +40,12 @@
     border-top: 1px solid var(--border);
 }
 
-.social-icons a {
+.social-links a {
     display: inline-flex;
     padding: 8px;
 }
 
-.social-icons a svg {
+.social-links a svg {
     height: 22px;
     width: 22px;
 }
@@ -57,22 +57,4 @@ code {
 div.highlight,
 pre {
     position: relative;
-}
-
-.copy-code {
-    display: none;
-    position: absolute;
-    top: 4px;
-    right: 4px;
-    color: rgba(255, 255, 255, 0.8);
-    background: rgba(78, 78, 78, 0.8);
-    border-radius: var(--radius);
-    padding: 0 5px;
-    font-size: 14px;
-    user-select: none;
-}
-
-div.highlight:hover .copy-code,
-pre:hover .copy-code {
-    display: block;
 }

@@ -1,13 +1,5 @@
-.page-header,
-.post-header {
+.page-header {
     margin: 0 auto var(--content-gap) auto;
-}
-
-.post-title {
-    margin-bottom: 2px;
-    font-size: clamp(2rem, 4vw, 2.8rem);
-    line-height: 0.98;
-    letter-spacing: -0.04em;
 }
 
 .post-description {
@@ -19,7 +11,7 @@
     line-height: 1.75;
 }
 
-.post-meta {
+.article-meta {
     color: var(--secondary);
     gap: 0.35rem 0.65rem;
     font-size: 13px;
@@ -27,11 +19,11 @@
     flex-wrap: wrap;
 }
 
-.breadcrumbs {
+.site-breadcrumbs {
     color: var(--secondary);
 }
 
-.breadcrumbs ol {
+.site-breadcrumbs ol {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -41,222 +33,215 @@
     padding: 0;
 }
 
-.breadcrumbs li {
+.site-breadcrumbs li {
     display: inline-flex;
     align-items: center;
     gap: 0.65rem;
     margin: 0;
 }
 
-.breadcrumbs li + li::before {
+.site-breadcrumbs li + li::before {
     content: "/";
     color: #b8b1a6;
 }
 
-.post-meta .i18n_list li {
-    display: inline-flex;
-    list-style: none;
-    margin: auto 3px;
-    box-shadow: 0 1px 0 var(--secondary);
-}
-
-.breadcrumbs a,
-.breadcrumbs [aria-current="page"] {
+.site-breadcrumbs a,
+.site-breadcrumbs [aria-current="page"] {
     font-size: 15px;
 }
 
-.breadcrumbs a {
+.site-breadcrumbs a {
     color: var(--primary);
     text-decoration: none;
     border-bottom: 1px solid transparent;
 }
 
-.breadcrumbs a:hover {
+.site-breadcrumbs a:hover {
     border-bottom-color: currentColor;
 }
 
-.breadcrumbs [aria-current="page"] {
+.site-breadcrumbs [aria-current="page"] {
     color: var(--secondary);
 }
 
-.post-content {
+.article-content {
     color: var(--content);
     font-size: 1.06rem;
     line-height: 1.82;
 }
 
-.post-content p,
-.post-content li,
-.post-content dl,
-.post-content dd,
-.post-content blockquote,
-.post-content figure > figcaption > p,
-.post-content table:not(.highlighttable, .highlight table, .gist .highlight) {
+.article-content p,
+.article-content li,
+.article-content dl,
+.article-content dd,
+.article-content blockquote,
+.article-content figure > figcaption > p,
+.article-content table:not(.highlighttable, .highlight table, .gist .highlight) {
     font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
 }
 
-.post-content h3,
-.post-content h4,
-.post-content h5,
-.post-content h6 {
+.article-content h3,
+.article-content h4,
+.article-content h5,
+.article-content h6 {
     margin: 28px 0 14px;
 }
 
-.post-content h1 {
+.article-content h1 {
     margin: 48px auto 24px;
     font-size: 40px;
     line-height: 1.02;
     letter-spacing: -0.04em;
 }
 
-.post-content h2 {
+.article-content h2 {
     margin: 36px auto 18px;
     font-size: 34px;
     line-height: 1.05;
     letter-spacing: -0.035em;
 }
 
-.post-content h3 {
+.article-content h3 {
     font-size: 28px;
     line-height: 1.1;
     letter-spacing: -0.03em;
 }
 
-.post-content h4 {
+.article-content h4 {
     font-size: 20px;
 }
 
-.post-content h5 {
+.article-content h5 {
     font-size: 14px;
 }
 
-.post-content h6 {
+.article-content h6 {
     font-size: 12px;
 }
 
-.post-content a,
-.toc a:hover {
+.article-content a,
+.table-of-contents a:hover {
     box-shadow: none;
     border-bottom: 1px solid currentColor;
     box-decoration-break: clone;
     -webkit-box-decoration-break: clone;
 }
 
-.post-content a code {
+.article-content a code {
     margin: auto 0;
     border-radius: 0;
     box-shadow: none;
     border-bottom: 1px solid var(--primary);
 }
 
-.post-content del {
+.article-content del {
     text-decoration: line-through;
 }
 
-.post-content dl,
-.post-content ol,
-.post-content p,
-.post-content figure,
-.post-content ul {
+.article-content dl,
+.article-content ol,
+.article-content p,
+.article-content figure,
+.article-content ul {
     margin-bottom: var(--content-gap);
 }
 
-.post-content ol,
-.post-content ul {
+.article-content ol,
+.article-content ul {
     padding-inline-start: 20px;
 }
 
-.post-content li {
+.article-content li {
     margin-top: 8px;
 }
 
-.post-content li p {
+.article-content li p {
     margin-bottom: 0;
 }
 
-.post-content dl {
+.article-content dl {
     display: flex;
     flex-wrap: wrap;
     margin: 0;
 }
 
-.post-content dt {
+.article-content dt {
     width: 25%;
     font-weight: 700;
 }
 
-.post-content dd {
+.article-content dd {
     width: 75%;
     margin-inline-start: 0;
     padding-inline-start: 10px;
 }
 
-.post-content dd ~ dd,
-.post-content dt ~ dt {
+.article-content dd ~ dd,
+.article-content dt ~ dt {
     margin-top: 10px;
 }
 
-.post-content table {
+.article-content table {
     margin-bottom: var(--content-gap);
 }
 
-.post-content table th,
-.post-content table:not(.highlighttable, .highlight table, .gist .highlight) td {
+.article-content table th,
+.article-content table:not(.highlighttable, .highlight table, .gist .highlight) td {
     min-width: 80px;
     padding: 8px 5px;
     line-height: 1.5;
     border-bottom: 1px solid var(--border);
 }
 
-.post-content table th {
+.article-content table th {
     text-align: start;
 }
 
-.post-content table:not(.highlighttable) td code:only-child {
+.article-content table:not(.highlighttable) td code:only-child {
     margin: auto 0;
 }
 
-.post-content .highlight table {
+.article-content .highlight table {
     border-radius: var(--radius);
 }
 
-.post-content .highlight:not(table) {
+.article-content .highlight:not(table) {
     margin: 10px auto;
     background: var(--code-block-bg) !important;
     border-radius: var(--radius);
     direction: ltr;
 }
 
-.post-content li > .highlight {
+.article-content li > .highlight {
     margin-inline-end: 0;
 }
 
-.post-content ul pre {
+.article-content ul pre {
     margin-inline-start: calc(var(--gap) * -2);
 }
 
-.post-content .highlight pre {
+.article-content .highlight pre {
     margin: 0;
 }
 
-.post-content .highlighttable {
+.article-content .highlighttable {
     table-layout: fixed;
 }
 
-.post-content .highlighttable td:first-child {
+.article-content .highlighttable td:first-child {
     width: 40px;
 }
 
-.post-content .highlighttable td .linenodiv {
+.article-content .highlighttable td .linenodiv {
     padding-inline-end: 0 !important;
 }
 
-.post-content .highlighttable td .highlight,
-.post-content .highlighttable td .linenodiv pre {
+.article-content .highlighttable td .highlight,
+.article-content .highlighttable td .linenodiv pre {
     margin-bottom: 0;
 }
 
-.post-content code {
+.article-content code {
     margin: 0 0.15em;
     padding: 0.12em 0.42em;
     font-size: 0.88em;
@@ -265,7 +250,7 @@
     border-radius: 4px;
 }
 
-.post-content pre code {
+.article-content pre code {
     display: grid;
     margin: auto 0;
     padding: 14px 16px;
@@ -277,52 +262,52 @@
     overflow-wrap: normal;
 }
 
-.post-content blockquote {
+.article-content blockquote {
     margin: 28px 0;
     padding: 0 0 0 18px;
     border-inline-start: 1px solid var(--primary);
     color: var(--secondary);
 }
 
-.post-content hr {
+.article-content hr {
     margin: 36px 0;
     height: 1px;
     background: var(--border);
     border: 0;
 }
 
-.post-content iframe {
+.article-content iframe {
     max-width: 100%;
 }
 
-.post-content img {
+.article-content img {
     border-radius: 0;
     border: 1px solid var(--border);
     margin: 1.25rem 0;
 }
 
-.post-content img[src*="#center"] {
+.article-content img[src*="#center"] {
     margin: 1rem auto;
 }
 
-.post-content figure.align-center {
+.article-content figure.align-center {
     text-align: center;
 }
 
-.post-content figure > figcaption {
+.article-content figure > figcaption {
     color: var(--primary);
     font-size: 16px;
     font-weight: bold;
     margin: 8px 0 16px;
 }
 
-.post-content figure > figcaption > p {
+.article-content figure > figcaption > p {
     color: var(--secondary);
     font-size: 14px;
     font-weight: normal;
 }
 
-.toc {
+.table-of-contents {
     margin: 0 0 40px;
     border: 1px solid var(--border);
     background: transparent;
@@ -330,40 +315,40 @@
     padding: 0.75rem 0.85rem;
 }
 
-.toc details summary {
+.table-of-contents details summary {
     cursor: zoom-in;
     margin-inline-start: 10px;
     user-select: none;
 }
 
-.toc details[open] summary {
+.table-of-contents details[open] summary {
     cursor: zoom-out;
 }
 
-.toc .details {
+.table-of-contents .details {
     display: inline;
     font-weight: 500;
 }
 
-.toc .inner {
+.table-of-contents .inner {
     margin: 5px 20px 0;
     padding: 0 10px;
     opacity: 0.9;
 }
 
-.toc li ul {
+.table-of-contents li ul {
     margin-inline-start: var(--gap);
 }
 
-.toc summary:focus {
+.table-of-contents summary:focus {
     outline: 0;
 }
 
-.post-footer {
+.article-footer {
     margin-top: 3rem;
 }
 
-.post-footer>* {
+.article-footer>* {
     margin-bottom: 10px;
 }
 
@@ -377,44 +362,21 @@
     display: inline-block;
 }
 
-.post-tags a,
-.share-buttons,
-.paginav {
-    border-radius: 0;
-    background: transparent;
-    border: 0;
-}
-
 .post-tags a {
     display: block;
     padding: 0;
     color: var(--secondary);
     font-size: 0.95rem;
     line-height: 1.7;
+    border-radius: 0;
+    background: transparent;
+    border: 0;
     border-bottom: 1px solid transparent;
 }
 
-.post-tags a:hover,
-.paginav a:hover {
+.post-tags a:hover {
     background: transparent;
     border-bottom-color: currentColor;
-}
-
-.share-buttons {
-    padding: 0;
-    display: flex;
-    justify-content: flex-start;
-    overflow-x: auto;
-    gap: 0.75rem;
-}
-
-.share-buttons li,
-.share-buttons a {
-    display: inline-flex;
-}
-
-.share-buttons a:not(:last-of-type) {
-    margin-inline-end: 12px;
 }
 
 h1:hover .anchor,
@@ -428,45 +390,6 @@ h6:hover .anchor {
     margin-inline-start: 8px;
     font-weight: 500;
     user-select: none;
-}
-
-.paginav {
-    display: flex;
-    gap: 1.5rem;
-    line-height: 1.6;
-    padding-top: 1.25rem;
-    border-top: 1px solid var(--border);
-}
-
-.paginav a {
-    padding: 0;
-    border-radius: 0;
-    border-bottom: 1px solid transparent;
-}
-
-.paginav .title {
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    font-size: 0.72rem;
-    color: var(--secondary);
-}
-
-.paginav .prev,
-.paginav .next {
-    width: 50%;
-}
-
-.paginav span:hover:not(.title) {
-    box-shadow: none;
-}
-
-.paginav .next {
-    margin-inline-start: auto;
-    text-align: right;
-}
-
-[dir="rtl"] .paginav .next {
-    text-align: left;
 }
 
 h1>a>svg {

@@ -9,13 +9,13 @@
     {{- $sameAs = $sameAs | append (trim . " ") -}}
   {{- end -}}
 {{- else -}}
-  {{- range site.Params.socialIcons -}}
+  {{- range site.Params.socialLinks -}}
     {{- with .url -}}
       {{- $sameAs = $sameAs | append (trim . " ") -}}
     {{- end -}}
   {{- end -}}
 {{- end -}}
-{{- $siteImage := dict "Permalink" (site.Params.assets.favicon | default "favicon.ico" | absURL) -}}
+{{- $siteImage := dict "Permalink" ("favicon.ico" | absURL) -}}
 {{- with index (partial "templates/_funcs/social-images.html" site.Home) 0 -}}
   {{- $siteImage = . -}}
 {{- end -}}

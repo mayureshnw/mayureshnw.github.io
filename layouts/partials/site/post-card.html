@@ -4,9 +4,7 @@
   {{- $showMeta = .showMeta -}}
 {{- end -}}
 {{- $summary := $page.Description | default ($page.Summary | plainify | htmlUnescape) -}}
-<article class="{{ .class | default "post-entry" }}">
-  {{- $isHidden := ($page.Param "cover.hiddenInList") | default ($page.Param "cover.hidden") | default false -}}
-  {{- partial "cover.html" (dict "cxt" $page "IsSingle" false "isHidden" $isHidden) -}}
+<article class="{{ .class | default "article-card" }}">
   <header class="entry-header">
     {{- with .eyebrow -}}
     <p class="entry-hint">{{ . }}</p>
@@ -27,8 +25,8 @@
   {{- end -}}
   {{- if $showMeta -}}
   <footer class="entry-footer">
-    {{- partial "post_meta.html" $page -}}
+    {{- partial "site/post-meta.html" $page -}}
   </footer>
   {{- end -}}
-  <a class="entry-link" aria-label="post link to {{ $page.Title | plainify }}" href="{{ $page.Permalink }}"></a>
+  <a class="card-link" aria-label="post link to {{ $page.Title | plainify }}" href="{{ $page.Permalink }}"></a>
 </article>

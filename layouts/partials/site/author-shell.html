@@ -4,7 +4,7 @@
 {{- end -}}
 {{- $name = .name | default $name -}}
 {{- $body := .body | default site.Params.description -}}
-<aside class="{{ .class | default "post-entry brand-author-shell" }}">
+<aside class="{{ .class | default "brand-author-shell" }}">
   <header class="entry-header">
     <h2>{{ .title | default "About the author" }}</h2>
   </header>
@@ -15,9 +15,9 @@
   {{- end -}}
   <footer class="entry-footer">
     {{ $name }}
-    {{- if site.Params.socialIcons -}}
+    {{- if site.Params.socialLinks -}}
     <br>
-    {{- partial "social_icons.html" (dict "align" "left") -}}
+    {{- partial "site/social-links.html" -}}
     {{- end -}}
   </footer>
 </aside>

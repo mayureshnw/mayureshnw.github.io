@@ -8,11 +8,7 @@ draft: true
 categories: [engineering]
 tags: []
 featured: false
-canonicalURL: ""
 aliases: []
-cover:
-  image: ""
-  alt: ""
 ShowToc: true
 TocOpen: true
 ---

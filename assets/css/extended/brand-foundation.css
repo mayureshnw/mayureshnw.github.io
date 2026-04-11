@@ -280,19 +280,6 @@ h1.brand-page-title,
     font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
 }
 
-.brand-section-rss {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--secondary);
-    opacity: 0.8;
-}
-
-.brand-section-rss:hover {
-    color: var(--primary);
-    opacity: 1;
-}
-
 @media (max-width: 768px) {
     .brand-surface,
     .brand-surface--hero {

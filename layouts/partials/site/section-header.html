@@ -1,21 +1,18 @@
 {{- $page := .page -}}
 {{- $level := .level | default 2 -}}
 {{- $title := .title -}}
-{{- if or .title .description .eyebrow .actions .showBreadcrumbs -}}
+{{- if or .title .description .eyebrow .actions -}}
 <header class="{{ .class | default "page-header" }}">
-  {{- if and .showBreadcrumbs $page -}}
-    {{- partial "breadcrumbs.html" $page -}}
-  {{- end -}}
   {{- with .eyebrow -}}
   <p class="entry-hint">{{ . }}</p>
   {{- end -}}
   {{- with $title -}}
     {{- if eq $level 1 -}}
-  <h1 class="brand-page-title">{{ . }}{{ with $.titleSuffix }} {{ . | safeHTML }}{{ end }}</h1>
+  <h1 class="brand-page-title">{{ . }}</h1>
     {{- else if eq $level 3 -}}
-  <h3>{{ . }}{{ with $.titleSuffix }} {{ . | safeHTML }}{{ end }}</h3>
+  <h3>{{ . }}</h3>
     {{- else -}}
-  <h2>{{ . }}{{ with $.titleSuffix }} {{ . | safeHTML }}{{ end }}</h2>
+  <h2>{{ . }}</h2>
     {{- end -}}
   {{- end -}}
   {{- with .description -}}

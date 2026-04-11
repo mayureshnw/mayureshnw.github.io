@@ -4,18 +4,13 @@
     <div class="brand-page-copy">
       {{- partial "brand/page_intro.html" (dict
         "page" .
-        "showBreadcrumbs" true
         "eyebrow" "About"
         "title" .Title
         "description" .Summary
       ) -}}
       {{- if .Content -}}
       <div class="brand-page-copy-body brand-about-copy">
-        {{- if not (.Param "disableAnchoredHeadings") -}}
-          {{- partial "anchored_headings.html" .Content -}}
-        {{- else -}}
-          {{- .Content -}}
-        {{- end -}}
+        {{- partial "site/anchored-headings.html" .Content -}}
       </div>
       {{- end -}}
     </div>

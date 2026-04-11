@@ -113,7 +113,6 @@ def validate_post(markdown_file: Path) -> list[str]:
     categories = coerce_list(frontmatter["categories"])
     tags = coerce_list(frontmatter["tags"])
     is_draft = bool(frontmatter["draft"])
-    cover = frontmatter.get("cover", {})
 
     if not title:
         errors.append(f"{relative(markdown_file)}: title must not be empty")
@@ -131,12 +130,6 @@ def validate_post(markdown_file: Path) -> list[str]:
             errors.append(f"{relative(markdown_file)}: published posts cannot keep the default TODO description")
         if not tags:
             errors.append(f"{relative(markdown_file)}: published posts must set at least one tag")
-
-    if isinstance(cover, dict):
-        cover_image = str(cover.get("image", "")).strip()
-        cover_alt = str(cover.get("alt", "")).strip()
-        if cover_image and not cover_alt:
-            errors.append(f"{relative(markdown_file)}: cover.alt is required when cover.image is set")
 
     return errors
 

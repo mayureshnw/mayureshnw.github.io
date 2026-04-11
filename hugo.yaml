@@ -67,23 +67,20 @@ params:
     - Software Engineering
     - System Design
   description: "Engineering writing by Mayuresh Waykole on distributed systems, observability, reliability, and AI engineering."
-  homeInfoParams:
+  homeHero:
     title: "Mayuresh Waykole"
-    Content: |
+    content: |
       I write about **distributed systems**, **observability**, **reliability**, and **AI-assisted engineering**.
 
       This site is where I publish long-form notes on building software that stays understandable, observable, and reliable as it grows.
 
-  socialIcons:
+  socialLinks:
     - name: "LinkedIn"
       icon: "linkedin-in"
       url: "https://www.linkedin.com/in/mayureshwaykole/"
     - name: "X"
       icon: "x-in"
       url: "https://x.com/MayureshWaykole"
-  ShowReadingTime: true
-  ShowWordCount: true
-  ShowShareButtons: false
   schema:
     publisherType: "Person"
     url: "https://mayureshwaykole.com/"

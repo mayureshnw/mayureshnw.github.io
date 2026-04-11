@@ -1,14 +1,12 @@
 {{- $page := . -}}
-{{- $force := false -}}
 {{- $includeCurrent := false -}}
 {{- $class := "" -}}
 {{- if reflect.IsMap . -}}
   {{- $page = .page -}}
-  {{- $force = .force | default false -}}
   {{- $includeCurrent = .includeCurrent | default false -}}
   {{- $class = .class | default "" -}}
 {{- end -}}
-{{- if and $page (or $force ($page.Param "ShowBreadCrumbs")) -}}
+{{- if $page -}}
   {{- $items := slice (dict "name" (i18n "home" | default "Home") "url" ("" | absLangURL) "isCurrent" false) -}}
   {{- range $page.Ancestors.Reverse -}}
     {{- if ne .Permalink site.Home.Permalink -}}
@@ -19,7 +17,7 @@
     {{- $items = $items | append (dict "name" ($page.Title | default $page.LinkTitle | default $page.Name) "url" $page.Permalink "isCurrent" true) -}}
   {{- end -}}
   {{- if gt (len $items) 1 -}}
-<nav class="breadcrumbs{{ with $class }} {{ . }}{{ end }}" aria-label="Breadcrumb">
+<nav class="site-breadcrumbs{{ with $class }} {{ . }}{{ end }}" aria-label="Breadcrumb">
     <ol>
       {{- $last := sub (len $items) 1 -}}
       {{- range $index, $item := $items -}}

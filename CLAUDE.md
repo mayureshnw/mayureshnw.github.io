@@ -69,11 +69,7 @@ draft: true
 categories: [engineering]
 tags: [Tag1, Tag2, Tag3]
 featured: false
-canonicalURL: ""
 aliases: []
-cover:
-  image: ""
-  alt: ""
 ShowToc: true
 TocOpen: true
 ---
@@ -106,5 +102,5 @@ The deployment workflow uses Hugo Extended v0.147.3. Keep this consistent for lo
 - Posts should be categorized under `categories: [engineering]` to appear in the Engineering menu
 - `description`, `date`, `lastmod`, `draft`, `tags`, `ShowToc`, and `TocOpen` should be present on every post
 - `tags` are granular discovery terms
-- `featured`, `canonicalURL`, `aliases`, and `cover` fields are optional and should be filled only when relevant
+- `featured` and `aliases` are optional and should be filled only when relevant
 - Always set `draft: false` when ready to publish

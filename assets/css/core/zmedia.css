@@ -4,11 +4,6 @@
         --gap: 14px;
     }
 
-    /* post-entry */
-    .first-entry {
-        min-height: 260px;
-    }
-
     /* footer */
     .footer {
         padding: calc((var(--footer-height) - var(--gap) - 10px) / 2) var(--gap);
@@ -22,16 +17,10 @@
     }
 }
 
-@media screen and (max-width: 340px) {
-    .share-buttons {
-        justify-content: unset;
-    }
-}
-
 @media (prefers-reduced-motion) {
-    /* terms; post-single; post-entry */
+    /* terms; article cards; top-link */
     .terms-tags a:active,
-    .post-entry:active,
+    .article-card:active,
     .top-link {
         transform: none;
     }
