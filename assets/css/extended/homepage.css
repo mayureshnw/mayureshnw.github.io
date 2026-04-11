@@ -6,21 +6,15 @@
     gap: 2rem;
 }
 
-.brand-home-top {
-    display: grid;
-    gap: 1.25rem;
-}
-
 .brand-home-hero-shell {
     display: grid;
     gap: 1.75rem;
-    grid-template-columns: minmax(0, 1.45fr) minmax(16rem, 0.85fr);
+    grid-template-columns: minmax(0, 1fr);
     align-items: start;
     overflow: hidden;
 }
 
 .brand-home-hero__copy,
-.brand-home-hero__summary,
 .brand-home-hero {
     min-width: 0;
 }
@@ -122,102 +116,6 @@
     color: var(--theme);
 }
 
-.brand-home-hero__summary {
-    display: grid;
-    gap: 0.9rem;
-    align-content: start;
-}
-
-.brand-home-summary-card {
-    padding: 0;
-    border: 0;
-    border-radius: 0;
-    background: transparent;
-}
-
-.brand-home-summary-header,
-.brand-home-summary-meta {
-    display: grid;
-    gap: 0.7rem;
-}
-
-.brand-home-summary-label {
-    margin: 0;
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--secondary);
-}
-
-.brand-home-summary-intro {
-    margin: 0;
-    font-size: 0.95rem;
-    line-height: 1.6;
-    color: var(--secondary);
-}
-
-.brand-home-expertise-list {
-    display: grid;
-    gap: 0.85rem;
-    margin: 1rem 0 0;
-    padding: 0;
-    list-style: none;
-}
-
-.brand-home-expertise-list li {
-    display: grid;
-    gap: 0.3rem;
-    padding-top: 0.85rem;
-    border-top: 1px solid var(--brand-divider);
-}
-
-.brand-home-expertise-list li:first-child {
-    padding-top: 0;
-    border-top: 0;
-}
-
-.brand-home-expertise-list strong {
-    font-size: 1rem;
-    line-height: 1.35;
-    font-weight: 650;
-}
-
-.brand-home-expertise-list span {
-    color: var(--secondary);
-    line-height: 1.55;
-}
-
-.brand-home-summary-meta {
-    margin-top: 1rem;
-    padding-top: 1rem;
-    border-top: 1px solid var(--brand-divider);
-}
-
-.brand-home-summary-stats {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.75rem;
-}
-
-.brand-home-stat {
-    display: grid;
-    gap: 0.2rem;
-}
-
-.brand-home-stat strong {
-    font-size: 1.65rem;
-    line-height: 1;
-    letter-spacing: -0.04em;
-    font-weight: 650;
-}
-
-.brand-home-stat span {
-    font-size: 0.84rem;
-    line-height: 1.45;
-    color: var(--secondary);
-}
-
 .brand-home-section-header {
     margin-bottom: 1.25rem;
 }
@@ -235,69 +133,8 @@
     text-wrap: balance;
 }
 
-.brand-home-curated,
-.brand-home-recent,
 .brand-home-connect {
     overflow: hidden;
-}
-
-.brand-home-curated-list,
-.brand-home-recent-list {
-    display: grid;
-    gap: 0.75rem;
-}
-
-.brand-home-curated-list .post-entry {
-    margin: 0;
-    padding: 1.1rem;
-    border: 1px solid var(--brand-divider);
-    border-radius: var(--brand-card-radius);
-    background: var(--entry);
-}
-
-.brand-home-curated-list .post-entry:first-child {
-    padding-top: 1.1rem;
-}
-
-.brand-home-curated-list .post-entry::before {
-    display: none;
-}
-
-.brand-home-curated-list .entry-header h2 {
-    font-size: clamp(1.2rem, 1.8vw, 1.55rem);
-    line-height: 1.15;
-}
-
-.brand-home-curated-list .entry-content {
-    margin: 0.65rem 0 0.7rem;
-    -webkit-line-clamp: 3;
-}
-
-.brand-home-curated-list .entry-footer {
-    font-size: 0.84rem;
-    line-height: 1.55;
-}
-
-.brand-home-recent-list {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.brand-home-recent-list .post-entry {
-    height: 100%;
-    margin: 0;
-    padding: 1.1rem;
-    border: 1px solid var(--brand-divider);
-    border-radius: var(--brand-card-radius);
-    background: var(--entry);
-}
-
-.brand-home-recent-list .entry-header h2 {
-    font-size: 1.35rem;
-    line-height: 1.15;
-}
-
-.brand-home-recent-list .entry-content {
-    -webkit-line-clamp: 3;
 }
 
 .brand-home-connect {
@@ -307,23 +144,8 @@
     grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
 }
 
-@media (max-width: 1180px) {
-    .brand-home-recent-list {
-        grid-template-columns: 1fr;
-    }
-}
-
 @media (max-width: 1040px) {
-    .brand-home-hero-shell,
     .brand-home-connect {
-        grid-template-columns: 1fr;
-    }
-
-    .brand-home-hero-shell {
-        gap: 2rem;
-    }
-
-    .brand-home-hero__summary {
         grid-template-columns: 1fr;
     }
 }
@@ -335,10 +157,5 @@
 
     .brand-home-hero .entry-header h1 {
         font-size: clamp(2.6rem, 15vw, 4rem);
-    }
-
-    .brand-home-hero__summary,
-    .brand-home-summary-stats {
-        grid-template-columns: 1fr;
     }
 }

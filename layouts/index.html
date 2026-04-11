@@ -1,149 +1,20 @@
 {{- define "main" -}}
-{{- $mainSections := site.Params.mainSections | default (slice "posts") -}}
-{{- $pages := where site.RegularPages "Type" "in" $mainSections -}}
-{{- $pages = where $pages "Params.hiddenInHomeList" "!=" true -}}
-{{- $paginator := .Paginate $pages -}}
-{{- $isFirstPage := eq $paginator.PageNumber 1 -}}
-{{- $featuredPosts := where $pages "Params.featured" true -}}
-{{- $publishedCount := len $pages -}}
-{{- $curatedPosts := first 2 (union $featuredPosts $pages) -}}
-
 <div class="brand-shell brand-home">
-  {{- if $isFirstPage -}}
-  <section class="brand-home-top">
-    <section class="brand-surface brand-surface--hero brand-home-hero-shell">
-      <div class="brand-home-hero__copy">
-        <p class="brand-section-eyebrow">Senior software engineer · distributed systems · observability</p>
-        {{- partial "site/home-hero.html" . -}}
-        <p class="brand-home-lede">
-          Building and writing about systems that stay understandable, observable, and reliable as they grow.
-        </p>
-        <div class="brand-home-actions">
-          <a class="brand-home-action brand-home-action--strong" href="/about/">About</a>
-          <a class="brand-home-action" href="/archives/">Archives</a>
-          <a class="brand-home-action" href="/categories/engineering/">Engineering</a>
-        </div>
+  <section class="brand-surface brand-surface--hero brand-home-hero-shell">
+    <div class="brand-home-hero__copy">
+      <p class="brand-section-eyebrow">Senior software engineer · distributed systems · observability</p>
+      {{- partial "site/home-hero.html" . -}}
+      <p class="brand-home-lede">
+        Building and writing about systems that stay understandable, observable, and reliable as they grow.
+      </p>
+      <div class="brand-home-actions">
+        <a class="brand-home-action brand-home-action--strong" href="/about/">About</a>
+        <a class="brand-home-action" href="/archives/">Archives</a>
+        <a class="brand-home-action" href="/categories/engineering/">Engineering</a>
       </div>
-
-      <aside class="brand-home-hero__summary">
-        <section class="brand-home-summary-card">
-          <div class="brand-home-summary-header">
-            <p class="brand-home-summary-label">Practice areas</p>
-            <p class="brand-home-summary-intro">
-              Engineering writing grounded in architecture, observability, reliability, and AI-assisted delivery.
-            </p>
-          </div>
-          <ul class="brand-home-expertise-list">
-            <li>
-              <strong>Distributed systems</strong>
-              <span>Resilient services, idempotency, and event-driven design.</span>
-            </li>
-            <li>
-              <strong>Observability</strong>
-              <span>Signals and tooling that make production behavior easier to reason about.</span>
-            </li>
-            <li>
-              <strong>Reliability + AI engineering</strong>
-              <span>Modern engineering practice that blends architectural rigor with emerging AI workflows.</span>
-            </li>
-          </ul>
-
-          <div class="brand-home-summary-meta">
-            <p class="brand-home-summary-label">Publishing focus</p>
-            <div class="brand-home-summary-stats">
-              <div class="brand-home-stat">
-                <strong>{{ $publishedCount }}</strong>
-                <span>{{ if eq $publishedCount 1 }}published essay{{ else }}published essays{{ end }}</span>
-              </div>
-              <div class="brand-home-stat">
-                <strong>{{ len $curatedPosts }}</strong>
-                <span>recommended starts</span>
-              </div>
-            </div>
-          </div>
-        </section>
-      </aside>
-    </section>
-
-    <section class="brand-surface brand-home-curated">
-      {{- if gt (len $featuredPosts) 0 -}}
-        {{- partial "site/section-header.html" (dict
-          "title" "Featured reading"
-          "description" "A few editorially highlighted pieces to start with."
-          "level" 2
-          "class" "brand-home-section-header"
-        ) -}}
-      {{- else -}}
-        {{- partial "site/section-header.html" (dict
-          "title" "Start here"
-          "description" "A few strong entries to begin with across architecture, distributed systems, and observability."
-          "level" 2
-          "class" "brand-home-section-header"
-        ) -}}
-      {{- end -}}
-
-      {{- if gt (len $curatedPosts) 0 -}}
-        {{- partial "site/post-card-list.html" (dict
-          "pages" $curatedPosts
-          "showMeta" true
-          "showSeries" true
-          "class" "brand-home-curated-list"
-        ) -}}
-      {{- else -}}
-      <p class="brand-empty-state">New writing is on the way.</p>
-      {{- end -}}
-    </section>
-  </section>
-  {{- end -}}
-
-  <section class="brand-surface brand-surface--soft brand-home-recent">
-    {{- partial "site/section-header.html" (dict
-      "title" "Recent writing"
-      "description" "Latest essays and working notes from the engineering archive."
-      "actions" (slice
-        (dict "label" "Archives" "url" "/archives/")
-        (dict "label" "Engineering" "url" "/categories/engineering/")
-      )
-      "level" 2
-      "class" "brand-home-section-header"
-    ) -}}
-
-    {{- if gt (len $paginator.Pages) 0 -}}
-      {{- partial "site/post-card-list.html" (dict
-        "pages" $paginator.Pages
-        "showMeta" true
-        "showSeries" true
-        "class" "brand-home-recent-list"
-      ) -}}
-    {{- else -}}
-    <p class="brand-empty-state">No posts are published here yet.</p>
-    {{- end -}}
-
-    {{- if gt $paginator.TotalPages 1 -}}
-    <footer class="page-footer">
-      <nav class="pagination">
-        {{- if $paginator.HasPrev -}}
-        <a class="prev" href="{{ $paginator.Prev.URL | absURL }}">
-          «&nbsp;{{ i18n "prev_page" }}&nbsp;
-          {{- if (.Param "ShowPageNums") -}}
-          {{- sub $paginator.PageNumber 1 }}/{{ $paginator.TotalPages -}}
-          {{- end -}}
-        </a>
-        {{- end -}}
-        {{- if $paginator.HasNext -}}
-        <a class="next" href="{{ $paginator.Next.URL | absURL }}">
-          {{- i18n "next_page" }}&nbsp;
-          {{- if (.Param "ShowPageNums") -}}
-          {{- add 1 $paginator.PageNumber }}/{{ $paginator.TotalPages -}}
-          {{- end -}}&nbsp;»
-        </a>
-        {{- end -}}
-      </nav>
-    </footer>
-    {{- end -}}
+    </div>
   </section>
 
-  {{- if $isFirstPage -}}
   <section class="brand-surface brand-home-connect">
     <div class="brand-home-connect__copy">
       {{- partial "site/section-header.html" (dict
@@ -160,8 +31,6 @@
       <a class="brand-home-action" href="https://github.com/mayureshwaykole">GitHub</a>
       <a class="brand-home-action" href="https://x.com/MayureshWaykole">X</a>
     </div>
-
   </section>
-  {{- end -}}
 </div>
 {{- end -}}

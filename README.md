@@ -104,7 +104,7 @@ Posts belong in page bundles under `content/posts/<slug>/index.md`; reserve top-
 
 ### Phase 2 editorial notes
 
-- `featured: true` now opts a post into the homepage's featured/recommended reading pool. If no posts are marked featured, the homepage falls back to recent writing automatically.
+- `featured: true` adds the Featured badge to shared post cards and boosts a post in related-reading selections.
 - Post-page connect and related-reading surfaces are driven by `layouts/partials/site/post-supplemental.html`, while the About page positioning copy lives in `content/about.md`.
 
 ### Metadata ownership audit snapshot
