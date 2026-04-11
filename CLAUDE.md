@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a Hugo-based personal blog and portfolio site for Mayuresh Waykole (https://mayureshwaykole.com), focused on software engineering topics including Distributed Systems, Observability, and AIOps. The site uses the PaperMod theme and is deployed via GitHub Pages.
+This is a Hugo-based personal blog and portfolio site for Mayuresh Waykole (https://mayureshwaykole.com), focused on software engineering topics including Distributed Systems, Observability, and AIOps. The site uses repo-owned Hugo layouts and CSS and is deployed via GitHub Pages.
 
 ## Essential Commands
 
@@ -27,10 +27,6 @@ hugo --gc --minify
 ```bash
 # Create a new post using the archetype
 hugo new content/posts/post-title/index.md
-
-# Update theme submodule
-git submodule update --init --recursive
-git submodule update --remote --merge
 ```
 
 ### Deployment
@@ -42,9 +38,9 @@ The site auto-deploys to GitHub Pages on push to `main` branch via `.github/work
 ## Architecture
 
 ### Site Configuration
-- **Main config**: `hugo.yaml` - contains site metadata, menu structure, theme settings, social links, and Google Analytics
+- **Main config**: `hugo.yaml` - contains site metadata, menu structure, site params, social links, and Google Analytics
 - **Base URL**: https://mayureshwaykole.com/
-- **Theme**: PaperMod (via git submodule in `themes/PaperMod/`)
+- **Presentation layer**: repo-owned partials in `layouts/partials/` and CSS assets in `assets/css/`
 - **Main branch for PRs**: `main`
 
 ### Directory Structure
@@ -55,7 +51,8 @@ content/
   posts/          # Page bundles for blog posts (content/posts/post-name/index.md)
 archetypes/
   default.md      # Template for new posts with author, tags, date, TOC settings
-layouts/          # Custom layout overrides (currently empty, inherits from theme)
+layouts/          # Repo-owned layout system, partials, feeds, and page templates
+assets/           # Repo-owned CSS and pipeline assets
 static/           # Static assets served directly
 public/           # Generated site output (gitignored)
 ```
@@ -85,11 +82,11 @@ TocOpen: true
 ---
 ```
 
-### Theme Customization
-- The site uses PaperMod theme as a git submodule
-- Custom configurations are in `hugo.yaml` under `params:`
-- Theme updates require: `git submodule update --remote --merge`
-- Never modify files inside `themes/PaperMod/` directly; use Hugo's override system via `layouts/`
+### Layout and Styling Ownership
+- Shared shell partials live in `layouts/partials/`
+- Base styles live in `assets/css/core/`, `assets/css/common/`, and `assets/css/includes/`
+- Brand-specific extensions live in `assets/css/extended/`
+- The site is intentionally light-theme only; there is no dark-mode support
 
 ### Menu Structure
 Site navigation (defined in `hugo.yaml`):

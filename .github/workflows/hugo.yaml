@@ -49,7 +49,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          submodules: recursive
           fetch-depth: 0
       - name: Validate publishing metadata and links
         run: python3 scripts/validate_publishing.py

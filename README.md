@@ -1,11 +1,11 @@
 # Mayuresh Waykole
 
-Personal site and engineering blog built with Hugo and the PaperMod theme.
+Personal site and engineering blog built with Hugo and repo-owned layouts, partials, and CSS.
 
 ## Stack
 
 - Hugo Extended `0.147.3`
-- PaperMod theme via git submodule
+- Repo-owned Hugo templates, partials, and CSS assets
 - GitHub Pages deployment from this repository
 
 ## Branch and deployment model
@@ -17,11 +17,7 @@ Personal site and engineering blog built with Hugo and the PaperMod theme.
 ## Local setup
 
 1. Install Hugo Extended `0.147.3` locally.
-2. Clone the repository and initialize the PaperMod submodule:
-
-   ```bash
-   git submodule update --init --recursive
-   ```
+2. Clone the repository.
 
 ## Local development
 
@@ -125,8 +121,8 @@ Approved `topics` values for Phase 1:
 
 ### Metadata ownership audit snapshot
 
-- The repo owns the base layout shell in `layouts/_default/baseof.html`, while `<head>` still delegates to PaperMod's `partials/head.html` and repo-owned additions in `layouts/partials/extend_head.html`.
-- Open Graph, Twitter cards, and JSON-LD now have repo-owned overrides under `layouts/partials/templates/`, so page types, social-image fallbacks, and structured data no longer rely entirely on PaperMod defaults.
-- The site now emits a repo-owned JSON Feed (`feed.json`) for the homepage plus section and term archives via `hugo.yaml`, `layouts/index.jsonfeed.json`, and `layouts/_default/*jsonfeed.json`. RSS remains theme-owned for now.
+- The repo owns the base layout shell plus the shared `head`, `header`, and `footer` partials used by the site chrome.
+- Open Graph, Twitter cards, JSON-LD, canonical-link behavior, page-image helpers, and RSS are now repo-owned under `layouts/partials/` and `layouts/_default/`.
+- The site now emits a repo-owned JSON Feed (`feed.json`) for the homepage plus section and term archives via `hugo.yaml`, `layouts/index.jsonfeed.json`, and `layouts/_default/*jsonfeed.json`.
 - Default social previews now fall back to `static/images/social-preview.png` via `params.images` when a page does not define its own `cover.image` or other page image.
-- The remaining metadata ownership gap is mainly canonical-link/RSS behavior (`layouts/partials/post_canonical.html` and `layouts/_default/rss.xml`) if the site later needs full repo-owned feed parity.
+- Shared light-theme primitives now live directly in `assets/css/` and `layouts/partials/`, so the site no longer requires a third-party theme submodule to build.

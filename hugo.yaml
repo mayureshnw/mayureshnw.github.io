@@ -1,7 +1,6 @@
 baseURL: https://mayureshwaykole.com/
 languageCode: en-us
 title: Mayuresh Waykole
-theme: ["PaperMod"]
 
 caches:
   images:
@@ -96,7 +95,7 @@ params:
       url: "https://x.com/MayureshWaykole"
   ShowReadingTime: true
   ShowWordCount: true
-  ShowShareButtons: true
+  ShowShareButtons: false
   schema:
     publisherType: "Person"
     url: "https://mayureshwaykole.com/"
