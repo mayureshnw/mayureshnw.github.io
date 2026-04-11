@@ -1,24 +1,42 @@
 {{- define "main" -}}
 {{- $eyebrow := "Engineering essay" -}}
+{{- $mainSections := site.Params.mainSections | default (slice "posts") -}}
+{{- $showContextLinks := in $mainSections .Type -}}
 
 <div class="brand-shell brand-post-shell">
   <article class="post-single brand-post-single brand-surface brand-surface--hero">
-    {{- partial "brand/page_intro.html" (dict
-      "page" .
-      "showBreadcrumbs" true
-      "eyebrow" $eyebrow
-      "title" .Title
-      "description" .Description
-      "class" "brand-post-header"
-    ) -}}
-    {{- if not (.Param "hideMeta") }}
-    <div class="post-meta brand-post-meta">
-      {{- partial "post_meta.html" . -}}
-      {{- partial "translation_list.html" . -}}
-      {{- partial "edit_post.html" . -}}
-      {{- partial "post_canonical.html" . -}}
+    <div class="brand-post-hero-copy">
+      {{- partial "brand/page_intro.html" (dict
+        "page" .
+        "showBreadcrumbs" true
+        "eyebrow" $eyebrow
+        "title" .Title
+        "description" .Description
+        "class" "brand-post-header"
+      ) -}}
+      {{- if or (not (.Param "hideMeta")) $showContextLinks }}
+      <div class="brand-post-context">
+        {{- if not (.Param "hideMeta") }}
+        <div class="post-meta brand-post-meta">
+          {{- partial "post_meta.html" . -}}
+          {{- partial "translation_list.html" . -}}
+          {{- partial "edit_post.html" . -}}
+          {{- partial "post_canonical.html" . -}}
+        </div>
+        {{- end }}
+
+        {{- if $showContextLinks }}
+        <nav class="brand-inline-links brand-post-links" aria-label="Post links">
+          <a href='{{ "" | relLangURL }}'>Home</a>
+          <span aria-hidden="true">/</span>
+          <a href='{{ "archives/" | relLangURL }}'>Archives</a>
+          <span aria-hidden="true">/</span>
+          <a href='{{ "about/" | relLangURL }}'>About</a>
+        </nav>
+        {{- end -}}
+      </div>
+      {{- end -}}
     </div>
-    {{- end }}
     {{- $isHidden := (.Param "cover.hiddenInSingle") | default (.Param "cover.hidden") | default false -}}
     {{- partial "cover.html" (dict "cxt" . "IsSingle" true "isHidden" $isHidden) -}}
   </article>
@@ -36,7 +54,7 @@
         {{- .Content -}}
       {{- end -}}
     </div>
-    {{- end -}}
+    {{- end }}
   </section>
 
   <footer class="post-footer brand-post-footer">

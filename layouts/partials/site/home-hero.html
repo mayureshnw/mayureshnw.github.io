@@ -4,10 +4,10 @@
   {{- $title = .Title | default $title -}}
   {{- $content = .Content | default $content -}}
 {{- end -}}
-<div class="brand-home-hero">
-  <h1>{{ $title }}</h1>
+<div class="brand-home-hero brand-editorial-hero">
+  <h1 class="brand-page-title">{{ $title }}</h1>
   {{- with $content -}}
-  <div class="brand-home-summary">
+  <div class="brand-home-summary brand-editorial-summary">
     {{ . | markdownify }}
   </div>
   {{- end -}}

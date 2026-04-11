@@ -2,14 +2,60 @@
     max-width: calc(1040px + var(--gap) * 2);
 }
 
+.kind-term .main {
+    max-width: calc(1040px + var(--gap) * 2);
+}
+
 .brand-list-shell,
 .brand-post-shell {
-    gap: clamp(2.75rem, 6vw, 4rem);
+    gap: clamp(3rem, 6vw, 4.5rem);
 }
 
 .brand-list-results,
 .brand-post-rich-content {
     overflow: visible;
+}
+
+.brand-posts-shell .brand-page-hero {
+    gap: clamp(1.75rem, 3vw, 2.5rem);
+}
+
+.brand-posts-shell .brand-page-copy {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.brand-posts-shell .brand-page-description {
+    max-width: 38rem;
+    color: var(--content);
+    font-size: clamp(1.08rem, 2.2vw, 1.35rem);
+    line-height: 1.72;
+}
+
+.brand-posts-shell .brand-page-copy-body {
+    max-width: 40rem;
+    font-size: 1rem;
+}
+
+.brand-posts-links {
+    padding-top: 0.1rem;
+}
+
+.brand-posts-shell .brand-page-panel {
+    align-self: end;
+    padding-bottom: 0.2rem;
+}
+
+.brand-posts-shell .brand-stat-grid {
+    gap: 1.25rem;
+}
+
+.brand-posts-shell .brand-stat {
+    padding-top: 1rem;
+}
+
+.brand-posts-shell .brand-stat-value {
+    font-size: clamp(1.05rem, 1.8vw, 1.35rem);
 }
 
 .brand-post-list--editorial {
@@ -18,7 +64,7 @@
 
 .brand-post-list--editorial .post-entry {
     margin: 0;
-    padding-top: 1.25rem;
+    padding-top: 1.5rem;
     border: 0;
     border-top: 1px solid var(--border);
     border-radius: 0;
@@ -33,70 +79,131 @@
 }
 
 .brand-post-list--editorial .entry-header h2 {
-    font-size: clamp(1.1rem, 1.7vw, 1.4rem);
-    line-height: 1.16;
+    font-size: clamp(1.2rem, 2vw, 1.55rem);
+    line-height: 1.14;
     letter-spacing: -0.025em;
     font-weight: 650;
 }
 
 .brand-post-list--editorial .entry-content {
-    margin-top: 0.75rem;
+    max-width: 40rem;
+    margin-top: 0.85rem;
     color: var(--secondary);
     line-height: 1.65;
 }
 
 .brand-post-list--editorial .entry-footer {
+    margin-top: 1rem;
     font-size: 0.88rem;
     line-height: 1.6;
 }
 
 .brand-post-single {
+    display: grid;
+    gap: 2rem;
     overflow: hidden;
+}
+
+.brand-post-hero-copy {
+    display: grid;
+    gap: 1.5rem;
+    max-width: 52rem;
 }
 
 .brand-post-header {
     margin-bottom: 0;
-}
-
-.brand-post-header .brand-section-title {
-    max-width: 18ch;
-    font-size: clamp(2.15rem, 3.8vw, 3rem);
-    line-height: 0.98;
-    letter-spacing: -0.045em;
-    font-weight: 700;
-    text-wrap: balance;
+    display: grid;
+    gap: 1.35rem;
 }
 
 .brand-post-header .brand-page-description {
-    max-width: 42rem;
-    color: var(--secondary);
-    font-size: 1.05rem;
-    line-height: 1.75;
+    max-width: 48rem;
+    color: var(--content);
+    font-size: clamp(1.08rem, 2.2vw, 1.35rem);
+    line-height: 1.72;
     font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
 }
 
+.brand-post-context {
+    display: grid;
+    gap: 0.85rem;
+    max-width: 48rem;
+}
+
 .brand-post-meta {
-    margin-top: 1rem;
-    padding-top: 0.9rem;
+    display: block;
+    margin-top: 0;
+    padding-top: 0.95rem;
     border-top: 1px solid var(--brand-divider);
     color: var(--secondary);
     font-size: 0.9rem;
-    line-height: 1.7;
+    line-height: 1.8;
 }
 
 .brand-post-meta a {
     color: inherit;
+    border-bottom: 1px solid transparent;
+}
+
+.brand-post-meta a:hover {
+    border-color: currentColor;
+}
+
+.brand-post-links {
+    padding-top: 0.15rem;
+}
+
+.brand-post-single .entry-cover {
+    margin: 0;
+    max-width: min(100%, 52rem);
+}
+
+.brand-post-single .entry-cover img {
+    width: 100%;
 }
 
 .brand-post-rich-content .toc {
-    margin: 0 0 1.5rem;
-    border: 1px solid var(--border);
+    max-width: 26rem;
+    margin: 0;
+    padding: 0.95rem 0 0;
+    border: 0;
+    border-top: 1px solid var(--brand-divider);
     background: transparent;
     border-radius: 0;
 }
 
+.brand-post-rich-content .toc details summary {
+    margin-inline-start: 0;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--secondary);
+}
+
+.brand-post-rich-content .toc .details {
+    font-weight: 700;
+}
+
+.brand-post-rich-content .toc .inner {
+    margin: 0.8rem 0 0;
+    padding: 0;
+}
+
 .brand-post-rich-content .post-content {
+    max-width: 52rem;
     margin-top: 0;
+}
+
+.brand-post-rich-content .post-content > p:first-of-type {
+    max-width: 48rem;
+    font-size: clamp(1.14rem, 2.4vw, 1.48rem);
+    line-height: 1.75;
+    color: var(--content);
+}
+
+.brand-post-rich-content .post-content > p:first-of-type + p {
+    margin-top: calc(var(--content-gap) - 0.2rem);
 }
 
 .brand-post-rich-content .post-content > h2:first-child,
@@ -106,7 +213,7 @@
 
 .brand-post-footer {
     display: grid;
-    gap: 1.75rem;
+    gap: 2rem;
 }
 
 .brand-post-footer-meta {
@@ -117,15 +224,26 @@
 .brand-post-supplemental {
     display: grid;
     gap: 2rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+}
+
+.brand-post-supplemental > *,
+.brand-related-list > * {
+    min-width: 0;
+}
+
+.brand-post-related {
+    grid-column: 1 / -1;
 }
 
 .brand-author-shell,
 .brand-cta-shell,
 .brand-post-related {
     display: grid;
-    gap: 1rem;
+    gap: 1.1rem;
     margin: 0;
-    padding: 1.25rem 0 0;
+    padding: 1.35rem 0 0;
     border: 0;
     border-top: 1px solid var(--border);
     border-radius: 0;
@@ -136,9 +254,9 @@
 .brand-author-shell .entry-header h2,
 .brand-cta-shell .entry-header h2 {
     margin: 0;
-    font-size: 1.1rem;
-    line-height: 1.2;
-    letter-spacing: -0.02em;
+    font-size: 1rem;
+    line-height: 1.25;
+    letter-spacing: -0.015em;
 }
 
 .brand-author-shell .entry-content,
@@ -146,6 +264,7 @@
     color: var(--secondary);
     font-size: 0.98rem;
     line-height: 1.75;
+    max-width: 34rem;
 }
 
 .brand-author-shell .entry-content p,
@@ -205,11 +324,27 @@
     column-gap: 2rem;
 }
 
+.brand-post-related .brand-section-title {
+    max-width: 14ch;
+    font-size: clamp(1.7rem, 2.5vw, 2.3rem);
+    line-height: 0.95;
+}
+
+.brand-post-related .brand-page-description {
+    max-width: 34rem;
+    font-size: 0.98rem;
+}
+
 .brand-post-card--related {
     height: 100%;
 }
 
+.brand-post-card--related .entry-header h2 {
+    font-size: clamp(1rem, 1.5vw, 1.15rem);
+}
+
 .brand-post-card--related .entry-content {
+    max-width: 30rem;
     display: -webkit-box;
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
@@ -223,14 +358,15 @@
 }
 
 @media (max-width: 900px) {
+    .brand-post-supplemental,
     .brand-related-list {
         grid-template-columns: 1fr;
     }
 }
 
 @media (max-width: 640px) {
-    .brand-post-header .brand-section-title {
-        max-width: none;
+    .brand-post-single {
+        gap: 1.5rem;
     }
 
     .brand-post-related {

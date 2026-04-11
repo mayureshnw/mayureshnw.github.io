@@ -55,6 +55,7 @@
     font-size: clamp(1.25rem, 1.8vw, 1.55rem);
     line-height: 1.18;
     letter-spacing: -0.03em;
+    overflow-wrap: anywhere;
 }
 
 .entry-content {
@@ -99,6 +100,7 @@
     align-items: baseline;
     justify-content: space-between;
     gap: 1rem;
+    min-width: 0;
 }
 
 .entry-cover {

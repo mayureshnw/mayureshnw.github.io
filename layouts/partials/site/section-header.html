@@ -11,7 +11,7 @@
   {{- end -}}
   {{- with $title -}}
     {{- if eq $level 1 -}}
-  <h1>{{ . }}{{ with $.titleSuffix }} {{ . | safeHTML }}{{ end }}</h1>
+  <h1 class="brand-page-title">{{ . }}{{ with $.titleSuffix }} {{ . | safeHTML }}{{ end }}</h1>
     {{- else if eq $level 3 -}}
   <h3>{{ . }}{{ with $.titleSuffix }} {{ . | safeHTML }}{{ end }}</h3>
     {{- else -}}

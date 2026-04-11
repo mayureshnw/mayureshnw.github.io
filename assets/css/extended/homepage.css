@@ -31,16 +31,6 @@
     max-width: 44rem;
 }
 
-.brand-home-hero h1 {
-    margin: 0;
-    max-width: 12ch;
-    font-size: clamp(2.95rem, 7vw, 5.15rem);
-    line-height: 0.92;
-    letter-spacing: -0.065em;
-    font-weight: 700;
-    text-wrap: balance;
-}
-
 .brand-home-summary {
     max-width: 38rem;
 }
@@ -208,11 +198,6 @@
     .brand-home-intro-section {
         gap: 1.25rem;
         padding-bottom: 1.5rem;
-    }
-
-    .brand-home-hero h1 {
-        max-width: 8.5ch;
-        font-size: clamp(2.65rem, 16vw, 4.15rem);
     }
 
     .brand-home-summary p {
