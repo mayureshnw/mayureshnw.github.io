@@ -1,5 +1,5 @@
 {{- define "main" -}}
-{{- $latestPosts := first 3 ((where site.RegularPages "Section" "posts").ByDate.Reverse) -}}
+{{- $latestPosts := first 10 ((where site.RegularPages "Section" "posts").ByDate.Reverse) -}}
 <div class="brand-home">
   <section class="brand-home-intro-section">
     <p class="brand-home-eyebrow">Engineering blog · distributed systems · observability · reliability</p>
@@ -19,30 +19,32 @@
   </section>
 
   <section class="brand-home-latest-section" aria-labelledby="home-latest-title">
-    <div class="brand-home-section-intro">
-      <h2 id="home-latest-title">Latest writing</h2>
-      <p>The newest published essays appear here first, so readers can start from the latest work without leaving the homepage.</p>
+    <div class="brand-home-posts-header">
+      <div class="brand-home-posts-heading-row">
+        <h2 id="home-latest-title">Recent blog posts</h2>
+        <span class="brand-home-posts-heading-separator" aria-hidden="true">&bull;</span>
+        <a class="brand-home-posts-archive-link" href="/posts/">
+          Full archive <span aria-hidden="true">&rarr;</span>
+        </a>
+      </div>
+      <p>Things I have written recently.</p>
     </div>
 
     {{- if gt (len $latestPosts) 0 -}}
-      {{- partial "site/post-card-list.html" (dict
-        "pages" $latestPosts
-        "showMeta" false
-        "showSummary" false
-        "showBadge" false
-        "class" "brand-post-list brand-post-list--editorial brand-home-post-list"
-      ) -}}
+    <ul class="brand-home-recent-list">
+      {{- range $latestPosts -}}
+      <li class="brand-home-recent-item">
+        <div class="brand-home-recent-row">
+          <time class="brand-home-recent-date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date | time.Format "Jan 02, 2006" }}</time>
+          <span class="brand-home-recent-separator" aria-hidden="true">:</span>
+          <a class="brand-home-recent-link" href="{{ .RelPermalink }}">{{ .Title }}</a>
+        </div>
+      </li>
+      {{- end -}}
+    </ul>
     {{- else -}}
     <p class="brand-home-empty">New essays will appear here as they are published.</p>
     {{- end -}}
-
-    <nav class="brand-home-latest-actions brand-home-inline-links" aria-label="Writing links">
-      <a href="/categories/engineering/">View all writing</a>
-      <span aria-hidden="true">/</span>
-      <a href="/tags/">Browse tags</a>
-      <span aria-hidden="true">/</span>
-      <a href="/about/">About</a>
-    </nav>
   </section>
 </div>
 {{- end -}}

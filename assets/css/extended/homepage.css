@@ -98,6 +98,10 @@
     gap: 1.75rem;
 }
 
+.brand-home-latest-section {
+    --brand-home-link-accent: rgb(38, 55, 255);
+}
+
 .brand-home-section-intro,
 .brand-link-section-intro {
     display: grid;
@@ -184,67 +188,112 @@
     line-height: 1.75;
 }
 
-.brand-home-post-list .article-card {
-    margin: 0;
-    padding: 0.95rem 2rem 0.95rem 0;
-    border-top: 1px solid var(--border);
-}
-
-.brand-home-post-list .entry-header h2 {
-    margin: 0;
+.brand-home-posts-header {
+    display: grid;
+    gap: 0.65rem;
     max-width: 42rem;
-    color: var(--primary);
-    font-size: clamp(0.84rem, 1.4vw, 1.08rem);
-    line-height: 1.45;
-    letter-spacing: -0.01em;
-    font-weight: 600;
-    text-decoration: underline;
-    text-decoration-thickness: 1px;
-    text-underline-offset: 0.18em;
-    text-decoration-color: var(--border);
 }
 
-.brand-home-post-list .entry-hint-parent {
-    justify-content: flex-start;
+.brand-home-posts-heading-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.7rem;
+    align-items: baseline;
 }
 
-.brand-home-post-list .entry-content,
-.brand-home-post-list .entry-footer,
-.brand-home-post-list .entry-hint {
-    display: none;
+.brand-home-posts-heading-row h2 {
+    margin: 0;
+    font-size: clamp(1.55rem, 2.7vw, 2rem);
+    line-height: 1.08;
+    letter-spacing: -0.045em;
+    font-weight: 700;
 }
 
-.brand-home-post-list .article-card::after {
-    content: "->";
+.brand-home-posts-heading-separator {
+    color: #b8b1a6;
+}
+
+.brand-home-posts-archive-link {
+    width: fit-content;
+    color: var(--brand-home-link-accent);
+    font-size: clamp(1.1rem, 2vw, 1.3rem);
+    line-height: 1.2;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.brand-home-posts-archive-link:hover,
+.brand-home-posts-archive-link:focus-visible {
+    border-color: currentColor;
+}
+
+.brand-home-posts-header p {
+    font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--content);
+}
+
+.brand-home-recent-list {
+    display: grid;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.brand-home-recent-item {
+    position: relative;
+    padding-left: 1.35rem;
+}
+
+.brand-home-recent-item::before {
+    content: "\2022";
     position: absolute;
-    top: 50%;
-    right: 0;
-    transform: translateY(-50%);
-    color: var(--secondary);
-    font-size: 0.92rem;
-    line-height: 1;
-    transition: transform 0.2s ease, color 0.2s ease;
-    pointer-events: none;
-}
-
-.brand-home-post-list .article-card:hover .entry-header h2,
-.brand-home-post-list .article-card:focus-within .entry-header h2 {
-    text-decoration-color: currentColor;
-}
-
-.brand-home-post-list .article-card:hover::after,
-.brand-home-post-list .article-card:focus-within::after {
+    left: 0;
+    top: 0.06em;
     color: var(--primary);
-    transform: translate(0.18rem, -50%);
+    font-size: 1.1rem;
+    line-height: 1;
 }
 
-.brand-home-post-list .card-link {
-    cursor: pointer;
+.brand-home-recent-row {
+    display: grid;
+    grid-template-columns: max-content max-content minmax(0, 1fr);
+    gap: 0.2rem 0.65rem;
+    align-items: baseline;
 }
 
-.brand-home-latest-actions {
-    padding-top: 1rem;
-    border-top: 1px solid var(--border);
+.brand-home-recent-date {
+    color: var(--secondary);
+    font-family: ui-monospace, "SFMono-Regular", "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+    font-size: 0.98rem;
+    line-height: 1.6;
+    white-space: nowrap;
+}
+
+.brand-home-recent-separator {
+    color: #b8b1a6;
+    font-size: 0.98rem;
+}
+
+.brand-home-recent-link {
+    min-width: 0;
+    width: fit-content;
+    max-width: 100%;
+    color: var(--brand-home-link-accent);
+    font-size: clamp(0.84rem, 1.4vw, 1.08rem);
+    line-height: 1.5;
+    letter-spacing: -0.005em;
+    font-weight: 600;
+    overflow-wrap: anywhere;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.brand-home-recent-link:hover,
+.brand-home-recent-link:focus-visible {
+    border-color: currentColor;
 }
 
 @media (max-width: 900px) {
@@ -279,5 +328,14 @@
 
     .brand-home-inline-links {
         gap: 0.35rem 0.6rem;
+    }
+
+    .brand-home-recent-row {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 0.1rem;
+    }
+
+    .brand-home-recent-separator {
+        display: none;
     }
 }
