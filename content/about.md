@@ -2,13 +2,13 @@
 title: "About"
 layout: "about"
 url: "/about/"
-description: "Senior software engineer focused on distributed systems, observability, reliability, and AI-assisted engineering."
-summary: "I build and write about systems that need to stay reliable, observable, and understandable as they scale."
+description: "Mayuresh Waykole is a software engineer focused on distributed systems, observability, reliability, and AI-assisted engineering."
+summary: "Mayuresh Waykole is a software engineer who builds and writes about systems that need to stay reliable, observable, and understandable as they scale."
 ShowToc: false
 heroIntro: |
-  I work on the parts of software engineering that matter once systems meet scale: architecture, operational clarity, feedback loops, and the tooling that helps teams move with confidence.
+  I'm **Mayuresh Waykole**, a **software engineer** working on the parts of software engineering that matter once systems meet scale: architecture, operational clarity, feedback loops, and the tooling that helps teams move with confidence.
 heroSupporting: |
-  My day-to-day interests sit at the intersection of **distributed systems**, **observability**, **reliability**, and **AI-assisted engineering**. I care about turning complexity into systems that are easier to reason about, easier to operate, and easier for teams to improve over time.
+  My day-to-day interests sit at the intersection of **distributed systems**, **observability**, **reliability**, and **AI-assisted engineering**. I write to make complex systems easier to reason about, easier to operate, and easier for teams to improve over time.
 heroLinks:
   - label: "Engineering"
     url: "/categories/engineering/"

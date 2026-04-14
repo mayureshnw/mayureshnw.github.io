@@ -4,6 +4,25 @@
 {{- $pageDescription := or .Description .Summary site.Params.description | plainify | htmlUnescape | chomp -}}
 {{- $publisherType := site.Params.schema.publisherType | default "Organization" | title -}}
 {{- $sameAs := slice -}}
+{{- $personSchema := site.Params.schema.person | default dict -}}
+{{- $givenName := "" -}}
+{{- with index $personSchema "givenName" -}}
+  {{- $givenName = trim . " " -}}
+{{- end -}}
+{{- $familyName := "" -}}
+{{- with index $personSchema "familyName" -}}
+  {{- $familyName = trim . " " -}}
+{{- end -}}
+{{- $jobTitle := "" -}}
+{{- with index $personSchema "jobTitle" -}}
+  {{- $jobTitle = trim . " " -}}
+{{- end -}}
+{{- $knowsAbout := slice -}}
+{{- with index $personSchema "knowsAbout" -}}
+  {{- range . -}}
+    {{- $knowsAbout = $knowsAbout | append (trim . " ") -}}
+  {{- end -}}
+{{- end -}}
 {{- with site.Params.schema.sameAs -}}
   {{- range . -}}
     {{- $sameAs = $sameAs | append (trim . " ") -}}
@@ -26,7 +45,22 @@
   "url" site.Home.Permalink
 -}}
 {{- if eq $publisherType "Person" -}}
-  {{- $publisher = merge $publisher (dict "image" (index $siteImage "Permalink")) -}}
+  {{- $publisher = merge $publisher (dict
+    "description" $siteDescription
+    "image" (index $siteImage "Permalink")
+  ) -}}
+  {{- with $givenName -}}
+    {{- $publisher = merge $publisher (dict "givenName" .) -}}
+  {{- end -}}
+  {{- with $familyName -}}
+    {{- $publisher = merge $publisher (dict "familyName" .) -}}
+  {{- end -}}
+  {{- with $jobTitle -}}
+    {{- $publisher = merge $publisher (dict "jobTitle" .) -}}
+  {{- end -}}
+  {{- if gt (len $knowsAbout) 0 -}}
+    {{- $publisher = merge $publisher (dict "knowsAbout" $knowsAbout) -}}
+  {{- end -}}
 {{- else -}}
   {{- $publisher = merge $publisher (dict "logo" (dict "@type" "ImageObject" "url" (index $siteImage "Permalink"))) -}}
 {{- end -}}
@@ -98,28 +132,20 @@
         {{- $authors = $authors | append (dict "@type" "Person" "name" .) -}}
       {{- end -}}
       {{- $post = merge $post (dict "author" $authors) -}}
+    {{- else if and (eq $authorType "string") (eq (lower (trim $authorValue " ")) (lower (trim site.Title " "))) -}}
+      {{- $post = merge $post (dict "author" (dict "@id" (index $publisher "@id"))) -}}
     {{- else -}}
       {{- $post = merge $post (dict "author" (dict "@type" "Person" "name" $authorValue)) -}}
     {{- end -}}
     {{- $graph = $graph | append $post -}}
   {{- else if index $seo "isAboutPage" -}}
-    {{- $person := dict
-      "@type" "Person"
-      "name" site.Title
-      "url" site.Home.Permalink
-      "description" $siteDescription
-      "image" (index $siteImage "Permalink")
-    -}}
-    {{- if gt (len $sameAs) 0 -}}
-      {{- $person = merge $person (dict "sameAs" $sameAs) -}}
-    {{- end -}}
-    {{- $graph = $graph | append $person -}}
     {{- $aboutPage := dict
       "@type" "AboutPage"
       "name" (.Title | plainify)
       "description" $pageDescription
       "url" .Permalink
-      "about" (dict "@type" "Person" "name" site.Title "url" site.Home.Permalink)
+      "about" (dict "@id" (index $publisher "@id"))
+      "mainEntity" (dict "@id" (index $publisher "@id"))
       "publisher" (dict "@id" (index $publisher "@id"))
     -}}
     {{- with index $images 0 -}}

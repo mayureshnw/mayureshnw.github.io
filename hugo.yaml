@@ -56,6 +56,7 @@ taxonomies:
   tag: tags
   category: categories
 params:
+  author: "Mayuresh Waykole"
   mainSections:
     - posts
   images:
@@ -66,11 +67,11 @@ params:
     - AIOps
     - Software Engineering
     - System Design
-  description: "Engineering writing by Mayuresh Waykole on distributed systems, observability, reliability, and AI engineering."
+  description: "Mayuresh Waykole is a software engineer writing about distributed systems, observability, reliability, and AI-assisted engineering."
   homeHero:
     title: "Mayuresh Waykole"
     content: |
-      I write about **distributed systems**, **observability**, **reliability**, and **AI-assisted engineering**.
+      I'm **Mayuresh Waykole**, a **software engineer** writing about **distributed systems**, **observability**, **reliability**, and **AI-assisted engineering**.
 
       This site is where I publish long-form notes on building software that stays understandable, observable, and reliable as it grows.
 
@@ -80,7 +81,7 @@ params:
       url: "https://www.linkedin.com/in/mayureshwaykole/"
     - name: "X"
       icon: "x-in"
-      url: "https://x.com/MayureshWaykole"
+      url: "https://x.com/mayureshwaykole"
   schema:
     publisherType: "Person"
     url: "https://mayureshwaykole.com/"
@@ -88,6 +89,16 @@ params:
       - "https://www.linkedin.com/in/mayureshwaykole/"
       - "https://github.com/mayureshwaykole"
       - "https://x.com/mayureshwaykole"
+    person:
+      givenName: "Mayuresh"
+      familyName: "Waykole"
+      jobTitle: "Software Engineer"
+      knowsAbout:
+        - "Distributed Systems"
+        - "Observability"
+        - "Reliability Engineering"
+        - "AI Engineering"
+        - "AIOps"
 
 services:
   googleAnalytics:

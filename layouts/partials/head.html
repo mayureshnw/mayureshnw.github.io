@@ -1,11 +1,19 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-{{- if and hugo.IsProduction (ne .Params.robotsNoIndex true) }}
-<meta name="robots" content="index, follow">
-{{- else }}
-<meta name="robots" content="noindex, nofollow">
-{{- end }}
+{{- $plural := "" -}}
+{{- with .Data.Plural -}}
+  {{- $plural = . -}}
+{{- end -}}
+{{- $is404Page := eq .Kind "404" -}}
+{{- $isTagPage := and (or (eq .Kind "taxonomy") (eq .Kind "term")) (eq $plural "tags") -}}
+{{- $robotsContent := "noindex, nofollow" -}}
+{{- if and hugo.IsProduction (not $is404Page) (not $isTagPage) (ne .Params.robotsNoIndex true) -}}
+  {{- $robotsContent = "index, follow" -}}
+{{- else if or $is404Page $isTagPage (eq .Params.robotsNoIndex true) -}}
+  {{- $robotsContent = "noindex, follow" -}}
+{{- end -}}
+<meta name="robots" content="{{ $robotsContent }}">
 
 {{- /* Title */}}
 <title>{{ if .IsHome }}{{ else }}{{ if .Title }}{{ .Title }} | {{ end }}{{ end }}{{ site.Title }}</title>
