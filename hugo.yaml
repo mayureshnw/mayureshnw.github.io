@@ -65,15 +65,18 @@ params:
     - Distributed Systems
     - Observability
     - AIOps
+    - Platform Engineering
     - Software Engineering
     - System Design
-  description: "Mayuresh Waykole is a software engineer writing about distributed systems, observability, reliability, and AI-assisted engineering."
+  description: "Mayuresh Waykole is a software engineer writing about distributed systems, platform architecture, observability, reliability, and AI-assisted engineering."
   homeHero:
     title: "Mayuresh Waykole"
     content: |
-      I'm **Mayuresh Waykole**, a **software engineer** writing about **distributed systems**, **observability**, **reliability**, and **AI-assisted engineering**.
+      I'm **Mayuresh Waykole**, a **software engineer** focused on **distributed systems**, **observability**, **reliability**, and **AI-assisted engineering**.
 
-      This site is where I publish long-form notes on building software that stays understandable, observable, and reliable as it grows.
+      I work on platform systems where architecture, operational clarity, and long-term maintainability matter as much as the code itself.
+
+      This site is where I write about building software that stays understandable, observable, and reliable as it grows.
 
   socialLinks:
     - name: "LinkedIn"
@@ -95,8 +98,10 @@ params:
       jobTitle: "Software Engineer"
       knowsAbout:
         - "Distributed Systems"
+        - "Platform Architecture"
         - "Observability"
         - "Reliability Engineering"
+        - "Multi-Tenant Systems"
         - "AI Engineering"
         - "AIOps"
 

@@ -2,13 +2,13 @@
 title: "About"
 layout: "about"
 url: "/about/"
-description: "Mayuresh Waykole is a software engineer focused on distributed systems, observability, reliability, and AI-assisted engineering."
-summary: "Mayuresh Waykole is a software engineer who builds and writes about systems that need to stay reliable, observable, and understandable as they scale."
+description: "Mayuresh Waykole is a software engineer focused on distributed systems, platform architecture, observability, reliability, and AI-assisted engineering."
+summary: "Mayuresh Waykole is a software engineer who builds and writes about platform systems that need to stay reliable, observable, and understandable as they scale."
 ShowToc: false
 heroIntro: |
-  I'm **Mayuresh Waykole**, a **software engineer** working on the parts of software engineering that matter once systems meet scale: architecture, operational clarity, feedback loops, and the tooling that helps teams move with confidence.
+  I'm **Mayuresh Waykole**, a **software engineer** working on the systems behind large-scale engineering platforms: execution infrastructure, observability, reliability, and the feedback loops that help teams operate with confidence.
 heroSupporting: |
-  My day-to-day interests sit at the intersection of **distributed systems**, **observability**, **reliability**, and **AI-assisted engineering**. I write to make complex systems easier to reason about, easier to operate, and easier for teams to improve over time.
+  I'm drawn to work that sits between hands-on engineering and technical direction: shaping abstractions, clarifying trade-offs, improving production systems, and helping teams make durable decisions.
 heroLinks:
   - label: "Engineering"
     url: "/categories/engineering/"
@@ -21,12 +21,13 @@ heroLinks:
 panelSections:
   - title: "Current focus"
     items:
-      - "Distributed systems and failure-aware architecture"
-      - "Observability that improves time-to-understanding"
-      - "Reliable delivery and operational feedback loops"
-      - "AI engineering that adds real leverage for teams"
+      - "Distributed systems and platform architecture"
+      - "Observability and operational feedback loops"
+      - "Multi-tenant systems and reliability boundaries"
+      - "Security and maintainability in long-lived systems"
+      - "Technical direction, mentorship, and design clarity"
   - title: "What this site is for"
-    copy: "A place for practical writing on systems design, production learning, and the trade-offs that shape engineering work over time."
+    copy: "A place for practical writing on platform systems, production learning, and the trade-offs that shape engineering work over time."
   - title: "Best ways to connect"
     items:
       - "LinkedIn for conversation and professional context"
@@ -35,12 +36,12 @@ panelSections:
 
 ## What I Work On
 
-- **Distributed systems and reliability** - I am drawn to architectures that stay resilient under load, failure, and change.
-- **Observability** - I care about the signals, workflows, and context that help teams understand production behavior quickly.
+- **Distributed systems and platform architecture** - I am drawn to architectures that stay resilient under load, failure, and change.
+- **Observability and feedback loops** - I care about the signals, workflows, and context that help teams understand production behavior quickly.
 - **AI engineering and AIOps** - I am interested in using AI where it makes engineering systems and operational work more effective.
-- **Technical leadership** - I enjoy helping teams make strong trade-offs, align on architecture, and turn good ideas into dependable delivery.
+- **Technical direction** - I enjoy helping teams clarify trade-offs, align on design, and make decisions that remain durable over time.
 
-I like operating across the boundary between hands-on engineering and technical strategy, especially when the goal is to help teams move faster without losing robustness or clarity.
+I like operating across the boundary between hands-on engineering and technical strategy, especially when the goal is to help teams move faster without losing robustness, maintainability, or clarity.
 
 ## What You'll Find Here
 
